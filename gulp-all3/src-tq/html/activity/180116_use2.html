@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title></title>
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f0e635459915122317d9199dc2470247";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<link rel="shortcut icon" href="../../img/favicon.ico">
+		<link type="text/css" rel="stylesheet" href="../../css/lib/layer.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/comment.css" />
+		<style>
+			.containerBox {
+				background: #d9331d;
+			}
+			
+			.adGoods {
+				min-height: 11.31rem;
+			}
+			
+			.freeDiy {
+				position: absolute;
+				top: 8.32rem;
+				left: 3.9rem;
+				width: 3.1rem;
+				height: .85rem;
+			}
+			
+			.popup-phone {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: rgba(0, 0, 0, .5);
+				z-index: 999;
+				display: none;
+			}
+			
+			.popup-phone .pp-main {
+				width: 5.82rem;
+				height: 5rem;
+				margin: 20% auto;
+				background: url(../../img/activity/180116/usePopup.png) no-repeat;
+				background-size: 100%;
+				padding: 1.5rem .4rem 0;
+				position: relative;
+			}
+			
+			.popup-phone .pp-close {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: .8rem;
+				height: .8rem;
+			}
+			
+			input::-webkit-input-placeholder {
+				color: #cfcfcf;
+			}
+			
+			.popup-phone .pp-main input {
+				width: 5.15rem;
+				height: .86rem;
+				line-height: .86rem;
+				font-size: .32rem;
+				border: 1px solid #e9e9e9;
+				border-radius: .43rem;
+				padding: 0 .4rem;
+			}
+			
+			.popup-phone .pp-main .pp-get {
+				position: absolute;
+				top: 2.87rem;
+				right: .24rem;
+				width: 5.15rem;
+				height: .98rem;
+				border-radius: .5rem;
+			}
+			
+			.popup-phone .pp-main .pp-get:active {
+				background: rgba(0, 0, 0, .3);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="dom-noLoad"></div>
+		<div class="containerBox dom-hasLoad">
+			<img src="../../img/activity/180116/useBg1_2.jpg" alt="" />
+			<div class="freeDiy"></div>
+			<div class="adGoods"></div>
+			<img src="../../img/activity/180116/useBg2.jpg" alt="" />
+
+			<div class="popup-phone">
+				<div class="pp-main">
+					<div class="pp-close"></div>
+					<input class="pp-phone" type="text" placeholder="请输入兑奖码或手机号">
+					<div class="pp-get"></div>
+
+				</div>
+			</div>
+
+			<script src="../../js/lib/zepto.min.js"></script>
+			<script src="../../js/lib/fastclick.min.js"></script>
+			<script src="../../js/lib/layer.min.js"></script>
+			<script src="../../js/common.js"></script>
+			<script type="text/javascript">
+				$('.dom-noLoad').hide();
+				$('.dom-hasLoad').show();
+				var phoneInput = $('.popup-phone .pp-main .pp-phone');
+				//立即兑换
+				$('body').on('click', '.freeDiy', function(e) {
+					$('.popup-phone').show()
+				})
+
+				//确定兑换
+				$('body').on('click', '.popup-phone .pp-get', function(e) {
+					if(!phoneInput.val()) {
+						layerHint('请输入手机号或兑换码')
+						phoneInput.focus();
+						return;
+					}
+
+					var postData = {
+						"mobileCode": phoneInput.val(),
+						"type":2
+					}
+					var url = apiDomain + '/diyapi/share/code/use';
+					var successFunc = function(data) {
+
+						switch(data.code) {
+							case 200:
+							layerHint('验证通过,可免费定制商品')
+							setTimeout(function(){
+								sending('3,93,0') //web是杯子
+//																sending('3,125,0')//app是手机壳
+							},1000)
+								
+								break;
+							case 3031:
+							  //手机号或是分享码不存在
+								layerHint('请输入有效的手机号或兑换码')
+								break;
+							case 3032:
+								//手机号或是分享码已使用 
+								layerHint('您的免费定制机会已经使用，还可定制其他精美商品')
+								break;
+							default:
+								layerHint('请输入正确的手机号或兑换码')
+								break;
+
+						}
+
+					}
+					uploadData(url, true, postData, successFunc)
+
+				})
+				//关闭弹窗
+				$('body').on('click', '.popup-phone .pp-close,.popup-phone', function(e) {
+					var e = e || event;
+					if(e.target == e.currentTarget) {
+						$('.popup-phone').hide()
+					}
+				})
+
+				//加载推荐商品
+				function loadAdGoods() {
+					var url = apiDomain + '/diyapi/share/list/recommend';
+					var successFun = function(data) {
+						if(data.code == 200) {
+							$('.adGoods').append(loadGoods(data.data))
+						}
+					}
+					loadData(url, true, successFun)
+				}
+				loadAdGoods()
+			</script>
+
+	</body>
+
+</html>

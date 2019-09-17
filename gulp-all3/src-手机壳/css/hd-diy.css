@@ -1,0 +1,931 @@
+/*新青年*/
+
+@font-face {
+	/*这个字体转成woof，ttf就变了，还只能用UI提供的otf 1.23mb简直了*/
+	font-family: '新青年';
+	src: url('../font/xqn.otf') format('opentype');
+}
+
+
+/*方正正纤黑*/
+
+@font-face {
+	/*1mb*/
+	font-family: '方正正纤体';
+	src: url('../font/fz.woff') format('woff'), url('../font/fz.ttf') format('truetype');
+}
+
+
+/*汉仪黑荔枝体*/
+
+@font-face {
+	/*1.2mb*/
+	font-family: '汉仪黑荔枝体';
+	src: url('../font/hy.woff') format('woff'), url('../font/hy.ttf') format('truetype');
+}
+
+
+/*全新硬笔隶书简*/
+
+@font-face {
+	/*855kb*/
+	font-family: '全新硬笔隶书体';
+	src: url('../font/ls.woff') format('woff'), url('../font/ls.ttf') format('truetype');
+}
+
+
+/*书体坊硬笔行书3500*/
+
+@font-face {
+	/*782kb*/
+	font-family: '书体坊硬笔行书';
+	src: url('../font/xs.woff') format('woff'), url('../font/xs.ttf') format('truetype');
+}
+
+body {
+	/*overflow: hidden;*/
+}
+
+.containerBox {
+	width: 100%;
+	height: 100%;
+	overflow-y: auto;
+	position: relative;
+	font-size: 15px;
+	z-index: 652;
+}
+
+.main {
+	background: url(../img/diy-topBg.png) no-repeat;
+	background-size: 100% auto;
+	min-height: 101%;
+	/*height: 100%;*/
+	position: relative;
+}
+
+.cover {
+	/*position: absolute;*/
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 888;
+	background: rgba(0, 0, 0, 0.6)
+}
+
+.operationTips {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 888;
+	background: rgba(0, 0, 0, 0.6)
+}
+
+.operationTips img {
+	width: 60%;
+	margin: 50% auto 0;
+}
+
+
+/*弹窗开始*/
+
+.popupBox {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 888;
+	background: rgba(0, 0, 0, .5);
+	display: none;
+}
+
+.popupBox .popup {
+	width: 5rem;
+	height: 1.6rem;
+	margin: -.8rem 0 0 -2.5rem;
+	background: #fff;
+	border-radius: 6px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	text-align: center;
+}
+
+.popupBox .popup img {
+	width: .6rem;
+	height: .6rem;
+	margin: .2rem 0 .2rem 2.2rem;
+}
+
+
+/*弹窗结束*/
+
+.previewBox {}
+
+.attribute {
+	width: 100%;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	text-align: center;
+	color: #fff;
+	font-size: .32rem;
+	position: relative;
+}
+
+.attribute i {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: .1rem .1rem 0 .1rem;
+	border-color: #fff transparent transparent transparent;
+	vertical-align: .06rem;
+}
+
+
+.attribute .attrName {
+	display: inline-block;
+	max-width: 3rem;
+	line-height: .4rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.attribute b span{
+	margin: 0 5px;
+}
+
+.attribute .back {
+	width: .5rem;
+	height: .5rem;
+	position: absolute;
+	top: .35rem;
+	left: .26rem;
+	/*border: 1px solid #fff;*/
+	/*border-width: 0 0 1px 1px;*/
+	/*transform: rotate(45deg);*/
+	/*-webkit-transform: rotate(45deg);*/
+	/*display: none;*/
+}
+
+.attribute .shopCar {
+	width: .58rem;
+	height: .56rem;
+	position: absolute;
+	top: .3rem;
+	right: .56rem;
+	display: none;
+}
+
+.attribute .shopCar .num {
+	position: absolute;
+	top: -.14rem;
+	right: -.2rem;
+	padding: .04rem;
+	min-width: .3rem;
+	line-height: .3rem;
+	border-radius: 100%;
+	background: #ff4040;
+	font-size: .2rem;
+	color: #fff;
+}
+
+.goodsShow {
+	width: 7.1rem;
+	margin: 0 auto 1rem;
+	height: 9.7rem;
+	background: #ededed;
+	border-radius: .1rem;
+	overflow: hidden;
+	box-shadow: 0px 5px 9px 0px #d4d4d4;
+	position: relative;
+	/*margin-bottom: 4rem;*/
+}
+
+.goodsShow.act {
+	margin-bottom: 4rem;
+}
+
+.templateImgBox {
+	position: absolute;
+	overflow: hidden;
+}
+
+.frontImg {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 655;
+}
+
+.activeArea {
+	position: absolute;
+	z-index: 650;
+}
+
+.activeArea .addImgBtn {
+	width: 1.2rem;
+	height: 1.2rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -.6rem 0 0 -.6rem;
+	z-index: 580;
+}
+
+.activeArea .file-input {
+	width: 1.2rem;
+	height: 1.2rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -.6rem 0 0 -.6rem;
+	opacity: 0;
+}
+
+.additiveBox {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 560;
+	top: 0;
+	left: 0;
+	opacity: .3;
+	overflow: hidden;
+}
+
+.additive,
+.additive2 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+.goodsShow .addPaster {
+	/*width: 100%;*/
+	z-index: 900;
+}
+
+.additiveBox2 {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 550;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.goodsShow .close {
+	position: absolute;
+	top: -.25rem;
+	left: -.25rem;
+	width: .5rem;
+	height: .5rem;
+	z-index: 88;
+	background: red url(../img/diy-close.png) no-repeat;
+	background-size: 100%;
+	border-radius: 100%;
+	display: none;
+}
+
+.activeArea.confirm .additiveBox {
+	overflow: visible;
+}
+
+.addImg.textConfirm:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 77;
+	/*background: rgba(44, 138, 255, .4);*/
+  border: 1px dashed #ff4040;
+}
+
+.goodsShow .addText {
+	padding: 10px;
+	z-index: 999;
+	box-sizing: border-box;
+	font-size: .4rem;
+	white-space: nowrap;
+	color: #000;
+	font-family: "方正正纤体";
+}
+
+.activeArea.confirm .addText.textConfirm {
+	padding: 8px;
+	border: 2px dotted #ff4800;
+}
+
+.goodsShow .tips{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	z-index: 99999;
+	width: 100%;
+	text-align: center;
+	pointer-events: none;
+	height: .8rem;
+	line-height: .8rem;
+}
+
+.goodsShow .tips img{
+  width: .8rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/*弹出的添加图片、文字模块开始*/
+
+.moduleBox {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 665;
+	overflow: hidden;
+	pointer-events: none;
+}
+
+.module {
+	width: 100%;
+	height: 3.1rem;
+	box-sizing: border-box;
+	position: absolute;
+	bottom: .98rem;
+	left: 0;
+	z-index: 660;
+	/*background: #f5f5f5;*/
+	font-size: .26rem;
+	-webkit-transform: translate3D(0, 100%, 0);
+	transform: translate3D(0, 100%, 0);
+	-webkit-transition: all .24s;
+	transition: all .24s;
+	-webkit-transform-style: preserve-3d;
+	-webkit-backface-visibility: hidden;
+}
+
+.module.act {
+	-webkit-transform: translate3D(0, 0, 0);
+	transform: translate3D(0, 0, 0);
+	-webkit-transition: all .24s;
+	transition: all .24s;
+	pointer-events: all;
+}
+
+.module .moduleTab {
+	width: 100%;
+	height: .76rem;
+	/*margin: 0 .5rem 0 1rem;*/
+	padding-left: 1rem;
+	background: #f5f5f5;
+	box-sizing: border-box;
+	overflow-x: auto;
+}
+
+.module .down {
+	position: absolute;
+	width: .9rem;
+	height: 1rem;
+	top: .7rem;
+	left: 0;
+	z-index: 999;
+	background: #f5f5f5;
+	text-align: center;
+}
+
+.module .down img {
+	width: .38rem;
+	margin: .3rem auto 0;
+}
+
+.imgModule.module .down {
+	height: .76rem;
+	top: 0;
+}
+
+.imgModule.module .down img {
+	margin-top: .19rem;
+}
+
+.module .moduleTab .tabBox {
+	height: 100%;
+}
+
+.module .moduleTab .tabItem {
+	float: left;
+	width: 1.2rem;
+	height: .5rem;
+	line-height: .5rem;
+	text-align: center;
+	margin: .13rem .13rem 0 0;
+}
+
+.module .moduleTab .tabItem.act {
+	background: #ff4040;
+	color: #fff;
+	border-radius: .1rem;
+}
+
+.module .moduleMain {
+	width: 100%;
+	padding-left: .2rem;
+	box-sizing: border-box;
+	height: 2.34rem;
+	background: #333;
+}
+
+.module .moduleMain .mainItem {
+	width: 100%;
+	height: 100%;
+	overflow-x: auto;
+	display: none
+}
+
+.module .moduleMain .mainItem.act {
+	display: block;
+}
+
+.module .moduleMain .mainItem .imgBox.fontFamily {
+	width: 11rem;
+	height: 100%;
+}
+
+.module .moduleMain .mainItem .imgBox.fontColor {
+	width: 19.8rem;
+	height: 100%;
+}
+
+.module .moduleMain .mainItem .moduleOption {
+	width: auto;
+	height: 2.1rem;
+	display: table-cell;
+}
+
+.module .moduleMain .mainItem .moduleOption>div {
+	width: auto;
+	height: 2.1rem;
+	text-align: center;
+	margin: .12rem .2rem 0 0;
+	position: relative;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+.module .moduleMain .mainItem.paster .moduleOption>div {
+	background: #fff;
+}
+
+.module .moduleMain .mainItem .moduleOption img {
+	width: auto;
+	height: 100%;
+}
+
+.module .moduleMain .mainItem .moduleOption.act {
+	border: .04rem solid #ff4040;
+}
+
+.imgModule .imgBox {
+	width: auto;
+	height: 100%;
+	display: table-row;
+}
+
+.imgModule .file-input {
+	width: 2rem;
+	height: 2.1rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+}
+
+.textModule .moduleOption {
+	background: #fff;
+	color: #000;
+	font-size: 20px;
+}
+
+.textInputBox {
+	height: 1.02rem;
+	background: #f5f5f5;
+	position: relative;
+}
+
+.textInputBox .textInput {
+	float: left;
+	width: 6.42rem;
+	height: .84rem;
+	line-height: .84rem;
+	box-sizing: border-box;
+	padding: 0 2.6rem 0 .2rem;
+	background: #fff;
+	font-size: .36rem;
+	border: .02rem solid #d6d6d6;
+	border-radius: 5px;
+	margin: .08rem 0 .08rem .9rem;
+}
+
+.textInputBox .emptyInput {
+	position: absolute;
+	top: .35rem;
+	right: 2.4rem;
+	width: .3rem;
+	display: none;
+}
+
+.textInputBox .changeText {
+	position: absolute;
+	top: .1rem;
+	right: 1.2rem;
+	width: .98rem;
+	display: none;
+}
+
+.textInputBox .addTextBtn {
+	position: absolute;
+	top: .1rem;
+	right: .34rem;
+	width: .82rem;
+}
+
+.textInputBox .inputTips {
+	position: absolute;
+	top: -.6rem;
+	left: 1rem;
+	width: 2.4rem;
+	height: .44rem;
+	line-height: .44rem;
+	background: rgba(0, 0, 0, .5);
+	color: #fff;
+	text-align: center;
+	border-radius: .22rem;
+	display: none;
+}
+
+.textInputBox .inputTips::after {
+	content: '';
+	position: absolute;
+	bottom: -5px;
+	left: 11px;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 5px 5px 0 5px;
+	border-color: rgba(0, 0, 0, .5) transparent transparent transparent;
+}
+
+
+/*2017.7.21修改的文字颜色与样式开始*/
+
+.textModule {
+	height: 3.7rem;
+	padding-top: .68rem;
+}
+
+.textModule .fontColorBox {
+	height: .99rem;
+	width: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+	border-top: .02rem solid #dcdcdc;
+	background: #fff;
+}
+
+.textModule .fontColor {
+	width: 12.6rem;
+	height: 100%;
+	padding-left: .1rem;
+	background: #fff;
+}
+
+.textModule .fontColor .item {
+	float: left;
+	width: .65rem;
+	height: .65rem;
+	background: red;
+	margin: .16rem .35rem;
+	border-radius: 100%;
+	position: relative;
+	box-shadow: 0 4px 7px 0 #e4e4e4;
+}
+
+.textModule .fontColor .item.act:after {
+	content: '';
+	width: .85rem;
+	height: .85rem;
+	border: .04rem solid #fb3535;
+	border-radius: 100%;
+	box-sizing: border-box;
+	position: absolute;
+	top: -15%;
+	left: -15%;
+}
+
+.textModule .fontFamilyBox {
+	height: 1rem;
+	width: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+	background: #ededed;
+}
+
+.textModule .fontFamily {
+	width: 10rem;
+	height: 100%;
+	background: url(../img/diy-fontFamily.jpg) no-repeat;
+	background-size: 100%;
+}
+
+.textModule .fontFamily .item {
+	float: left;
+	width: 2rem;
+	height: 1rem;
+	line-height: 1rem;
+	text-align: center;
+	position: relative;
+	font-size: .4rem;
+}
+
+.textModule .fontFamily .item.act:after {
+	content: '';
+	width: 100%;
+	height: 100%;
+	border: .04rem solid #fb3535;
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+}
+
+
+/*2017.7.21修改的文字颜色与样式结束*/
+
+
+/*弹出的添加图片、文字模块结束*/
+
+
+/*侧边烂按钮开始*/
+
+.sideBtn {
+	width: .68rem;
+	position: absolute;
+	right: .06rem;
+	bottom: .3rem;
+	z-index: 660;
+	font-size: .26rem;
+	color: #fff;
+	text-align: center;
+	display: none;
+}
+
+.sideBtn .delete,
+.sideBtn .preview,
+.sideBtn .reform,
+.sideBtn .zoom {
+	width: .68rem;
+	height: .68rem;
+	line-height: .68rem;
+	background: rgb(244, 167, 176);
+	border-radius: 100%;
+	margin-bottom: .22rem;
+}
+
+.sideBtn .zoom {
+	display: none;
+}
+
+.sideBtn .delete {
+	display: none;
+}
+
+.sideBtn .confirm {
+	display: none;
+}
+
+.templateImgBox {
+	transition: transform 1s;
+	-webkit-transition: transform 1s;
+}
+
+.templateImgBox.zoom {
+	transform: scale(2);
+	-webkit-transform: scale(2);
+	transition: transform 1s;
+	-webkit-transition: transform 1s;
+}
+
+.handleBtn{
+	position: absolute;
+	right: .06rem;
+	bottom: 2rem;
+	z-index: 660;
+	font-size: .26rem;
+	color: #fff;
+	text-align: center;
+	width: .68rem;
+	height: .68rem;
+	line-height: .68rem;
+	background: rgb(244, 167, 176);
+	border-radius: 100%;
+	margin-bottom: .22rem;
+}
+.compileBtn{
+	display: none;
+}
+
+/*侧边烂按钮结束*/
+
+
+/*预览页面开始*/
+
+.previewPage {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 690;
+	background: #ededed;
+	display: none;
+}
+
+.previewPage .close {
+	position: absolute;
+	top: .1rem;
+	left: .23rem;
+	z-index: 888;
+	width: .26rem;
+	height: .26rem;
+	padding: .2rem;
+}
+
+.previewPage .buy {
+	position: absolute;
+	top: .14rem;
+	right: 0;
+	z-index: 888;
+	width: 1.68rem;
+	height: .5rem;
+	line-height: .5rem;
+	color: #fff;
+	background: #fe3f56;
+	text-align: center;
+	font-size: .28rem;
+	border-radius: .25rem 0 0 .25rem;
+}
+
+.previewPage .previewMain {
+	width: 100%;
+	height: 7.5rem;
+	overflow: hidden;
+	position: relative;
+	top: 50%;
+	margin-top: -3.75rem;
+}
+
+.previewPage .compoundImg {
+	position: absolute;
+	top: 1.8rem;
+	left: 2.2rem;
+	width: 2.8rem;
+	height: 3.8rem;
+	z-index: 650;
+}
+
+.swiper-preview {
+	height: 100%;
+}
+
+.previewPage .swiper-pagination {
+	bottom: auto;
+	top: .24rem;
+}
+
+
+/*预览页面结束*/
+
+
+/*底部按钮开始*/
+
+.bottomBtn {
+	width: 100%;
+	height: .98rem;
+	line-height: .98rem;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 670;
+	background: #fff;
+	color: #333;
+	font-size: .28rem;
+	box-shadow: 0 -1px 12px 0 #cecece;
+	;
+}
+
+.bottomBtn .addBtn {
+	float: left;
+	width: 1.8rem;
+	position: relative;
+}
+
+
+
+.bottomBtn .imgBtn:before,
+.bottomBtn .uploadingImg:before {
+	content: "";
+	width: .02rem;
+	height: .28rem;
+	background: #bfbfbf;
+	position: absolute;
+	top: .35rem;
+	right: -1px;
+}
+
+.bottomBtn .imgBtn.act:after,
+.bottomBtn .textBtn.act:after,
+.bottomBtn .uploadingImg.act:after {
+	content: "";
+	width: .6rem;
+	height: .02rem;
+	background: #ff4040;
+	position: absolute;
+	top: .8rem;
+	left: .5rem;
+}
+
+.bottomBtn .uploadingImg .fileInputBox {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 888;
+	opacity: 0;
+  overflow: hidden;
+}
+
+
+
+.bottomBtn .carBtn {
+	float: right;
+	width: 2.1rem;
+	color: #fefefe;
+	background: rgb(117, 234, 133);
+}
+
+.bottomBtn .buyBtn {
+	float: right;
+	width: 2.1rem;
+	color: #f5f5f5;
+	background: #d0d0d0;
+}
+
+.bottomBtn .buyBtn.act {
+	color: #fefefe;
+	background: #ff4040;
+}
+
+.textInputLaber {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+
+/*底部按钮结束*/
+
+
+/*弹层样式开始*/
+
+body .layui-m-layer .layui-m-layer-msg {
+	bottom: 0!important;
+}
+
+.layui-m-layershade {
+	background-color: rgba(0, 0, 0, .4)!important;
+}
+
+.layui-m-layerbtn {
+	height: 40px!important;
+	line-height: 40px!important;
+}
+
+.layui-m-layercont {
+	/*padding: 30px!important;*/
+}
+
+
+/*弹层样式结束*/

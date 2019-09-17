@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>贷款超市</title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link href="css/swiper-3.4.1.min.css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/hd-index.css" />
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<style type="text/css">
+			.result .r-num {
+				font-family: inherit;
+				font-size: .6rem;
+				color: #ebf36b;
+			}
+			
+			.nb_item2.redPoint {
+				position: relative;
+			}
+			
+			.nb_item2.redPoint::after {
+				content: '';
+				position: absolute;
+				top: .4rem;
+				right: .36rem;
+				width: .2rem;
+				height: .2rem;
+				border-radius: 100%;
+				background: #fc4a2d;
+			}
+			
+			.drogue {
+				display: none;
+				position: fixed;
+				top: 50%;
+				right: 0;
+				width: 1.4rem;
+				height: 1.4rem;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="hd-noLoad">
+			<img class="hd-loading" src="images/loading.gif" alt="loading" />
+		</div>
+		<div class="containerBox hd-hasLoad index">
+			<div class="banner">
+				<div class="swiper-container swiper-topBanner">
+					<div class="swiper-wrapper">
+
+					</div>
+					<!-- 如果需要分页器 -->
+					<div class="swiper-pagination"></div>
+				</div>
+			</div>
+
+			<div class="navBtn">
+				<a class="nb_item nb_item1" href="questionnaire.html">
+					<img src="images/index/yg.png" alt="预估额度" />
+					<span>预估额度</span>
+				</a>
+				<!--去掉首页的办信用卡按钮，记得ajax获取的其他按钮是塞到有act类名的后面的-->
+				<a class="nb_item nb_item2" data-name="creditCardList" href="creditCardList.html?from=label&labelId=14">
+					<img src="images/index/creditCard.png" alt="办信用卡" />
+					<span>办信用卡</span>
+				</a>
+				<a class="nb_item nb_item2 " data-name="lottery" href="lottery.html">
+					<img src="images/lottery/icon.png" alt="幸运抽奖" />
+					<span>幸运抽奖</span>
+				</a>
+				<a class="nb_item nb_item2" data-name="getPosEnter" href="getPosEnter.html?from=icon">
+					<img src="images/index/icon_2.png" alt="免费送机" />
+					<span>免费送机</span>
+				</a>
+				<a class="nb_item" href="contactUs.html">
+					<img src="images/index/zx.png" alt="进度查询" />
+					<span>进度查询</span>
+				</a>
+			</div>
+			<div class="title" id="entry">推荐贷款</div>
+
+			<div class="productList">
+
+				<!--<div class="productItem">
+					<img class="logo" src="http://51app-image.oss-cn-hangzhou.aliyuncs.com/loan/loan/2017/6/21/19495083173976.png" alt="logo" />
+					<div class="name">卡卡贷</div>
+					<div class="limit"><i>1000-8000</i><span>额度范围</span></div>
+					<div class="line"></div>
+					<div class="info">月利率<i>0.9%</i></div>
+					<div class="remark">dsadas456dsdsa</div>
+					<div class="slogan">贷款标语</div>
+					<img class="tips" src="images/index-hot.png" alt="热门" />
+				</div>-->
+
+			</div>
+			<div class="result">
+				<div class="r-main">
+					<div class="r-text">恭喜您，免费获得</div>
+					<div class="r-num">银联认证POS机 </div>
+					<div class="r-pos">银联认证刷卡安全，资金秒到储蓄卡</div>
+					<div class="r-ok">
+						<!--<div class="ro-1">知道了</div>-->
+						<div class="ro-2">
+							<div class="ro-2_1">知道了</div>
+							<div class="ro-2_2">立即领取</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!--<div class="popup-180705">
+				<div class="p180705-main">
+					<a href="https://api.51app.cn/loanapi/url/jj9e9n15"></a>
+					<div class="p180705-close"></div>
+				</div>
+			</div>
+			<a class="drogue" href="getPosEnter.html?from=drogue"><img src="images/drogue.gif"/></a>-->
+
+			<div class="popup-template p180815">
+				<div class="pTemplate-main">
+					<img src="images/popup/180817.png"/>
+					<a href="https://api.51app.cn/loanapi/url/jilrytz4"></a>
+					<div class="pTemplate-close"></div>
+				</div>
+			</div>
+
+		</div>
+
+		<!--回到顶部-->
+		<div id="goTop"></div>
+
+		<script src="js/alloy-lever.min.js"></script>
+		<script src="js/commonPlugin.min.js"></script>
+		<script src="js/swiper-3.4.1.min.js"></script>
+		<script src="js/hd-common.js"></script>
+		<script src="js/hd-index.js"></script>
+
+	</body>
+
+</html>

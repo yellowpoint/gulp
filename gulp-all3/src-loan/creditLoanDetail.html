@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta content="telephone=no,email=no" name="format-detection">
+	<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+	<title>信用借款</title>
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/creditLoan.css" />
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	<style>
+		body.body-loading::before {
+			content: '';
+			background: rgba(0,0,0,0.2);
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			z-index: 99998;
+		}
+	</style>
+</head>
+<body class="creditLoanDetail body-loading">
+	<div class="body-main">
+		<div class="creditLoanDetail-more">
+			<p class="cm-title">用款需求</p>
+			<div class="cm-range">
+				<!--滑块选择-->
+				<div class="mui-input-row input-range">
+					<input type="range" min="10000" max="40000" step="10000" value="10000" data-range>
+				</div>
+			</div>
+			<ul>
+				<li>10000</li>
+				<li>20000</li>
+				<li>30000</li>
+				<li>50000</li>
+			</ul>
+			<p class="cm-title">还款期限</p>
+			<div class="cm-deadline">
+				<span class="cd-item active" data-id="6">6期</span>
+				<span class="cd-item" data-id="12">12期</span>
+				<span class="cd-item" data-id="18">18期</span>
+				<span class="cd-item" data-id="24">24期</span>
+			</div>
+		</div>
+		<div class="creditLoanDetail-identity">
+			<p class="cm-title" style="margin-left: -0.8rem;">填写真实身份信息</p>
+			<div class="cf-area cf-input" style="margin-top: 0.55rem;">
+				<input type="text" name="idCard" placeholder="请输入您的身份证号码">
+			</div>
+			<div class="cf-area cf-input">
+				<input type="text" name="realName" placeholder="请输入您的真实姓名">
+			</div>
+		</div>
+		<div class="next-btn" id="goNext">
+			下一步
+		</div>
+		
+	</div>
+
+
+	<script src="js/commonPlugin.min.js"></script>
+	<script src="js/hd-common.js"></script>
+	<script src="js/mui.min.js"></script>
+	<script src="js/IDValidator.js"></script>
+	<script>
+		//loading层
+		$('body').removeClass('body-loading');
+		mui.init();
+		var screenHeight = $(window).height();
+		$('.creditLoanDetail').eq(0).css({"height": screenHeight});
+		//身份证验证初始化
+		var Validator = new IDValidator();
+		
+		/**
+		 * range滑块处理
+		 */
+		var selector = '[data-range]';
+	    function valueOutput(element) {
+	    	//所选数值展示
+            var value = element.value;
+            var output = 0;
+            if(value == 40000){
+                value = 50000;
+                element.value = value;
+            }
+        	//样式跟随变化
+        	var size = ''
+        	if(value == 10000) {
+        		size = '0% 100%';
+        		$('.cd-item').eq(0).removeClass('unvalid').addClass('active').siblings().removeClass('active');
+        	}
+        	if(value == 20000) {
+        		size = '33.3% 100%';
+        		$('.cd-item').eq(0).removeClass('unvalid').addClass('active').siblings().removeClass('active');
+        	}
+        	if(value == 30000) {
+        		size = '66.6% 100%';
+        		$('.cd-item').eq(0).addClass('unvalid').removeClass('active').siblings().removeClass('active');
+        		$('.cd-item').eq(1).addClass('active');
+        	}
+        	if(value == 50000) {
+        		size = '100% 100%';
+        		$('.cd-item').eq(0).addClass('unvalid').removeClass('active').siblings().removeClass('active');
+        		$('.cd-item').eq(1).addClass('active');
+        	}
+        	$(selector).css({backgroundSize: size});
+    	}
+		$(document).on('input', selector, function(e) {
+        	valueOutput(e.target);
+   		});
+   		/**
+   		 * 点击选择分期期数
+   		 */
+ 
+   		$('.cd-item').click(function(){
+   			//置灰的选项不再可选
+   			if($(this).hasClass('unvalid')){
+   				mui.toast('该期限暂不可选');
+   				return false;
+   			}
+   			$(this).addClass('active').siblings().removeClass('active');
+
+   		})
+   		
+   		$('input[name=idCard]').blur(function(){
+   			if($(this).val() != '') {
+   				var flag = Validator.isValid($(this).val())
+	   			if(!flag){
+	   				mui.toast('身份证号不合法');
+	   			}	
+   			}
+   		})
+   		
+   		/*
+   		 * 下一步跳转
+   		 */
+   		var isSubmit = true;
+   		$('#goNext').click(function(){
+   			var idCard = $('input[name=idCard]').val()
+			var realName = $('input[name=realName]').val()
+			if(idCard == ''){
+				mui.toast('身份证号码不能为空')
+				return false
+			}
+			var flag = Validator.isValid($('input[name=idCard]').val())
+   			if(!flag){
+   				mui.toast('请输入正确身份证号');
+   				return false
+			}
+			if(realName == ''){
+				mui.toast('真实姓名不能为空')
+				return false
+			}
+			if(!(/^[\u4e00-\u9fa5]+(·[\u4e00-\u9fa5]+)*$/.test(realName))){	
+				mui.toast('请输入正确的姓名')
+				return false
+			}
+   			//用款需求数据
+   			var total = $(selector).val();
+   			var deadline = $('.cd-item.active').eq(0).attr('data-id');
+   			var loanInfo = JSON.parse(getCookie('loanInfo'))
+   			if(loanInfo != 'undefined'){
+   				var prov = loanInfo.prov
+	   			var city = loanInfo.city
+	   			var mobile = loanInfo.mobile
+	   			var code = loanInfo.code
+	   			var channel = loanInfo.channel
+				if(prov == 'hot'){
+					prov = ''
+				}	
+   			}
+			$('body').addClass('body-loading');
+			//防止多次点击
+			if(isSubmit) {
+				isSubmit = false
+				ajaxPost(
+					'https://api.51app.cn/loanapi/third/ukuan/apply',
+					{
+						mobile: mobile,
+						realName: realName,
+						idCard: idCard,
+						province: prov,
+						city: city,
+						balance: total,
+						term: deadline,
+						channel: channel,
+						platform: 'h5'
+					},
+					function(res){
+						if(res.code == 200){
+							setTimeout(function(){
+								isSubmit = true
+							},800)
+							window.location.href = res.data.linkUrl;
+						}else{
+							mui.toast(res.data)
+						}
+						
+					}
+				)
+			}
+   			
+   			
+   		})
+   		
+		
+	</script>
+</body>
+</html>

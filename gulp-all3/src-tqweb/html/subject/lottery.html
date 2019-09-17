@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<meta http-equiv="Cache-Control" content="no-cache private max-age=0">
+		<title></title>
+		<link rel="shortcut icon" href="../../img/favicon.ico">
+		<!-- build:css css/hd-lottery.css -->
+		<link type="text/css" rel="stylesheet" href="../../css/lib/layer.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/lib/waves.min.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/comment.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/xl/xl-login.css" />
+		<!-- endbuild -->
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f0e635459915122317d9199dc2470247";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<style type="text/css">
+			.xl-close {
+				/*不能关闭登录框*/
+				display: none !important;
+			}
+			
+			body {
+				height: auto;
+				background: #fe4c4c;
+			}
+			
+			body.act {
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.containerBox {
+				min-height: 15.01rem;
+				background: url(../../img/lottrty/bg.jpg) no-repeat;
+				background-size: 100% auto;
+				overflow: hidden;
+			}
+			
+			.dateLimit {
+				margin-top: 4.28rem;
+				color: #feea6d;
+				text-align: center;
+			}
+			
+			.timeLimit {
+				margin-top: .7rem;
+				margin-left: 1.34rem;
+				color: #98010b;
+				font-size: .32rem;
+			}
+			
+			.timeLimit i {
+				color: #ff505c;
+				font-size: .42rem;
+			}
+			
+			.lottery {
+				width: 5.7rem;
+				height: 5.7rem;
+				margin: .92rem 0 0 1.02rem;
+			}
+			
+			.lottery ul {
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.lottery li {
+				width: 1.72rem;
+				height: 1.72rem;
+				line-height: 1.72rem;
+				border-radius: .1rem;
+				text-align: center;
+				float: left;
+				margin: .15rem .15rem 0 0;
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.lottery .lottery-unit {
+				box-shadow: 0 .06rem 0 #740403;
+			}
+			
+			.lottery .lottery-unit img {
+				height: 100%;
+			}
+			
+			.lottery.act .lottery-unit:after {
+				content: '';
+				width: 100%;
+				height: 100%;
+				border-radius: .1rem;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: rgba(0, 0, 0, .5);
+			}
+			
+			.lottery .lottery-unit.act:after {
+				content: '';
+				display: none;
+			}
+			
+			.lottery-btn:active {
+				/*background: rgba(0,0,0,.3);*/
+			}
+			
+			.explain {
+				color: #fff;
+				overflow: hidden;
+				padding: .3rem;
+				line-height: 1.5;
+				margin-top: .8rem;
+			}
+			
+			.explain h2 {
+				text-align: center;
+				font-size: .32rem;
+				margin-bottom: .2rem;
+			}
+			
+			.explain p {
+				font-size: .24rem;
+				margin: .1rem 0;
+			}
+			
+			.lottery_popup {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 999;
+				background: rgba(0, 0, 0, .5);
+				overflow: hidden;
+				display: none;
+			}
+			
+			.lottery_popup .lp_bg {
+				width: 6rem;
+				margin: 3.6rem auto 0;
+			}
+			
+			.lottery_popup .lp_name {
+				text-align: center;
+				width: 6rem;
+				position: absolute;
+				top: 4rem;
+				left: .75rem;
+				font-size: .32rem;
+			}
+			
+			.lottery_popup .lp_prize {
+				width: 2.6rem;
+				height: 2.6rem;
+				border-radius: .1rem;
+				overflow: hidden;
+				position: absolute;
+				top: 4.8rem;
+				left: 2.42rem;
+			}
+			
+			.lottery_popup .lp_close {
+				width: 3.44rem;
+				height: .86rem;
+				overflow: hidden;
+				position: absolute;
+				top: 8.34rem;
+				left: 2.05rem;
+			}
+			
+			.lottery_my {
+				position: absolute;
+				top: 5.32rem;
+				right: .82rem;
+				width: 1.62rem;
+				height: .64rem;
+				border-radius: .2rem;
+				/*background: rgba(0,0,0,.5);*/
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="dom-noLoad">
+		</div>
+
+		<main class="containerBox dom-hasLoad">
+			<div class="dateLimit">活动时间： 2017.12.23-2018.01.02</div>
+			<div class="timeLimit">您还有 <i>  </i> 次抽奖机会</div>
+			<div class="lottery_my"></div>
+			<div class="lottery" id="lottery">
+				<ul>
+					<li class="lottery-unit lottery-unit-0"><img src="../../img/lottrty/prize.jpg" /></li>
+					<li class="lottery-unit lottery-unit-1"><img src="../../img/lottrty/prize.jpg" /></li>
+					<li class="lottery-unit lottery-unit-2"><img src="../../img/lottrty/prize.jpg" /></li>
+					<li class="lottery-unit lottery-unit-7"><img src="../../img/lottrty/prize.jpg" /></li>
+					<li class="lottery-btn"></li>
+					<li class="lottery-unit lottery-unit-3"><img src="../../img/lottrty/prize.jpg" /></li>
+					<li class="lottery-unit lottery-unit-6"><img src="../../img/lottrty/prize.jpg" /></li>
+					<li class="lottery-unit lottery-unit-5"><img src="../../img/lottrty/prize.jpg" /></li>
+					<li class="lottery-unit lottery-unit-4"><img src="../../img/lottrty/prize.jpg" /></li>
+				</ul>
+			</div>
+			<div class="explain">
+				<h2>活动说明</h2>
+				<p>1. 此次活动真实有效，如您在抽奖过程中遇到其他问题可及时咨询我们微信客服 ( 18926502865 ) ；</p>
+				<p>2. 每位用户每天有4次抽奖机会，若机会用完请等待明天机会，继续抽奖；
+				</p>
+				<p>3. 中奖用户在定制过程中已默认使用相应优惠券，非中奖用户将以原价定制；
+				</p>
+				<p>4. 本次活动最终解释权归深圳维创乐科技有限公司所有。</p>
+			</div>
+			<div class="lottery_popup">
+				<img class="lp_bg" src="../../img/lottrty/popupBg.png" />
+				<div class="lp_name">恭喜您抽中<i></i></div>
+				<a class="lp_prize" href="##"><img src="" /></a>
+				<div class="lp_close"></div>
+			</div>
+		</main>
+
+		<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<!-- build:js js/hd-all-lottery.js -->
+		<!--<script src="js/alloy-lever.js"></script>-->
+		<script src="../../js/lib/jq-3.1.1.min.js"></script>
+		<script src="../../js/lib/fastclick.min.js"></script>
+		<script src="../../js/lib/layer.min.js"></script>
+		<script src="../../js/lib/waves.min.js"></script>
+		<script src="../../js/xl/xl-login.js"></script>
+		<!--这个还是要放到里面 不然在hd-lottery.js下面就不行了 到时候这个文件有更新我的代码也要重新压缩-->
+		<script src="../../js/common.js"></script>
+		<script src="../../js/hd/hd-lottery.js"></script>
+		<!-- endbuild -->
+
+	</body>
+
+</html>

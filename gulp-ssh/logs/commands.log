@@ -1,0 +1,7 @@
+Last login: Tue Aug 29 20:58:31 2017 from 192.168.1.122
+-bash: /usr/local/jdk1.8.0_112/jre/bin: is a directory
+rm -rf /data/project/diyMallAPP/51loan
+exit
+[root@localhost ~]# rm -rf /data/project/diyMallAPP/51loan
+[root@localhost ~]# exit
+logout

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>新人办卡</title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/newPerson.css" />
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+
+	<body class="newPerson body-loading">
+		<div class="body-main">
+			<div class="newPerson-question">
+				<div class="nq-title">
+					您的工作是？
+				</div>
+				<div class="nq-answer" id="nq-job">
+					<ul>
+						<li>
+							<i class="icon-arrow">&#xe712;</i>
+							<span data-id='1'>在校学生</span>
+						</li>
+						<li>
+							<i class="icon-arrow">&#xe712;</i>
+							<span data-id='2'>自由职业</span>
+						</li>
+						<li>
+							<i class="icon-arrow">&#xe712;</i>
+							<span data-id='3'>蓝领</span>
+						</li>
+						<li>
+							<i class="icon-arrow">&#xe712;</i>
+							<span data-id='4'>民营企业职员 </span>
+						</li>
+						<li>
+							<i class="icon-arrow">&#xe712;</i>
+							<span data-id='5'>国企、事业单位员工及公务员</span>
+						</li>
+					</ul>
+				</div>
+				<div class="nq-button">
+					继续
+				</div>
+			</div>
+			<div class="newPerson-question nq-second">
+				<div class="nq-title">
+					信用卡主要用于那种消费？
+				</div>
+				<div class="nq-answer" id="nq-use">
+					<ul>
+						<li>
+							<i class="icon-arrow">&#xe712;</i>
+							<span data-id='1'>取现</span>
+						</li>
+						<li>
+							<i class="icon-arrow">&#xe712;</i>
+							<span data-id='2'>购物</span>
+						</li>
+						<li>
+							<i class="icon-arrow">&#xe712;</i>
+							<span data-id='3'>开车加油</span>
+						</li>
+						<li>
+							<i class="icon-arrow">&#xe712;</i>
+							<span data-id='4'>吃喝玩乐</span>
+						</li>
+						<li>
+							<i class="icon-arrow">&#xe712;</i>
+							<span data-id='5'>商旅出行</span>
+						</li>
+					</ul>
+				</div>
+				<div class="nq-button">
+					确认
+				</div>
+			</div>
+			<div class="newPerson-question nq-third" style="height: 6.52rem;">
+				<div class="nq-title" style="border-bottom: none;">
+					您的联系方式是？
+				</div>
+				<div class="nq-answer">
+					<div class="nq-answer-input">
+						<p>姓名</p>
+						<input type="text" name="myName" placeholder="请输入您的姓名" />
+					</div>
+					<div class="nq-answer-input">
+						<p>电话</p>
+						<input type="number" name="myPhone" placeholder="请输入您的电话" pattern="[0-9]*" maxlength="11" />
+					</div>
+				</div>
+				<div class="nq-button" id='postDetail'>
+					确定
+				</div>
+				<div class="nq-skip">
+					跳过
+				</div>
+			</div>
+
+		</div>
+
+
+		<script src="js/commonPlugin.min.js"></script>
+		<script src="js/hd-common.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script>
+			//loading层
+			$('body').removeClass('body-loading')
+			mui.init();
+			/*
+			 * 选择题目
+			 */
+			var result = {};
+			var ansArr = [];
+			//单选题
+			$('#nq-job>ul li').click(function() {
+				$(this).children('.icon-arrow').css('color', '#EF5354')
+				$(this).siblings().children('.icon-arrow').css('color', '#C6C6C6')
+				//所选答案
+				$(this).children('span').addClass('answers')
+				$(this).siblings().children('span').removeClass('answers')
+			})
+			//多选题
+			$('#nq-use>ul li').click(function() {
+				var flag = $(this).children('span').hasClass('answers')
+				if(flag) {
+					$(this).children('.icon-arrow').css('color', '#C6C6C6')
+					//所选答案
+					$(this).children('span').removeClass('answers')
+				} else {
+					$(this).children('.icon-arrow').css('color', '#EF5354')
+					//所选答案
+					$(this).children('span').addClass('answers')
+				}
+			})
+
+			//继续下一题
+			$('.nq-button').eq(0).click(function() {
+				if($('.answers').length != 0) {
+					result.job = +$('.answers').eq(0).attr('data-id')
+					$(this).parent().hide()
+					$('.newPerson-question').eq(1).removeClass('nq-second').addClass('pulse animated')
+					$('.newPerson-question').eq(2).removeClass('nq-third').addClass('nq-second')
+				} else {
+					mui.alert('选项不能为空')
+				}
+			})
+			//确认此处可提交数据
+			$('.nq-button').eq(1).click(function() {
+				if($('.answers').length > 1) {
+					for(var i = 1; i < $('.answers').length; i++) {
+						ansArr.push(+$('.answers').eq(i).attr('data-id'))
+					}
+					result.purpose = ansArr.join(',')
+					$(this).parent().hide()
+					$('.newPerson-question').eq(2).removeClass('nq-third').removeClass('nq-second').addClass('pulse animated')
+					setCookie('newPerson', JSON.stringify(result))
+				} else {
+					mui.alert('选项不能为空')
+				}
+			})
+			//最终提交信息
+			$('#postDetail').click(function() {
+				var check = true
+				mui(".nq-answer-input input").each(function() {
+					//若当前input为空
+					if(!this.value || this.value.trim() == "") {
+						mui.alert("请补全信息");
+						check = false;
+						return false;
+					}
+				})
+				if(check) {
+					var myName = $('input[name="myName"]').val().trim()
+					var myPhone = $('input[name="myPhone"]').val().trim()
+					result.name = myName
+					result.mobile = myPhone
+					//存入cookie
+					setCookie('newPerson', JSON.stringify(result))
+					location.href = 'creditCardList.html?from=newPerson'
+				}
+			})
+			//跳过进行跳转
+			$('.nq-skip').click(function() {
+				setCookie('newPerson', JSON.stringify(result))
+				location.href = 'creditCardList.html?from=newPerson'
+			})
+		</script>
+	</body>
+
+</html>

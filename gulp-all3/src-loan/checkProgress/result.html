@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>贷款</title>
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet/less" type="text/css" href="../css/checkProgress.less" />
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+
+	<body class="checkProgress-result body-loading">
+
+		<div class="body-main">
+			<!--回到顶部-->
+			<div id="goTop"></div>
+			<div class="cr-header">
+				<div class="cl-item">
+					<img class="cl-item-logo" src="" alt="logo" />
+					<div class="cl-item-name"></div>
+					<div class="cl-item-info"><i></i>人成功放款</div>
+				</div>
+			</div>
+			<div class="cr-main">
+				<div class="cr-main-status1">
+					<div class="cr-main-title">查询结果：审核中</div>
+					<div class="cr-main-explain">用户申请后一般需要1-2天审核时间，明天再来看看吧~</div>
+					<a class="cr-main-btn" href="##">有结果时通知我</a>
+				</div>
+
+				<div class="cr-main-status2">
+					<div class="cr-main-title">查询结果：申请成功</div>
+					<div class="cr-main-explain">恭喜您申请贷款成功,额度<i></i>元,请尽快提现。</div>
+					<a class="cr-main-btn" href="">马上去提现</a>
+				</div>
+
+				<div class="cr-main-status3">
+					<div class="cr-main-title">查询结果：申请失败</div>
+					<div class="cr-main-explain">抱歉，本次申请没有成功，您可以多申请几个其他产品试试，可以有效提高成功率！</div>
+					<a class="cr-main-btn2" href="../index.html">多申请几个产品，提高成功率</a>
+					<a class="cr-main-btn2" href="../getPos.html">免费领取POS机，轻松提现</a>
+				</div>
+
+				<div class="cr-main-status4">
+					<div class="cr-main-title">查询结果：该产品暂时无法自动查询</div>
+					<div class="cr-main-explain">抱歉，该产品暂时无法自动查询，技术小哥正在调试，欢迎下次再来</div>
+				</div>
+
+			</div>
+			<div class="cr-other">
+				<p>您还可以通过以下方式查询进度</p>
+				<a class="cr-other-1" href="tel："><img src="../images/checkProgress/other_1.png" /></a>
+				<a class="cr-other-2" href=""><img src="../images/checkProgress/other_2.png" /></a>
+				<a class="cr-other-3" href="../index.html"><img src="../images/checkProgress/other_3.png" /></a>
+			</div>
+
+		</div>
+
+		<script src="../js/commonPlugin.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.2/less.min.js"></script>
+		<script src="../js/hd-common.js"></script>
+		<script type="text/javascript">
+			var loanId = GetQueryString('loanId')
+			var token = GetQueryString('token')
+			if(!token) {
+				location.href = 'https://api.51app.cn/loanapi/wechat/token?platform=91ry'
+			}
+
+			loadData(
+				apiDomain + '/loan/query/result?token=' + token + '&loanId=' + loanId,
+				true,
+				function(data) {
+					if(data.code == 200) {
+						//顶部贷款信息
+						$('.cr-header .cl-item-logo').attr('src', data.data.iconImageUrl)
+						$('.cr-header .cl-item-name').text(data.data.name)
+						$('.cr-header .cl-item-info i').text(data.data.loanNum)
+
+						//用户状态
+						// 1 审核中 有other ；2 成功 ；3 失败 ；4 无 有other
+						$('.cr-main>div,.cr-other').hide()
+						var type = data.data.type
+						$('.cr-main-status' + type).show()
+						$('.cr-other .cr-other-1').attr('href', 'tel:' + data.data.phone)
+						$('.cr-other .cr-other-2').attr('href', data.data.url)
+						switch(Number(type)) {
+							case 1:
+								$('.cr-other').show()
+								break;
+							case 2:
+								$('.cr-main-status2 .cr-main-explain i').text(data.data.money)
+								$('.cr-main-status2 .cr-main-btn').attr('href', data.data.url)
+								break;
+							case 3:
+								break;
+							case 4:
+								$('.cr-other').show()
+								break;
+							default:
+								break;
+						}
+
+						$('body').removeClass('body-loading')
+
+					}
+				})
+			wxShare('放款进度查询','https://api.51app.cn/loanpage/v1.0.0/checkProgress/list.html','https://api.51app.cn/loanpage/v1.0.0/images/91ry.jpg','实时跟踪')
+		</script>
+
+	</body>
+
+</html>

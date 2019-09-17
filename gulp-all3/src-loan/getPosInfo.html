@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta content="telephone=no,email=no" name="format-detection">
+	<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+	<title>免费领取POS机</title>
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/creditLoan.css" />
+	<link rel="stylesheet" href="css/getPos.css" />
+	<link rel="stylesheet" href="css/LArea.css" />
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	<style>
+	body{
+		background-color: rgb(254,213,47) !important;
+		width: 100%;
+		height: 100%;
+	}
+	.btn-apply{
+		width: 5.32rem;
+		height: 1.2rem;
+		margin: 0 auto;
+		margin-top: .45rem;
+		background: rgb(254,213,47) url(./images/pos/getPos/btn-apply.png) no-repeat;
+		background-size: 100%;
+	}
+	.bg-apply{
+		width: 100%;
+	}
+	</style>
+</head>
+<body class="getPosInfo body-loading">
+	<div class="body-main">
+		<img src="./images/pos/getPos/bg-apply.jpg" class="bg-apply"/>
+		<div class="creditLoan-form">
+			<div class="cf-area cf-input">
+				<i class="input-label">姓名</i>
+				<input type="text" maxlength="10" name="myName" placeholder="2-6个汉字">
+			</div>
+			<div class="cf-area cf-input">
+				<i class="input-label">手机号码</i>
+				<input type="number"  maxlength="11" pattern="[0-9]*" name="mobile" placeholder="请输入您的手机号码" oninput="if(value.length>11)value=value.slice(0,11)">
+			</div>
+			<!--<div class="sendCode">	
+				<div class="cf-area sendCode-area">
+					<i class="input-label">验证码</i>
+					<input class="cf-input-code" pattern="[0-9]*" name="code" type="number" placeholder="请输入验证码">
+				</div>
+				<span id="getCode" class="code-btn">
+					获取验证码
+				</span>
+			</div>-->
+			<div class="cf-area cf-input">
+				<i class="input-label">所在地区</i>
+				<input style="margin-left: 0.2rem;" id="demo1" name="province" type="text" placeholder="省、市、区(请点击选择)" readonly="">
+				<input id="value1" type="hidden" value="">
+			</div>
+			<div class="cf-area cf-textarea">
+				<textarea id="myAddress" name="address" value="" placeholder="请输入详细收货地址"></textarea>
+			</div>
+		</div>
+		<div class="btn-apply" id="toApply">
+		</div>
+		<p class="contact">财务顾问 电话/微信/QQ：<a id="mobile" href="tel:18126465435">18126465435</a></p>
+	</div>
+
+	<script src="js/commonPlugin.min.js"></script>
+	<script src="js/hd-common.js"></script>
+	<script src="js/mui.min.js"></script>
+	<script src="js/provsCitysDistsData.min.js"></script>
+	<script src="js/LArea.js"></script>
+	<script>
+		//loading层
+		$('body').removeClass('body-loading');
+		mui.init();
+		var screenHeight = $(window).height();
+		$('.getPosInfo').eq(0).css({"height": screenHeight});
+		
+		var wxPhone = ['18126465435', '18126465429', '18126467037']
+
+		//刷卡机填写资料后，出现的微信号码，随机出现wxPhone这些号码中的一个
+		var wxPhoneIndex = Math.floor(Math.random() * (wxPhone.length - 1 - 0 + 1) + 0)
+		$('#mobile').text(wxPhone[wxPhoneIndex])
+		$('#mobile').attr('href','tel:'+wxPhone[wxPhoneIndex])
+		
+		var myArea = new LArea();
+		myArea.init({
+			'trigger': '#demo1', //触发选择控件的文本框，同时选择完毕后name属性输出到该位置
+			'valueTo': '#value1', //选择完毕后id属性输出到该位置
+			'keys': {
+				id: 'value',
+				name: 'text'
+			}, //绑定数据源相关字段 id对应valueTo的value属性输出 name对应trigger的value属性输出
+			'type': 2, //数据源类型
+			'data': [provs_data, citys_data, dists_data]
+		});
+
+		//发送验证码
+		var flag = true
+		$('#getCode').click(function(){
+			if(!flag){
+				return false
+			}
+			var myMobile = $('input[name=mobile]').val()
+			var that = this
+			if(myMobile == ''){
+				mui.toast('手机号码不能为空')
+				return false
+			}
+			if(!(/^1\d{10}$/.test(myMobile))){	
+				mui.toast('请输入正确的手机号码')
+				return false
+			}
+			//发送验证码接口
+			loadData(
+				'https://api.51app.cn/loanapi/user/code/send?mobile='+myMobile,
+				'async',
+				function(res){
+					flag = false
+					var sec = 60
+					$(that).text(60+'s');
+					var timer = setInterval(function(){
+						sec--
+						if(sec == 0){
+							$('#getCode').text('获取验证码')
+							flag = true
+							clearInterval(timer)
+						}else{
+							$(that).text(sec+'s')
+						}
+					},1000)
+					mui.toast('验证码已发送');
+				}
+			)
+				
+		})
+		//立即申请
+		$('#toApply').click(function(){
+			var myName = $('input[name=myName]').val();
+			var myArea = $('#value1').val();
+			var myAddress = $('#myAddress').val();
+			var myMobile = $('input[name=mobile]').val();
+			var myCode = $('input[name=code]').val();
+			
+			//获取地址url参数，来验证页面来源
+			var from = GetQueryString('from');
+			if(myName == ''){
+				mui.toast('姓名不能为空')
+				return false
+			}
+			if(myMobile == ''){
+				mui.toast('手机号码不能为空')
+				return false
+			}
+			if(!(/^1\d{10}$/.test(myMobile))){	
+				mui.toast('请输入正确的手机号码')
+				return false
+			}
+//			console.log(myCode)
+//			if(myCode == ''){
+//				mui.toast('验证码不能为空')
+//				return false
+//			}
+			if(myArea == undefined){
+				mui.toast('所在地区不能为空')
+				return false
+			}
+			if(myAddress == ''){
+				mui.toast('详细地址不能为空')
+				return false
+			}
+			var areaCode = myArea.split(',')[2]
+			var pack = {
+				name: myName,
+				mobile: myMobile,
+				areaCode: areaCode,
+				address: myAddress,
+				platform: from
+			}
+			console.log(pack)
+			setCookie('getPosInfo',JSON.stringify(pack))
+			var toData = JSON.stringify(pack)
+			ajaxPost(
+				'https://api.51app.cn/loanapi/user/pos',
+				{data: toData},
+				function(res){
+					if(res.code == 200){
+						console.log(res)
+						window.location.href = './getPosMethod.html'
+					}else{
+						mui.toast(res.data)
+					}
+					
+				},
+				function() {
+					
+				}
+			)
+			
+			//校验数据接口
+//			loadData(
+//				'https://api.51app.cn/loanapi/user/code/check?mobile='+myMobile+'&code='+myCode,
+//				'async',
+//				function(res){
+//					if(res.code == 200){
+//						setCookie('getPosInfo',JSON.stringify(pack))
+//							var toData = JSON.stringify(pack)
+//							ajaxPost(
+//								'https://api.51app.cn/loanapi/user/pos',
+//								{data: toData},
+//								function(res){
+//									if(res.code == 200){
+//										console.log(res)
+//			
+//									}else{
+//										mui.toast(res.data)
+//									}
+//									
+//								},
+//								function() {
+//									
+//								}
+//							)
+//						window.location.href = './getPosMethod.html'
+//					}else{
+//						mui.toast(res.data)
+//					}
+//				}
+//			)
+			
+		})
+		
+	</script>
+</body>
+</html>

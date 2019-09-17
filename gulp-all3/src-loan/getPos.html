@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta content="telephone=no,email=no" name="format-detection">
+	<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+	<title>免费领取POS机</title>
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/getPos.css" />
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	<style>
+	body{
+		background-color: rgb(246,248,255) !important;
+	}	
+	</style>
+</head>
+<body class="getPosEnter body-loading">
+	<div class="content">
+		<img src="./images/creditLoan/bg-a1.jpg"/>
+		<img src="./images/creditLoan/bg-a2.jpg"/>
+		<p class="contact">财务顾问 电话/微信/QQ：<a id="mobile" href="tel:18126465435">18126465435</a></p>
+	</div>
+	<div class="btn-get" id="getPos">
+		免费领取POS机
+	</div>
+
+	<!--<script src="js/jquery-3.3.1.min.js"></script>-->
+	<script src="js/commonPlugin.min.js"></script>
+	<script src="js/hd-common.js"></script>
+
+		
+	<script>
+		//loading层
+		$('body').removeClass('body-loading');
+		var screenHeight = $(window).height();
+		$('.getPosEnter').eq(0).css({"height": screenHeight});
+		
+		var wxPhone = ['18126465435', '18126465429', '18126467037']
+
+		//刷卡机填写资料后，出现的微信号码，随机出现wxPhone这些号码中的一个
+		var wxPhoneIndex = Math.floor(Math.random() * (wxPhone.length - 1 - 0 + 1) + 0)
+		$('#mobile').text(wxPhone[wxPhoneIndex])
+		$('#mobile').attr('href','tel:'+wxPhone[wxPhoneIndex])
+		
+		//获取地址url参数，来验证页面来源
+		var from = GetQueryString('from');
+		if(from == null || from == undefined){
+			from = 'banner'
+		}
+		$('#getPos').click(function(){
+			window.location.href = './getPosInfo.html?from=' + from
+		})
+		
+	</script>
+</body>
+</html>

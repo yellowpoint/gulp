@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>授权登录</title>
+	</head>
+	<body>
+		<script src="../../js/lib/jq-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/xl/xl-public.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var wxLink;
+			if(GetQueryString('groupGoodsId')){
+				wxLink = decodeURI('https://api.51app.cn/webPage/tq/web/html/groupBuying/groupDetail.html?groupGoodsId='+ GetQueryString('groupGoodsId'))
+			}else{
+				wxLink = decodeURI('https://api.51app.cn/webPage/tq/web/html/groupBuying/groupDetail.html?groupId='+ GetQueryString('groupId'))
+			}
+	//		//微信授权登录
+			window.location.href = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx7a4c83f9ef27a8f0&redirect_uri=https%3a%2f%2fapi.51app.cn%2fdiyapi%2fOAuth&response_type=code&scope=snsapi_userinfo&state='+ wxLink +'#wechat_redirect'
+			setCookie('dec', 1);//设置一个flag
+		</script>
+	</body>
+</html>

@@ -1,0 +1,153 @@
+a {
+    display: block;
+    position: relative;
+}
+
+a:active:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+    background: rgba(72, 72, 72, .1);
+}
+
+html,
+body {
+    min-height: 100%;
+    background: #f2f6ff;
+}
+
+.text-ellipsis() {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+//单个产品样式
+.cl-item {
+    width: 6.9rem;
+    height: 1.8rem;
+    margin: 0 auto .1rem;
+    box-shadow: 0 0 .2rem #d8d8d9;
+    background: #fff;
+    .cl-item-logo {
+        float: left;
+        width: 1.2rem;
+        height: 1.2rem;
+        margin: .3rem .2rem 0 .3rem;
+    }
+    .cl-item-name {
+        float: left;
+        width: 3rem;
+        margin-top: .4rem;
+        color: #000;
+        font-size: .28rem;
+        .text-ellipsis()
+    }
+    .cl-item-info {
+        float: left;
+        width: 3rem;
+        margin-top: .3rem;
+        color: #999;
+        .text-ellipsis()
+    }
+    .cl-item-query {
+        float: right;
+        width: 1.54rem;
+        height: .64rem;
+        line-height: .64rem;
+        margin: -.2rem .3rem 0 0;
+        border-radius: .32rem;
+        background: #2a66ff;
+        color: #fff;
+        text-align: center;
+    }
+}
+
+//产品列表页
+.checkProgress-list {
+    .cl-title {
+        position: relative;
+        height: .9rem;
+        line-height: .9rem;
+        padding-left: .6rem;
+        color: #9d9d9d;
+        &::after {
+            content: '';
+            position: absolute;
+            top: .32rem;
+            left: .36rem;
+            width: .08rem;
+            height: .28rem;
+            border-radius: .04rem;
+            background: #2a66ff;
+        }
+    }
+    .cl-positive {
+        margin-bottom: .6rem;
+    }
+}
+
+//结果页面
+.cr-header {
+    padding-top: .2rem;
+    margin-bottom: .2rem;
+}
+
+.cr-main {
+    width: 6.9rem;
+    padding: .4rem .3rem;
+    margin: 0 auto;
+    box-shadow: 0 0 0.2rem #d8d8d9;
+    background: #fff;
+    overflow: hidden;
+    .cr-main-title {
+        color: #333;
+        font-size: .28rem;
+    }
+    .cr-main-explain {
+        margin-top: .2rem;
+        color: #666;
+        i {
+            color: #ff2b2b;
+        }
+    }
+    .cr-main-btn {
+        width: 2.8rem;
+        height: .72rem;
+        line-height: .72rem;
+        margin: .4rem auto 0;
+        border-radius: .36rem;
+        background: #2a66ff;
+        color: #fff;
+        text-align: center;
+    }
+    .cr-main-btn2 {
+        width: 4.2rem;
+        height: .72rem;
+        line-height: .72rem;
+        margin: .4rem auto 0;
+        border-radius: .36rem;
+        background: #2a66ff;
+        color: #fff;
+        text-align: center;
+    }
+}
+
+.cr-other {
+    overflow: hidden;
+    p {
+        margin: .6rem 0 .48rem;
+        text-align: center;
+    }
+    a {
+        width: 4.6rem;
+        height: .9rem;
+        margin: 0 auto .3rem;
+        
+    }
+}

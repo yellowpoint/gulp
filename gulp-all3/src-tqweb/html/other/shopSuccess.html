@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>购买成功</title>
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f0e635459915122317d9199dc2470247";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<link type="text/css" rel="stylesheet" href="../../css/comment.css" />
+		<style>
+			.containerBox,
+			body {
+				background: #fff;
+			}
+			
+			h2 {
+				font-size: .44rem;
+				color: #ff465d;
+				text-align: center;
+				margin-top: .2rem;
+			}
+			
+			.price {
+				color: #212121;
+				font-size: .52rem;
+				text-align: center;
+				margin-top: .18rem;
+			}
+			
+			.price i {
+				font-size: .38rem;
+				vertical-align: .1rem;
+			}
+			
+			.discounts {
+				color: #ff465d;
+				text-align: center;
+			}
+			
+			.discounts img {
+				display: inline-block;
+				width: .85rem;
+			}
+			
+			.discounts i {
+				margin: 0 5px;
+			}
+			
+			.btn {
+				font-size: .3rem;
+				text-align: center;
+				margin-top: .5rem;
+				overflow: hidden;
+			}
+			
+			.btn .back {
+				width: 2.6rem;
+				height: .62rem;
+				line-height: .62rem;
+				border: 1px solid #e2e2e2;
+				border-radius: .1rem;
+				color: #969696;
+				float: left;
+				margin-left: .62rem;
+			}
+			
+			.btn .home {
+				width: 2.6rem;
+				height: .62rem;
+				line-height: .62rem;
+				border: 1px solid #ff465d;
+				border-radius: .1rem;
+				color: #ff465d;
+				float: right;
+				margin-right: .62rem;
+			}
+			
+			.shareBox {
+				margin-top: .5rem;
+				border-top: .2rem solid #f5f5f5;
+			}
+			
+			.hd-commonGoodsList {
+				background: #f5f5f5;
+			}
+			.adGoods{
+				margin-top: .2rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="dom-noLoad">
+		</div>
+		<div class="dom-hasLoad">
+			<div class="containerBox">
+				<img class="header" src="../../img/shopSuccess/header.jpg" alt="购买成功">
+				<h2>成功支付</h2>
+				<div class="price"><i>￥</i><span></span></div>
+				<div class="discounts"><img src="../../img/shopSuccess/unionpay.png" alt="优惠" /><i>优惠</i>￥<span></span></div>
+				<div class="btn">
+					<div class="back" onclick="sending('back')">查看订单</div>
+					<div class="home" onclick="sending('home')">返回首页</div>
+				</div>
+				<div class="shareBox" onclick="sendingShare()">
+					<img src="../../img/shopSuccess/share.jpg" alt="分享">
+				</div>
+				<div class="adGoods"></div>
+			</div>
+		</div>
+		<script src="../../js/lib/zepto.min.js"></script>
+		<script src="../../js/lib/fastclick.min.js"></script>
+		<script src="../../js/common.js"></script>
+		<script>
+	
+
+			function sendingShare(tag) {
+				var title = "腾趣";
+				var msg = "新用户下载即可免费获得手机壳或魔幻杯";
+				var imgUrl = "";
+				var url = "https://api.51app.cn/webPage/tq/app/v1/html/others/download.html";
+				data = {
+					"title": title,
+					"msg": msg,
+					"imgUrl": imgUrl,
+					"url": url
+				};
+				data = JSON.stringify(data);
+				connectNZOCJSBridge(function(bridge) {
+					bridge.send('share,' + data, function(responseData) {});
+				});
+
+				// 传(share,data) ，前面是share,后面是那些信息
+				console.log('share,' + data);
+				try {
+					uqWyp.notifyInteraction(data);
+				} catch(err) {
+					console.log("传值给Android和ios");
+				}
+			}
+
+			//url传来order_amt原价；pay_amt支付价格；discounts为优惠价格，为0的话则不显示优惠
+			var order_amt = GetQueryString('order_amt'),
+				 	pay_amt = GetQueryString('pay_amt'),
+					discounts = accSub(order_amt, pay_amt);
+			$('.price span').text(Number(pay_amt).toFixed(2))
+			if(!pay_amt){
+				$('.price').remove()
+			}
+			if(discounts>0) {
+				$('.discounts span').text(Number(discounts).toFixed(2))
+			} else {
+				$('.discounts').remove()
+			}
+
+			//底部推荐商品
+			var url = apiDomain + "/diyapi/goods/recommend";
+			var successFunc = function(data) {
+				var goods = data.data;
+
+				if(data.code == 200) {
+					$('.adGoods').append(loadGoods(goods));
+
+					//数据加载完成后显示界面
+					$('.dom-noLoad').hide();
+					$('.dom-hasLoad').show();
+
+				}
+			};
+			loadData(url, true, successFunc);
+
+			console.log(decodeURI((GetQueryString('currency'))))
+			console.log( GetQueryString('pay_amt'))
+			console.log(Number(decodeURI(GetQueryString('pay_amt'))))
+			//数据加载完成后显示界面
+					$('.hd-noLoad').hide();
+					$('.hd-hasLoad').show();
+		</script>
+	</body>
+
+</html>

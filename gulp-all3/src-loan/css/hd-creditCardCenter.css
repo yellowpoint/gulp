@@ -1,0 +1,391 @@
+.creditCardCenter {}
+
+
+/*顶部导航按钮 开始*/
+
+.creditCardCenter-nav {
+	overflow: hidden;
+	height: 2.1rem;
+	font-size: .24rem;
+	color: #171717;
+	border-bottom: .2rem solid #f5f5f5;
+	display: -webkit-flex;
+	display: flex;
+}
+
+.creditCardCenter-nav .cn-item {
+	height: 100%;
+	color: #171717;
+	position: relative;
+	-webkit-flex-grow: 1;
+	flex-grow: 1;
+}
+
+.creditCardCenter-nav .cn-item img {
+	width: .82rem;
+	height: .82rem;
+	margin: .4rem auto 0;
+}
+
+.creditCardCenter-nav .cn-item span {
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-top: .1rem;
+}
+
+
+/*顶部导航按钮 结束*/
+
+
+/*按银行选卡 开始*/
+
+.creditCardCenter-bank {}
+
+.cb-title {
+	position: relative;
+	height: .78rem;
+	line-height: .78rem;
+	margin-left: .3rem;
+	border-bottom: 1px solid #f1f1f1;
+	/*overflow: hidden;*/
+}
+
+.cb-title span {
+	color: #2e2e2e;
+	font-size: .28rem;
+}
+
+.cb-title span.mui-icon {
+	color: #a4a4a4;
+}
+
+.cb-title a {
+	float: right;
+	height: 100%;
+	color: #a4a4a4;
+	margin-right: .3rem;
+}
+
+.cb-title .cb-city {
+	font-size: .24rem;
+}
+
+.cb-main {
+	height: 4.06rem;
+}
+
+.cb-main .cb-slide {}
+
+.cb-main .cb-item {
+	position: relative;
+	display: block;
+	float: left;
+	width: 33.3333%;
+	text-align: center;
+	padding-top: .5rem;
+}
+.cb-main .cb-slide:first-child .cb-item:first-child::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: .16rem;
+	width: .8rem;
+	height: .8rem;
+	background: url(../images/creditCardCenter/tips-tj.png) no-repeat;
+	background-size: 100%;
+}
+
+.cb-main .cb-slide .cb-item img {
+	width: .72rem;
+	height: .72rem;
+	margin: 0 auto;
+}
+
+.cb-main .cb-item span {
+	display: block;
+	width: 100%;
+	color: #2e2e2e;
+	font-size: .24rem;
+	margin-top: .1rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.cb-main .cb-item p {
+	display: none;
+	width: 100%;
+	color: #c5c5c5;
+	font-size: .24rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.cb-noBank {
+	width: 100%;
+	margin-top: 1rem;
+	text-align: center;
+	color: #c5c5c5;
+}
+
+.swiper-bankSlider {
+	height: 100%;
+}
+
+.swiper-bankSlider.swiper-container-horizontal>.swiper-pagination-bullets {
+	bottom: .08rem;
+}
+
+.swiper-bankSlider .swiper-pagination-bullet {
+	width: .28rem;
+	height: .04rem;
+	background: #eee;
+	opacity: 1;
+	border-radius: 0;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+	margin: 0 3px;
+}
+
+.swiper-bankSlider .swiper-pagination-bullet-active {
+	background: #bebebe;
+}
+
+/*.cb-cityTips {
+	position: absolute;
+	top: 0;
+	right: 1.2rem;
+	width: 2rem;
+	animation: cityTips 1.5s infinite;
+}*/
+
+/*.cb-cityTips {
+	position: absolute;
+	top: .16rem;
+    right: 1.12rem;
+	width: .2rem;
+	height: .2rem;
+	border-radius: 100%;
+	background: #fc4a2d;
+}*/
+
+@keyframes cityTips {
+	from {
+		right: 1.2rem;
+	}
+	50% {
+		right: 1.4rem
+	}
+	to {
+		right: 1.2rem;
+	}
+}
+
+
+/*按银行选卡 结束*/
+
+
+/*信用卡分类 开始*/
+
+a {
+	position: relative;
+}
+
+a:active:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 999;
+	background: rgba(72, 72, 72, .1);
+}
+
+.creditCardCenter-label {
+	border-top: .24rem solid #f5f5f5;
+	overflow: hidden;
+}
+
+.creditCardCenter-label .cl-item {
+	position: relative;
+	float: left;
+	width: 50%;
+	height: 1.58rem;
+}
+
+.creditCardCenter-label .cl-item:nth-child(1) {
+	border-bottom: 1px solid #f1f1f1;
+	border-right: 1px solid #f1f1f1
+}
+
+.creditCardCenter-label .cl-item:nth-child(2) {
+	border-bottom: 1px solid #f1f1f1;
+}
+
+.creditCardCenter-label .cl-item:nth-child(3) {
+	border-right: 1px solid #f1f1f1;
+}
+
+.creditCardCenter-label .cl-item img {
+	float: left;
+	width: .86rem;
+	height: .86rem;
+	margin: .4rem .2rem 0 .4rem;
+}
+
+.creditCardCenter-label .cl-item h3 {
+	float: left;
+	width: 2rem;
+	height: .32rem;
+	color: #2e2e2e;
+	font-size: .28rem;
+	margin-top: .5rem;
+}
+
+.creditCardCenter-label .cl-item p {
+	float: left;
+	width: 2rem;
+	height: .34rem;
+	color: #c6c6c6;
+	font-size: .22rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+
+/*信用卡分类 结束*/
+
+
+/*产品列表 开始*/
+
+.creditCardCenter-title {
+	width: 100%;
+	height: .78rem;
+	line-height: .78rem;
+	padding: 0 .3rem;
+	border-top: .24rem solid #f5f5f5;
+	font-size: .24rem;
+}
+
+.creditCardCenter-title a {
+	display: block;
+	float: right;
+	height: .78rem;
+	line-height: .78rem;
+	color: #a4a4a4;
+}
+
+.creditCardCenter-title a span {
+	color: #a4a4a4;
+	font-size: .28rem;
+	vertical-align: 1px;
+}
+
+
+/*产品列表 结束*/
+
+
+/*抽奖弹窗开始*/
+
+.popup-lottery {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 9999;
+	background: rgba(0, 0, 0, .3);
+	overflow: hidden;
+	display: none;
+}
+
+.popup-lottery .pl-main {
+	position: relative;
+	width: 5rem;
+	height: 6rem;
+	margin: 30% auto;
+	background: url(../images/creditCardCenter/popup-lottery.png) no-repeat;
+	background-size: 100%;
+	overflow: hidden;
+}
+
+.popup-lottery .pl-main a {
+	display: block;
+	width: 100%;
+	height: 5.3rem;
+	margin-top: .5rem;
+}
+
+.popup-lottery .pl-main .pl-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 1rem;
+	height: .5rem;
+}
+
+
+/*抽奖弹窗结束*/
+
+
+/*20180705活动弹窗  开始 感觉各种弹窗很多，就直接用时间来命名吧*/
+
+.popup-180705_2 {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 9999;
+	background: rgba(0, 0, 0, .3);
+	overflow: hidden;
+	display: none;
+}
+
+.popup-180705_2 .p180705_2-main {
+	position: relative;
+	width: 100%;
+	height: 7rem;
+	margin: 30% auto;
+	background: url(../images/popup/180705_2.png) no-repeat;
+	background-size: 100%;
+	overflow: hidden;
+}
+
+.popup-180705_2 .p180705_2-main a {
+	display: block;
+	width: 100%;
+	height: 6.2rem;
+	margin-top: .5rem;
+}
+
+.popup-180705_2 .p180705_2-main .p180705_2-close {
+	position: absolute;
+	top: 0;
+	right: 1.56rem;
+	width: 1rem;
+	height: .5rem;
+}
+
+
+/*20180705活动弹窗  结束*/
+
+.redPoint {
+	position: relative;
+}
+
+.redPoint::after {
+	content: '';
+	position: absolute;
+	top: .4rem;
+	right: .36rem;
+	width: .2rem;
+	height: .2rem;
+	border-radius: 100%;
+	background: #fc4a2d;
+}

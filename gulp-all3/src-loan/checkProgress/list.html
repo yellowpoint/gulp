@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>贷款</title>
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet/less" type="text/css" href="../css/checkProgress.less" />
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+
+	</head>
+
+	<body class="checkProgress-list body-loading">
+
+		<div class="body-main">
+			<!--回到顶部-->
+			<div id="goTop"></div>
+			<div class="cl-title">产品列表</div>
+			<!--肯定的贷款-->
+			<div class="cl-positive"></div>
+			<!--可能的贷款-->
+			<div class="cl-possible"></div>
+		</div>
+
+		<script src="../js/commonPlugin.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.0.2/less.min.js"></script>
+		<script src="../js/hd-common.js"></script>
+		<script type="text/javascript">
+			goTop()
+			var token = GetQueryString('token')
+			if(!token) {
+				location.href = 'https://api.51app.cn/loanapi/wechat/token?platform=91ry'
+			}
+
+			loadData(
+				apiDomain + '/loan/query/list?token=' + token ,
+				true,
+				function(data) {
+					
+					if(data.code == 200) {
+						//没有绑定手机号就去绑定
+						if(data.data.isBind.toString() != 'true' ){
+							location.href="login.html?token="+token
+							return false;
+						}
+						if(data.data.applyList.length ==0){
+							$('.cl-positive').remove()
+						}
+						$('.cl-positive').empty().append(loadItem(data.data.applyList))
+						$('.cl-possible').empty().append(loadItem(data.data.recommendList))
+						
+						$('body').removeClass('body-loading')
+					}
+				})
+
+			function loadItem(data) {
+				var dataBox = '';
+				$.each(data,function(i,v) {
+					dataBox += '<a class="cl-item" href="result.html?token='+ token +'&loanId='+ v.id +'"><img class="cl-item-logo" src="'+ v.iconImageUrl +'"/><div class="cl-item-name">'+ v.name +'</div><div class="cl-item-info"><i>'+ v.loanNum +'</i>人成功放款</div><div class="cl-item-query">点击查询</div></a>'
+				})
+				return dataBox
+			}
+wxShare('放款进度查询','https://api.51app.cn/loanpage/v1.0.0/checkProgress/list.html','https://api.51app.cn/loanpage/v1.0.0/images/91ry.jpg','实时跟踪')
+		</script>
+	</body>
+
+</html>

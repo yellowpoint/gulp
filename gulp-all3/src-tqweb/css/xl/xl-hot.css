@@ -1,0 +1,558 @@
+/*
+ 爆款 小版本 css
+ * */
+
+/*小版本首页开始*/
+/*#materialIndex .page-content{
+	overflow-y: hidden;
+}*/
+#materialIndex .materialSwiper{
+	width: 7.5rem;
+	height: 100%;
+}
+#materialIndex .materialSwiper .swiper-slide{
+	width: 7.5rem;
+}
+#materialIndex .materialSwiper .swiper-slide img{
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+#materialIndex .materialLink{
+	z-index: 9;
+	position: fixed;
+	bottom: 0.5rem;	
+}
+#materialIndex .materialLink span{
+	display: inline-block;
+	width: 3rem;
+	height: 0.9rem;
+	margin-left: 0.5rem;
+}
+#materialIndex .materialLink .LinkRight{
+	float: right;
+	background: url(../../img/material/marterialButton.png) center no-repeat;
+	background-size: cover;
+}
+#materialIndex .materialLink .LinkLeft{
+	background: url(../../img/material/uploadImgButton.png) center no-repeat;
+	background-size: cover;
+}
+#materialIndex .materialService{
+	z-index: 9;
+	position: fixed;
+	top: 0.5rem;	
+	right: 1.4rem;
+}
+#materialIndex .materialService .goService{
+	display: inline-block;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: 0 0.2rem;
+    background: url(../../img/material/goodDetail-service.png) center no-repeat;
+    background-size: cover;
+    position: absolute;
+}
+/*首页联系客服开始*/
+.xl-contact{
+	width: 100%;
+	height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.xl-contact .detail{
+	width: 5.5rem;
+	/*height: 7.2rem;*/
+	height: 10rem;
+	background: url(../../img/material/xl-contact1.png) center no-repeat;
+	background-size: cover;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	z-index: 10001;
+}
+.xl-contact .mask{
+	width: 100%;
+	height: 13.33rem;
+	background-color: #000;
+	opacity: 0.5;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	display: block!important;
+}
+.xl-contact .detail .detailOut{
+	position: absolute;
+	left: 1.3rem;
+    top: 2.75rem;
+    font-size: 0.28rem;
+}
+.xl-contact .detail .detailOut div{
+    line-height: 0.28rem;
+    margin-bottom: 0.50rem;
+    -webkit-user-select: all;
+	-moz-user-select: all;
+	-ms-user-select: auto;
+}
+.xl-contact .detail .iKnow{
+    width: 4.44rem;
+    height: 0.78rem;
+    position: absolute;
+    left: 0.54rem;
+    bottom: 0.41rem;
+}
+.xl-contact .detail .serviceQr{
+    width: 100%;
+    height: 2.4rem;
+    position: absolute;
+    left: 0;
+    top: 5.7rem;
+    text-align: center;
+}
+.xl-contact .detail .serviceQr img{
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin: 0 auto;
+}
+/*首页联系客服结束*/
+/*小版本首页结束*/
+
+
+/*小版本选择机型开始（原来的首页）*/
+#hotIndex.page{
+	background-color: #fff;
+}
+#hotIndex .page-content{
+	padding-bottom: 2rem;
+}
+#hotIndex .hotIndexFixed{
+	padding: 0.43rem 0 0;
+}
+#hotIndex .hotIndexFixed .hotName{
+	height: 0.68rem;
+	text-align: center;
+	overflow: hidden;
+}
+#hotIndex .hotIndexFixed .hotName li{
+	/*float: left;*/
+	font-size: 0.34rem;
+	line-height: 0.34rem;
+	color: #333;
+	padding-bottom: 0.11rem;
+	display: inline-block;
+}
+#hotIndex .hotIndexFixed .hotName li.active{
+	border-bottom: 0.04rem solid #ff6a6a;
+}
+#hotIndex .hotIndexFixed .hotName li:last-child{
+	position: relative;
+}
+#hotIndex .hotIndexFixed .hotName li i{
+	display: inline-block;
+	position: absolute;
+	top: 35%;
+    left: 120%;
+ 	width: 0;
+    height: 0;
+    border-left: 0.1rem solid transparent;
+    border-right: 0.1rem solid transparent;
+    border-top: 0.15rem solid #000;
+    transform: rotate(0deg)
+}
+#hotIndex .hotIndexFixed .hotName li:first-child{
+	margin-right: 0.55rem;
+}
+#hotIndex .hotItem{
+	margin: 0 0.12rem;
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	/*position: absolute;
+	left: 0;
+	top: 0;*/
+}
+#hotIndex .hotItem li{
+	float: left;
+	width: 1.65rem;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	background-color: #e1e1e1;
+	border-radius: 0.04rem;
+	text-align: center;
+	margin: 0 0.08rem 0.12rem;
+}
+#hotIndex .hotItem li.active{
+	color: #ff6a6a;
+}
+#hotIndex .hotItemBox ul{
+	overflow: hidden;
+}
+#hotIndex .hotItemBox ul li{
+	/*float: left;*/
+	width: 7.2rem;
+	height: 2.9rem;
+	/*border-radius:20px;*/
+	margin: 0 auto;
+	position: relative;
+	margin-top: 0.2rem;
+}
+#hotIndex .hotItemBox ul li img{
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius:20px;
+}
+#hotIndex .hotItemBox ul li div{
+	width: 2.6rem;
+	height: 1.08rem;
+	line-height: 1.08rem;
+	text-align: center;
+	padding: 0 0.2rem;
+	box-sizing: border-box;
+	background-color: #000;
+	opacity: 0.6;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+#hotIndex .hotItemBox ul li p{
+	width: 2.6rem;
+	height: 1.08rem;
+	line-height: 1.08rem;
+	text-align: center;
+	padding: 0 0.2rem;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	color: #fff;
+}
+.pageContent-mask{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	height: 16rem;
+	background-color: #000000;
+	opacity: 0.3;
+	display: none;
+}
+.shareMaskBox{
+	z-index: 9;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.shareMask{
+	width: 100%;
+	height: 13.34rem;
+}
+.shareMask img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/*小版本选择机型结束*/
+
+
+/*小版本素材页面 开始*/
+#materials{
+	background-color: #fff;
+}
+#materials .page-content{
+	padding-bottom: 1.5rem;
+}
+#materials .materialFixed{
+	margin: 0.54rem 0.3rem 0.1rem;
+	overflow: hidden;
+	overflow-x: auto;
+}
+#materials .materialFixed ul li{
+	float: left;
+	margin-right: 0.5rem;
+	color: #333;
+	font-size: 0.32rem;
+	font-weight: 500;
+	padding-bottom: 0.11rem;
+	line-height: 0.52rem;
+}
+#materials .materialFixed ul li.active{
+	font-size: 0.42rem;
+	font-weight: 600;
+	border-bottom: 0.04rem solid #ff6a6a;
+}
+#materials .meterialBox{
+	margin: 0.3rem;
+}
+#materials .meterialBox ul{
+    /*-moz-column-count:2; 
+    -webkit-column-count:2; 
+    column-count:2;
+    -moz-column-gap: 0.3rem;
+  	-webkit-column-gap: 0.3rem;
+  	column-gap: 0.3rem;*/
+  	overflow: hidden;
+}
+#materials .meterialBox ul li{
+	width: 3.3rem;
+	height: 3.82rem;
+	overflow: hidden;
+	margin-bottom: 0.3rem;
+	/*-moz-page-break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+	break-inside: avoid;*/
+	position: relative;
+	border-radius: 0.08rem;
+    border: 1px solid;
+    border-color: rgba(0,0,0,0.05);
+    float: left;
+}
+#materials .meterialBox ul li:nth-child(odd){
+	margin-right: 0.2rem;
+}
+#materials .meterialBox ul li .backgroundImg,#material-file .materialFileBox ul li .backgroundImg{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top:0;
+	z-index: 9;
+}
+#materials .meterialBox ul li img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   	display: block;
+   	position: absolute;
+   	/*position: absolute;
+   	top: -0.9rem;*/
+}
+#materials .meterialBox ul li .files{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 0.65rem;
+	line-height: 0.65rem;
+	background-color: #ff5f5f;
+	color: #fff;
+	font-size: 0.32rem;
+	text-align: center;
+	z-index: 10;
+}
+
+
+/*素材页面弹窗 开始*/
+.xl-material{
+	width: 6.4rem;
+	height: 10.5rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	border-radius: 0.25rem;
+	z-index: 10000;
+	background-color: #fff;
+}
+.material-mask{
+	background-color: #000;
+	opacity: 0.5;
+	width: 100%;
+    height: 100%;
+    filter: alpha(opacity=50);
+    z-index: 10000;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+}
+.xl-material .xl-materialTop{
+	position: relative;
+	margin-left: 0.52rem;
+}
+.xl-material .xl-materialTop .xl-materialClose{
+	position: absolute;
+	top: -0.12rem;
+	right: 0.24rem;
+	display: inline-block;
+	width: 0.42rem;
+	height: 0.42rem;
+	background: url(../../img/material/xl-close.png) center no-repeat;
+	background-size: cover;
+}
+.xl-material .materialName{
+	margin-top: 0.3rem;
+	font-size: 0.48rem;
+	font-weight: 500;
+	color: #000;
+}  
+.xl-material .materialDetail{
+	margin: 0.12rem 0 0.22rem;
+	font-size: 0.42rem;
+	color: #ff3030;
+} 
+.xl-material .materialDetail span{
+	font-size: 0.42rem;
+	color: #ff3030;
+	font-weight: 400;
+}
+.xl-material .materialDetail i{
+	display: inline-block;
+	width: 0.65rem;
+	height: 0.28rem;
+	/*background: url(../img/xl-discount.png) center no-repeat;*/
+	/*background-size: cover;*/
+	margin-left: 0.2rem;
+}
+.xl-material .xl-materialMiddle{
+	position: relative;
+	height: 7.3rem;
+}
+.xl-material .xl-materialMiddle .swiperMask{
+	position: absolute;
+	left: 0;
+	top: 0;	
+	overflow: hidden;
+	z-index: 9;
+	pointer-events: none;
+}
+.xl-material .xl-materialMiddle .swiperMask img{
+	display: block;
+	width: 100%;
+}
+.xl-material .xl-materialMiddle .swiper-slide{
+	width: 3.3rem;
+	height: 6.52rem;
+}
+.xl-material .xl-materialMiddle .swiper-container{
+	overflow: hidden;
+	position: absolute;
+}
+.xl-material .xl-materialMiddle .swiper-container .swiper-slide a{
+	display: block;
+	width: 100%;
+}
+.xl-material .xl-materialMiddle .swiper-container .swiper-slide img{
+	display: block;
+	width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.xl-material .material-button{
+	text-align: center;
+}
+.xl-material .material-button span{
+	display: inline-block;
+	width: 1.6rem;
+	height: 0.6rem;
+	font-size: 0.3rem;
+	text-align: center;
+	line-height: 0.6rem;
+	color: #000;
+	border: 1px solid #000;
+	border-radius: 0.08rem;
+	margin-top: 0.2rem;
+	font-weight: 400;
+}
+/*素材页面弹窗 结束*/
+
+/*素材子页面 开始*/
+#material-file{
+	background-color: #fff;
+}
+#material-file .page-content{
+	padding-bottom: 1.8rem;
+}
+#material-file .materialHead{
+	margin: 0.54rem 0.3rem 0.5rem;
+	position: relative;
+}
+#material-file .materialHead .back{
+	display: inline-block;
+    width: .3rem;
+    height: .3rem;
+    position: absolute;
+    top: .1rem;
+    left: .3rem;
+    border: 1px solid #626262;
+    border-width: 0 0 1px 1px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    z-index: 9;
+}
+#material-file .materialHead p{
+    font-size: 0.42rem;
+    line-height: 0.42rem;
+    font-weight: 600;
+    text-align: center;
+}
+#material-file .materialFileBox{
+	margin: 0 0.3rem;
+}
+#material-file .materialFileBox ul{
+    overflow: hidden;
+}
+#material-file .materialFileBox ul li{
+	width: 3.3rem;
+	height: 3.82rem;
+	overflow: hidden;
+	margin-bottom: 0.3rem;
+	position: relative;
+	border-radius: 0.08rem;
+    border: 1px solid;
+    border-color: rgba(0,0,0,0.05);
+    float: left;
+}
+#material-file .materialFileBox ul li:nth-child(odd){
+	margin-right: 0.2rem;
+}
+#material-file .materialFileBox ul li img{
+    width: 100%;
+   	display: block;
+   	position: absolute;
+   	top: -0.9rem;
+}
+.swiper-button-next, .swiper-button-prev{
+	color: #999!important;
+}
+
+/*.materialBody .layui-m-layer0{
+	z-index: 5000;
+}*/
+
+/*素材子页面结束*/
+/*小版本素材页面 结束*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

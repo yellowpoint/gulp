@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>贷款超市</title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link href="css/swiper-3.4.1.min.css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/hd-index.css?v5" />
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<style>
+			.productList {
+				border-top: .2rem solid #f5f5f5;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="hd-noLoad">
+			<img class="hd-loading" src="images/loading.gif" alt="loading" />
+		</div>
+		<div class="containerBox hd-hasLoad index">
+
+			<div class="productList"></div>
+
+		</div>
+
+		<div id="goTop"></div>
+
+		<script src="js/commonPlugin.min.js"></script>
+		<script src="js/swiper-3.4.1.min.js"></script>
+		<script src="js/hd-common.js"></script>
+		<script type="text/javascript">
+			var dataBox = '',
+				url, successFunc,
+				token = GetQueryString('token') || getCookie('token') || '',//优先取url上的token，作用是在链接上可以区分各种用户，然后是cookie里面的；
+				flag = GetQueryString('flag');//flag为取loanList里面第几个数据，从0开始
+			
+
+			successFunc = function(data) {
+				var bannerList = data.data.bannerList,
+					loanList = data.data.loanList,
+					recomLoanList = data.data.recomLoanList;
+
+					document.title = loanList[flag].typeName;
+					$('.index .productList').empty().append(loanListFuc(loanList[flag].list))
+					
+
+				//数据加载完成后显示界面
+				$('.hd-noLoad').hide();
+				$('.hd-hasLoad').show();
+			}
+			url = apiDomain + '/home/v2?token=' + token;
+			loadData(url, true, successFunc);
+			goTop()
+		</script>
+
+	</body>
+
+</html>

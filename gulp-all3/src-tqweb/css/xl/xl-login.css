@@ -1,0 +1,405 @@
+/*绑定手机号码*/
+
+@charset "UTF-8";
+
+/*html{font-size:10px}/*移动端用响应式单位：rem*/
+
+
+/*@media screen and (min-width:321px) and (max-width:375px){html{font-size:11px}}
+@media screen and (min-width:376px) and (max-width:414px){html{font-size:12px}}
+@media screen and (min-width:415px) and (max-width:639px){html{font-size:15px}}
+@media screen and (min-width:640px) and (max-width:719px){html{font-size:20px}}*/
+
+
+/*初始化标题加粗*/
+
+a,
+img,
+input {
+	border: none 0;
+	text-decoration: none;
+	outline: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:focus,
+input:focus {
+	outline: 0 none;
+}
+
+
+/*获取焦点时，不显示外框*/
+
+li {
+	list-style: none;
+}
+
+i,
+em,
+cite {
+	font-style: normal;
+}
+
+a {
+	color: #575757!important;
+	text-decoration: none;
+	outline: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input,
+textarea,
+li {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+/*消除点击高光*/
+
+textarea,
+button {
+	resize: none;
+	font-size: 12px;
+	outline: none 0;
+	border: none 0;
+}
+
+
+/*渠道H5登录页面开始*/
+
+.xl-page {
+	box-sizing: border-box;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	z-index: 99999;
+	background-color: #ededed;
+}
+
+.xl-page .page-content {
+	margin: 0 auto;
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	box-sizing: border-box;
+	height: 100%;
+	position: relative;
+	z-index: 1;
+}
+
+.xl-page .bindTitle {
+	color: #fff;
+	font-size: 0.72rem;
+	text-align: center;
+	margin-top: -2.56rem;
+}
+
+.xl-page .content-block {
+	margin: 0 auto;
+	margin-top: 1rem;
+	margin-bottom: 0.2rem;
+	width: 7.1rem;
+	padding: 0;
+	box-shadow: 0px -10px 30px -15px #666;
+	border-radius: 4px;
+	border: none;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	/*padding: 0 15px;*/
+	color: #6d6d72;
+	box-sizing: border-box;
+}
+
+.xl-page .content-block-inner {
+	padding: 0;
+	margin: 0;
+	border-radius: 4px;
+	border: none;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.xl-page .content-block-inner {
+	background: #fff;
+	padding: 10px 15px;
+	/*margin-left: -15px;*/
+	width: 100%;
+	position: relative;
+	color: #000;
+}
+
+.xl-page .list-block li {
+	box-sizing: border-box;
+	position: relative;
+}
+
+.xl-page .phoneInput {
+	padding-top: 0.8rem;
+}
+
+.xl-page .list-block {
+	margin: 35px 0;
+	font-size: 17px;
+}
+
+.xl-page .list-block ul {
+	background: #fff;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	position: relative;
+}
+
+.xl-page .phoneInput {
+	line-height: 0.68rem;
+	padding: 0.8rem 0.7rem;
+}
+
+.xl-page .phonePic,
+.bind .codePic {
+	width: 0.5rem;
+	position: absolute;
+	text-align: center;
+	/*top: 0.7rem;*/
+	top: 1rem;
+}
+
+.bind .codePic {
+	/*top: 0.85rem;*/
+}
+
+.xl-page .phonePic img {
+	width: 0.32rem;
+	height: 0.5rem;
+	margin: 0 auto;
+	display: block;
+	/*padding-top: 0.3rem;*/
+}
+
+.xl-page .phoneN {
+	width: 5rem;
+	border-bottom: 1px solid #c8c7cc;
+	margin: 0 auto;
+	display: block;
+	position: absolute;
+	left: 1.4rem;
+}
+
+.xl-page .phoneN input {
+	font-size: 0.34rem;
+	/*height: 0.33rem;*/
+	display: inline-block;
+}
+
+.xl-page .codeN {
+	width: 2.4rem;
+	border-bottom: 1px solid #c8c7cc;
+	position: absolute;
+	left: 1.4rem;
+}
+
+.xl-page .codeN input {
+	/*height: 0.33rem;*/
+	font-size: 0.34rem;
+	display: inline-block;
+}
+
+.xl-page .codePic img {
+	width: 0.42rem;
+	height: 0.37rem;
+	/*padding-top: 0.3rem;*/
+	display: block;
+}
+
+.xl-page .sendCode {
+	width: 2.1rem;
+	height: 0.68rem;
+	color: #fff;
+	background-color: #eee;
+	border-radius: 4px;
+	font-size: 0.28rem;
+	position: absolute;
+	left: 4.2rem;
+	top: 0.85rem;
+	text-align: center;
+	line-height: 0.68rem;
+}
+
+.xl-page .xl-act {
+	width: 2rem;
+	height: 0.68rem;
+	color: #fff;
+	background-color: #ff848a!important;
+	border-radius: 4px;
+	font-size: 0.28rem;
+}
+
+.xl-page .codeTimeOut {
+	width: 2rem;
+	height: 0.68rem;
+	color: #fff;
+	background-color: #ff848a!important;
+	border-radius: 4px;
+	font-size: 0.28rem;
+}
+
+.xl-close {
+	position: absolute;
+	top: .5rem;
+	left: .5rem;
+	z-index: 888;
+	width: .3rem;
+	height: .3rem;
+}
+
+.xl-close img {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.xl-page .bindNow {
+	text-align: center;
+	margin-top: 1rem;
+}
+
+.xl-page .bindNow button {
+	margin: 0 auto;
+	width: 4rem;
+	height: 0.8rem;
+	color: #fff;
+	background-color: #eee;
+	border-radius: 4px;
+	font-size: 0.36rem;
+	box-shadow: 0 0 15px -8px #eee;
+}
+
+.xl-page .bindText {
+	margin-top: 0.2rem;
+	padding-bottom: 1rem;
+	color: #666;
+	font-size: 0.2rem;
+	text-align: center;
+}
+
+.xl-page .bindAct {
+	margin: 0 auto;
+	width: 4rem;
+	height: 0.8rem;
+	color: #fff;
+	background-color: #ff848a!important;
+	border-radius: 4px;
+	font-size: 0.36rem;
+	box-shadow: 0 0 15px -8px #eee;
+}
+
+
+/*渠道H5登录页面结束*/
+
+
+/*small 登录页面开始*/
+
+.xl-page1 {
+	box-sizing: border-box;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	z-index: 99999;
+	background-color: #ededed;
+}
+
+.xl-page1 .xl-Login {
+	margin: 0.32rem 0.3rem;
+}
+
+.xl-page1 .xl-Login ul {
+	background-color: #fff;
+	border-radius: 4px;
+	margin-bottom: 0.32rem;
+}
+
+.xl-page1 .xl-Login ul li {
+	line-height: 1rem;
+	padding: 0 0.36rem 0 0.44rem;
+	font-size: 0.28rem;
+	color: #363636;
+}
+
+.xl-page1 .xl-Login ul li input {
+	line-height: 0.56rem;
+	font-size: 0.28rem;
+}
+
+.xl-page1 .xl-Login ul .phoneNum input {
+	width: 5rem;
+}
+
+.xl-page1 .xl-Login ul .checkCode input {
+	width: 4.2rem;
+}
+
+.xl-page1 .xl-Login ul .checkCode {
+	overflow: hidden;
+}
+
+.xl-page1 .xl-Login ul .phoneNum {
+	border-bottom: 1px solid #E1E1E1;
+}
+
+.xl-page1 .xl-Login ul .phoneNum .userTelNum {
+	margin-left: 0.36rem;
+}
+
+.xl-page1 .xl-Login ul .checkCode .userCode {
+	margin-right: 0.36rem;
+}
+
+.xl-page1 .xl-Login ul .checkCode .sendCode {
+	display: inline-block;
+	width: 1.5rem;
+	text-align: center;
+	float: right;
+	color: #ff5c5c;
+}
+
+.xl-page1 .login {
+	width: 100%;
+}
+
+.xl-page1 .login button {
+	display: inline-block;
+	width: 6.9rem;
+	height: 0.95rem;
+	margin: 0 auto;
+	background-color: #969696;
+	color: #fff;
+	font-size: 0.36rem;
+	line-height: 0.95rem;
+	text-align: center;
+	border-radius: 4px;
+}
+
+.xl-page1 .xl-act1 {
+	color: #ff5c5c!important;
+}
+
+.xl-page1 .codeTimeOut1 {
+	color: #ff5c5c!important;
+}
+
+.xl-page1 .bindAct {
+	background-color: #ff5c5c!important;
+}
+
+
+/*small 登录页面结束*/

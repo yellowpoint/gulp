@@ -1,0 +1,335 @@
+.getPosEnter{
+	position: relative;
+	width: 100%;
+    padding-bottom: 0;
+}
+.btn-get{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 0.98rem;
+	background-color: #0473ff;
+	line-height: 0.98rem;
+	font-size: 0.28rem;
+	color: #fff;
+	text-align: center;
+	z-index: 2000;
+}
+.content{
+	padding-bottom: 1.5rem;
+}
+.content>img{
+	width: 100%;
+}
+.content .contact{
+	width: 100%;
+	text-align: center;
+	font-size: .24rem;
+	color: #484e64;
+    margin-top: -1rem;
+}
+
+.getPosInfo{
+	position: relative;
+	width: 100%;
+}
+.input-label{
+	display: inline-block;
+	float: left;
+	padding-left: .2rem;
+	color: #666;
+	font-weight: bold;
+}
+.cf-area{
+	width: 100%;
+	height: .8rem;
+	line-height: .8rem;
+	border: 1px solid #cfcfcf;
+	margin-top: .3rem;
+	font-size: .28rem;
+	color: #9a9999;
+	border-radius: .1rem;
+}
+.cf-input input{
+	float: left;
+	width: 3.5rem;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	line-height: .8rem;
+	font-size: .28rem;
+	border: 0;
+	background-color: transparent;
+	color: #333;
+	margin-left: 0.8rem;
+}
+.code-btn{
+	float: right;
+	width: 1.8rem;
+	background-color: #ff2f2f;
+}
+input[type=number]{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	margin-left: 0.2rem;
+}
+.cf-input-code{
+	float: left;
+	margin-left: 0.1rem;
+	width: 2rem !important;
+    padding: 0 !important;
+    padding-left: .3rem !important;
+}
+.sendCode{
+	width: 100%;
+	height: .8rem;
+	line-height: .8rem;
+	margin-top: .3rem;
+	font-size: .28rem;
+	color: #9a9999;
+}
+.sendCode-area{
+	width: 3.4rem;
+	float: left;
+	margin-top: 0;
+	height: 100%;
+}
+.creditLoan-form{
+	width: 6.4rem;
+	height: 6.8rem;
+	margin: 0 auto;
+	padding: .2rem .5rem;
+	background-color: #fff;
+	border-radius: .2rem;
+	font-size: .28rem;
+}
+.cf-textarea{
+	height: 1.5rem;
+	margin: 0;
+	padding: 0;
+	margin-top: .3rem;
+	font-size: .28rem;
+	color: #333;
+}	
+.cf-textarea textarea{
+	height: 100%;
+	padding-top: 0.2rem;
+	padding-left: 0.2rem;
+	font-size: .28rem;
+}
+
+.getPosMethod{
+	position: fixed;
+	width: 100%;
+	min-height: 5.68rem;
+	background: url(../images/pos/getPos/bg-order.jpg) no-repeat;
+	background-size: 100%;
+}
+.getPosMethod .selectMethod{
+	width: 6.4rem;
+	height: 10rem;
+	margin: 1.24rem auto;
+	margin-bottom: 0;
+	background: url(../images/pos/getPos/bg-order3.png) no-repeat;
+	background-size: 100%;
+}
+
+
+	.selectArea{
+		padding: 0 .5rem;
+		margin-top: 1rem;	
+	}
+	.selectMethod .title{
+		margin: 0 auto;
+		padding: 0.4rem 0.6rem;
+	}
+	.title>p{
+		margin-top: .3rem;
+		font-size: .3rem;
+		color: #333;
+		font-weight: bold;
+	}
+	.title .notice{
+		font-size: .58rem;
+		margin-bottom: .4rem;
+	}
+	.title>p:last-child{
+		font-weight: normal;
+	}
+	.selectArea .method{
+		margin-top: 1rem;
+		height: 1rem;
+	}
+	.selectArea .method>input{
+		float: left;
+		width: .36rem;
+    	height: .36rem;
+    	margin-top: 0.01rem;
+    	-webkit-appearance: radio;
+	}
+	.selectArea .method>label{
+		float: left;
+		margin-left: .2rem;
+		font-size: .26rem;
+		color: #333;
+		font-weight: bold;
+		width: 89%;
+	}
+	.method-time{
+		padding-top: .8rem;
+		margin-left: .5rem;
+		font-size: .26rem;
+		color: #333;
+		font-weight: bold;
+		display: none;
+	}
+	.method-time .date{
+		margin-bottom: .4rem;
+		height: .8rem;
+		line-height: .8rem;
+		color: #333;
+	}
+	.method-time .date span{
+		float: left;
+	}
+	.method-time .date input{
+		float: right;
+		width: 2.4rem;
+		height: .8rem;
+		text-align: right;
+		font-size: .26rem;
+		color: #333;
+	}
+	#myWeek{
+		float: right;
+		display: inline-block;
+		font-style: normal;
+		font-size: .26rem;
+		color: #333;
+	}
+	.method-time .date select{
+		float: right;
+		padding: 0;
+		margin: 0;
+		width: 2.4rem;
+		height: .8rem;
+		font-size: .26rem;
+		color: #999;
+		text-align: right;
+        margin-right: -1.4rem;
+    	background-color: transparent;
+	}
+	.method-time .select-active{
+		margin-right: -1rem !important;
+		color: #333 !important;
+	}
+	.method-time .date input::-webkit-input-placeholder{
+		text-align: right;
+		font-size: .26rem;
+		color: #999;
+	}
+	.submitSuccess{
+		position: absolute;
+		top: 30%;
+		left: .95rem;
+		z-index: 2100;
+		width: 5.6rem;
+		height: 4rem;
+		background: url(../images/pos/getPos/alert-success.png) no-repeat;
+		background-size: 100%;
+		display: none;
+	}
+	.submitSuccess p{
+		text-align: center;
+		font-size: .28rem;
+		color: #333;
+		font-weight: bold;
+		margin-top: 1rem;
+	}
+	.goConfirm{
+	    width: 80%;
+	    height: 1rem;
+	    margin: 0 auto;
+	    margin-top: 1rem;
+	}
+	.getPosInfo .contact{
+		text-align: center;
+	}
+	
+	.animated {
+	  animation-duration: .3s;
+	  animation-fill-mode: both;
+	}
+	@keyframes zoomIn {
+	  from {
+	    opacity: 0;
+	    transform: scale3d(.3, .3, .3);
+	  }
+
+	  50% {
+	    opacity: 1;
+	  }
+	}
+	.zoomIn {
+	  animation-name: zoomIn;
+	}
+/*8.1修改*/
+	.addInfo{
+		width: 80%;
+		margin: 10% auto;
+		text-align: center;
+	}
+	.addInfo .t1{
+		font-size: .38rem;
+		color: #333;
+		margin-bottom: .4rem;
+		font-weight: bold;
+	}
+	.addInfo .number{
+		font-size: .56rem;
+		color: #ff2d2d;
+		margin-bottom: .48rem;
+		font-weight: bolder;
+		letter-spacing: -2px;
+	}
+	.addInfo .copy-btn{
+		padding: 0;
+		margin: 0 auto;
+		width: 2.4rem;
+		height: .72rem;
+		line-height: .72rem;
+		font-size: .32rem;
+		color: #fff;
+		background-color: #ffa20f;
+		margin-bottom: .72rem;
+		border-radius: .1rem;
+	}
+	.addInfo .slogan{
+		font-size: .32rem;
+		color: #333;
+		margin-bottom: .8rem;
+	}
+	.addInfo .slogan p{
+		margin-bottom: 0.06rem;
+	}
+	.addInfo .slogan span{
+		color: #ff2d2d;
+	}
+	.addInfo .contact{
+		font-size: .28rem;
+		color: #333;
+	}
+	.addInfo .contact a{
+		text-decoration: underline;
+	}
+	.getPosMethod .closeAdd{
+		position: absolute;
+		right: .44rem;
+		top: .38rem;
+		width: .52rem;
+		height: .52rem;
+		background: url(../images/pos/getPos/icon-close.png) no-repeat;
+		background-size: 100%;
+	}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<canvas></canvas>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+		var img = "http://51app-image-test.oss-cn-hangzhou.aliyuncs.com/diy/material/image/2017/6/2/15175315041589.jpg";
+
+		function getBase64Image(img) {
+			var canvas = document.createElement("canvas");
+			canvas.width = img.width;
+			canvas.height = img.height;
+
+			var ctx = canvas.getContext("2d");
+			ctx.drawImage(img, 0, 0, img.width, img.height);
+			var ext = img.src.substring(img.src.lastIndexOf(".") + 1).toLowerCase();
+			var dataURL = canvas.toDataURL("image/" + ext);
+			return dataURL;
+		}
+		var image = new Image();
+		image.crossOrigin = '';
+		image.src = img;
+		image.onload = function() {
+			var base64 = getBase64Image(image);
+			console.log(base64);
+		}
+	</script>
+
+</html>

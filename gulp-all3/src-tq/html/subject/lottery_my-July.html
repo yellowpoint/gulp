@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<meta http-equiv="Cache-Control" content="no-cache private max-age=0">
+		<title>我的奖品</title>
+		<link rel="shortcut icon" href="../../img/favicon.ico">
+		<!-- build:css css/hd/all/hd-lottery.css -->
+		<link type="text/css" rel="stylesheet" href="../../css/lib/layer.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/lib/waves.min.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/comment.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/xl/xl-login.css" />
+		<!-- endbuild -->
+
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f0e635459915122317d9199dc2470247";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+
+		<style type="text/css">
+			html {
+				height: 100%;
+			}
+			
+			body {
+				height: auto;
+				background: #65dac8;
+			}
+			
+			body.act {
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.containerBox {
+				/*min-height: 13.34rem;*/
+				/*background: url(../../img/lottrty/my_bg.jpg) no-repeat;*/
+				/*background-size: 100% auto;*/
+				overflow: hidden;
+			}
+			
+			.prize-box {
+				width: 6.9rem;
+				height: 7.7rem;
+				padding: .1rem .46rem;
+				margin: 0 auto;
+				box-sizing: border-box;
+				border-radius: .1rem;
+				background: #fff;
+				overflow: auto;
+			}
+			
+			.prize-box .prize-item {
+				display: block;
+				width: 6rem;
+				height: 1.84rem;
+				border-bottom: 1px solid #c7c7c7;
+				position: relative;
+			}
+			
+			.prize-item-img {
+				width: 1.2rem;
+				height: 1.2rem;
+				position: absolute;
+				top: .3rem;
+				left: .2rem;
+			}
+			
+			.prize-item-name {
+				width: 4.2rem;
+				height: .4rem;
+				position: absolute;
+				top: .2rem;
+				right: .2rem;
+				font-size: .34rem;
+				color: #333;
+				text-align: right;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			
+			.prize-item-use {
+				width: 1.5rem;
+				height: .6rem;
+				position: absolute;
+				top: .9rem;
+				right: .2rem;
+			}
+			
+			.explain {
+				color: #fff;
+				overflow: hidden;
+				padding: .3rem;
+				line-height: 1.5;
+			}
+			
+			.explain h2 {
+				text-align: center;
+				font-size: .32rem;
+				margin-bottom: .2rem;
+			}
+			
+			.explain p {
+				font-size: .24rem;
+				margin: .1rem 0;
+			}
+			
+			.noPrize {
+				width: 100%;
+				height: 7.5rem;
+				line-height: 7.5rem;
+				margin: 0 auto;
+				color: #999;
+				font-size: .36rem;
+				text-align: center;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="dom-noLoad"></div>
+
+		<main class="containerBox dom-hasLoad">
+			<img src="../../img/lottrty/July/myHeader.png" />
+			<div class="prize-box" id="prizeBox">
+				<!--<a class="prize-item" href="#">
+					<img class="prize-item-img" src="img/lottrty/prize.jpg" />
+					<div class="prize-item-name">本次活动最终解释权归深圳维创乐科技有限公司所有</div>
+					<img class="prize-item-use" src="img/lottrty/use.png" />
+				</a>-->
+
+			</div>
+			<div class="explain">
+				<h2>活动说明</h2>
+				<p>1. 关注【腾趣公众号】查询订单</p>
+				<p>2. 如您在抽奖过程中遇到其它问题，请及时联系我们的客服微信：tengqu007</p>
+			</div>
+
+		</main>
+
+		<!-- build:js js/hd/all/hd-all-lottery_my.js -->
+		<!--<script src="js/alloy-lever.js"></script>-->
+		<script src="../../js/lib/jq-3.1.1.min.js"></script>
+		<script src="../../js/lib/fastclick.min.js"></script>
+		<script src="../../js/lib/layer.min.js"></script>
+		<script src="../../js/lib/waves.min.js"></script>
+		<script src="../../js/xl/xl-login.js"></script>
+		<script src="../../js/common.js"></script>
+		<!-- endbuild -->
+
+		<script type="text/javascript">
+			var token = getCookie('token');
+			isLoginRefresh = true; //通过检测ajax有1001弹出登录，登录完成后是否刷新页面，可在需要刷新的页面将其改为true
+			var url = apiDomain + '/diyapi/lotto/list?token=' + token + '&lottoId=3',
+				successFunc = function(data) {
+
+					if(data.code == 200) {
+						var prizeList = data.data;
+						var dataBox = ''
+						$.each(prizeList, function(i) {
+							dataBox += '<a class="prize-item" href="' + prizeList[i].url + '"><img class="prize-item-img" src="' + prizeList[i].imageUrl + '" /><div class="prize-item-name">' + prizeList[i].name + '</div><img class="prize-item-use" src="../../img/lottrty/use.png" /></a>'
+						})
+						if(prizeList.length == 0) {
+							dataBox = '<div class="noPrize">抱歉，您暂时还没有奖品</div>'
+						}
+						$('#prizeBox').empty().append(dataBox)
+
+					}
+
+				};
+			loadData(url, true, successFunc)
+
+			//数据加载完成后显示界面
+			$('.dom-noLoad').hide();
+			$('.dom-hasLoad').show();
+
+			$('body').on('click', '.xl-close', function() {
+				history.go(-1)
+			})
+		</script>
+
+	</body>
+
+</html>

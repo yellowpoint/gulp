@@ -1,0 +1,279 @@
+html,
+body {
+	background: #e1532c;
+}
+
+a {
+	position: relative;
+}
+
+a:active:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 999;
+	background: rgba(72, 72, 72, .1);
+}
+
+.containerBox {
+	overflow: hidden;
+}
+
+.user {
+	width: 100%;
+	height: .72rem;
+	line-height: .72rem;
+	color: #98010b;
+	text-align: center;
+}
+
+.lotteryBox {
+	position: relative;
+	width: 7.12rem;
+	margin: 0 auto;
+}
+
+.lottery {
+	width: 5.7rem;
+	height: 5.7rem;
+	position: absolute;
+	top: .74rem;
+	left: .82rem;
+}
+
+.lottery ul {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.lottery li {
+	position: relative;
+	float: left;
+	width: 1.72rem;
+	height: 1.72rem;
+	line-height: 1.72rem;
+	margin: .15rem .15rem 0 0;
+	border-radius: .1rem;
+	background: #fff;
+	text-align: center;
+	overflow: hidden;
+}
+
+.lottery .lottery-unit {
+	box-shadow: 0 .06rem 0 #740403;
+}
+
+.lottery .lottery-btn {
+	background: transparent;
+}
+
+.lottery .lottery-unit img {
+	height: 100%;
+}
+
+.lottery.act .lottery-unit:after {
+	content: '';
+	width: 100%;
+	height: 100%;
+	border-radius: .1rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, .5);
+}
+
+.lottery .lottery-unit.act:after {
+	content: '';
+	display: none;
+}
+
+
+/*中奖弹窗 开始*/
+
+.lottery-prize {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
+	background: rgba(0, 0, 0, .5);
+	overflow: hidden;
+	padding-top: 20%;
+	display: none;
+}
+
+.lottery-prize .lp-main {
+	position: relative;
+	width: 6rem;
+	height: 9.28rem;
+	margin: 0 auto;
+	background: url(../images/lottery/prize_2.png) no-repeat;
+	background-size: 100%;
+	color: #fff;
+	font-size: .24rem;
+	overflow: hidden;
+}
+
+.lottery-prize .lp-money {
+	width: 2.1rem;
+	height: 1.4rem;
+	line-height: 1.4rem;
+	margin: 4.2rem 0 .5rem 2.6rem;
+	color: #ff2121;
+	font-size: .72rem;
+	text-align: center;
+}
+
+.lottery-prize .lp-main em {
+	display: inline-block;
+	width: .3rem;
+	height: .3rem;
+	line-height: .3rem;
+	margin-right: .1rem;
+	border-radius: 100%;
+	background: #fffbd2;
+	color: #e1532c;
+	font-size: .2rem;
+	text-align: center;
+}
+
+.lottery-prize .lp-main .btn {
+	width: 1.48rem;
+	height: .46rem;
+	line-height: .46rem;
+	margin-right: .1rem;
+	border-radius: .1rem;
+	background: #ffdd46;
+	color: #e1532c;
+	font-size: .24rem;
+	text-align: center;
+}
+
+.lottery-prize .lp-copy,
+.lottery-prize .lp-wx {
+	display: flex;
+	align-items: center;
+	height: .48rem;
+	padding-left: .5rem;
+	margin-bottom: .48rem;
+}
+
+.lottery-prize .lp-tips {
+	line-height: 2;
+	padding: 0 .5rem;
+	margin-top: -.1rem;
+}
+
+.lottery-prize .lp-qr {
+	position: absolute;
+	bottom: 1.7rem;
+	right: .45rem;
+	width: 1.45rem;
+	height: 1.45rem;
+	text-align: center;
+	pointer-events: all;
+}
+.lottery-prize .lp-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: .6rem;
+	height: .6rem;
+}
+
+
+/*中奖弹窗 结束*/
+
+
+/*登录开始*/
+
+.lottery-login {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;
+	background: rgba(0, 0, 0, .5);
+	overflow: hidden;
+	padding-top: 20%;
+	display: none;
+}
+
+.lottery-login .ll-main {
+	position: relative;
+	width: 6rem;
+	height: 7.86rem;
+	padding-top: 3.16rem;
+	margin: 0 auto;
+	background: url(../images/lottery/login.png) no-repeat;
+	background-size: 100%;
+}
+
+.lottery-login input::-webkit-input-placeholder {
+	color: #8f2121;
+	font-size: .26rem;
+}
+
+.lottery-login input {
+	display: block;
+	width: 5rem;
+	height: .8rem;
+	line-height: .8rem;
+	padding: 0 .4rem;
+	margin: .4rem auto 0;
+	border-radius: .1rem;
+	background: #fffbc1;
+	font-size: .26rem;
+}
+
+.ll-getCode {
+	position: relative;
+	float: right;
+	width: 2rem;
+	height: .8rem;
+	line-height: .8rem;
+	margin: -.8rem .3rem 0 0;
+	border-radius: .1rem;
+	text-align: center;
+}
+
+.ll-getCode .ll-getCode-able {
+	color: #8f2121;
+}
+
+.ll-getCode .ll-getCode-disable {
+	color: #999;
+	display: none;
+}
+
+.ll-getCode.disable .ll-getCode-able {
+	display: none;
+}
+
+.ll-getCode.disable .ll-getCode-disable {
+	display: block;
+}
+
+.ll-confim {
+	display: block;
+	width: 5rem;
+	height: .8rem;
+	margin: .84rem auto 0;
+}
+
+.ll-close {
+	position: absolute;
+	top: -.2rem;
+	right: -.14rem;
+	width: 1.4rem;
+	height: .8rem;
+}
+
+
+/*登录结束*/

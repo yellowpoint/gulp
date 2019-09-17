@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>贷款</title>
+		<link rel="stylesheet" href="../css/layer.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<style type="text/css">
+			html,
+			body {
+				height: 100%;
+				background: #fff;
+			}
+			
+			a {
+				position: relative;
+			}
+			
+			a:active:before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				z-index: 999;
+				background: rgba(72, 72, 72, .1);
+			}
+			
+			.login-main {
+				width: 100%;
+				padding: 0 .75rem;
+				margin: .4rem auto 0;
+				background: #fff;
+				overflow: hidden;
+			}
+			
+			.input-text{
+				height: .6rem;
+				line-height: .6rem;
+				color: #fff;
+				font-size: .22rem;
+			}
+			.input-text.act{
+				color: #999;
+			}
+			input {
+				display: block;
+				width: 6rem;
+				height: .8rem;
+				line-height: .8rem;
+				padding: 0 1rem;
+				margin: 0 auto 0;
+				border-radius: .1rem;
+				background: #ededed;
+				font-size: .26rem;
+			}
+			
+			.inputBox {
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.inputBox::after {
+				content: '';
+				position: absolute;
+				top: .16rem;
+				left: .22rem;
+				width: .48rem;
+				height: .48rem;
+				background: url(../images/checkProgress/login-name.png) no-repeat;
+				background-size: 100%;
+			}
+			
+			.inputBox:nth-of-type(2)::after {
+				background-image: url(../images/checkProgress/login-phone.png);
+			}
+			
+			.inputBox:nth-of-type(3)::after {
+				background-image: url(../images/checkProgress/login-code.png);
+			}
+			
+			input::-webkit-input-placeholder {
+				color: #999;
+				font-size: .26rem;
+			}
+			
+			.lm-code {}
+			
+			.lm-getCode {
+				position: relative;
+				float: right;
+				width: 2rem;
+				height: .8rem;
+				line-height: .8rem;
+				margin-top: -.8rem;
+				border-radius: .1rem;
+				text-align: center;
+			}
+			
+			.lm-getCode .lm-getCode-able {
+				color: #3359f0;
+			}
+			
+			.lm-getCode .lm-getCode-disable {
+				color: #999;
+				display: none;
+			}
+			
+			.lm-getCode.disable .lm-getCode-able {
+				display: none;
+			}
+			
+			.lm-getCode.disable .lm-getCode-disable {
+				display: block;
+			}
+			
+			.lm-confim {
+				float: left;
+				height: 1rem;
+				line-height: 1rem;
+				width: 100%;
+				margin: .78rem 0 .4rem;
+				border-radius: .1rem;
+				background: #3155f0;
+				color: #fff;
+				text-align: center;
+			}
+		</style>
+	</head>
+
+	<body class="checkProgress-login body-loading">
+
+		<div class="body-main">
+			<img src="../images/checkProgress/login-header.png" />
+
+			<!--登录主体 开始-->
+			<div class="login-main">
+				<p class="input-text">请输入申请人姓名</p>
+				<div class="inputBox"><input class="lm-name" data-inedx='0' type="text" placeholder="请输入申请人姓名" maxlength="20" /></div>
+				<p class="input-text">请填写申请贷款时用的手机号码</p>
+				<div class="inputBox"><input class="lm-phone" data-inedx='1' type="number" oninput="if(value.length>11)value=value.slice(0,11)" pattern="[0-9]*" placeholder="请填写申请贷款时用的手机号码" /></div>
+				<p class="input-text">请输入验证码</p>
+				<div class="inputBox"><input class="lm-code" data-inedx='2' type="number" oninput="if(value.length>6)value=value.slice(0,6)" pattern="[0-9]*" placeholder="请输入验证码" /></div>
+
+				<div class="lm-getCode">
+					<div class="lm-getCode-able">获取验证码</div>
+					<div class="lm-getCode-disable"><i>60</i>s后重发</div>
+				</div>
+				<a class="lm-confim">确定</a>
+			</div>
+			<!--登录主体 结束-->
+
+		</div>
+
+		<script src="../js/commonPlugin.min.js"></script>
+		<script src="../js/layer.min.js"></script>
+		<script src="../js/alloy-lever.min.js"></script>
+		<script src="../js/hd-common.js"></script>
+		<script type="text/javascript">
+			AlloyLever.config({
+				entry: "#entry" //请点击这个DOM元素6次召唤vConsole。//你可以通过AlloyLever.entry('#entry2')设置多个机关入口召唤神龙
+			})
+			$('body').removeClass('body-loading')
+
+			var token = GetQueryString('token')
+			if(!token) {
+								location.href = 'https://api.51app.cn/loanapi/wechat/token?platform=91ry'
+			}
+			
+			$('input').focus(function(){
+				var index = $(this).attr('data-inedx');
+				$('.input-text').removeClass('act').eq(index).addClass('act')
+			})
+			$('input').blur(function(){
+				$('.input-text').removeClass('act')
+			})
+			
+			var $name = $('.lm-name')
+			var $phone = $('.lm-phone')
+			var $code = $('.lm-code')
+			var $getCode = $('.lm-getCode')
+			var $time = $('.lm-getCode .lm-getCode-disable i')
+
+			//点击获取验证码
+			$('body').on('click', '.lm-getCode .lm-getCode-able', function() {
+				if($phone.val() == '' || !isPhoneAvailable($phone.val())) {
+					layerHint('请输入正确的手机号码')
+					$phone.focus()
+					return false;
+				}
+				var data = {
+					"mobile": $phone.val()
+				}
+				var url = apiDomain + '/loan/code/send';
+				var successFunc = function(data) {
+
+					if(data.code == 200) {
+						layerHint('发送成功')
+						$getCode.addClass('disable')
+						var timer = null;
+						var time = 60;
+						timer = setInterval(function() {
+							time--;
+							if(time > 0) {
+								$time.text(time)
+							} else {
+								$getCode.removeClass('disable')
+								clearInterval(timer)
+								$time.text(60)
+							}
+						}, 1000)
+						//						$code.focus()
+					} else {
+						layerHint(data.data)
+					}
+
+				}
+				var errorFunc = function() {
+					layerHint('发送失败，请再次发送')
+				}
+				ajaxPost(url, data, successFunc, errorFunc)
+			})
+			//点击提交
+			$('body').on('click', '.lm-confim', function() {
+				if($phone.val() == '' || !isPhoneAvailable($phone.val())) {
+					layerHint('请输入正确的手机号码')
+					$phone.focus()
+					return false;
+				}
+				if($code.val().length != 6) {
+					layerHint('请输入正确的验证码')
+					$code.focus()
+					return false;
+				}
+				var data = {
+					"mobile": $phone.val(),
+					"code": $code.val(),
+					"name": $name.val(),
+					"token": token
+				}
+				var url = apiDomain + '/loan/code/check';
+				var successFunc = function(data) {
+
+					if(data.code == 200) {
+						layerHint('验证成功')
+						setTimeout(function(){
+							location.href = "list.html?token=" + token
+						},500)
+						
+
+					} else {
+						layerHint(data.data)
+					}
+
+				}
+				var errorFunc = function() {
+					layerHint('验证失败，请确认验证码输入正确或再次发送验证码')
+				}
+				ajaxPost(url, data, successFunc, errorFunc)
+			})
+			
+			wxShare('放款进度查询','https://api.51app.cn/loanpage/v1.0.0/checkProgress/list.html','https://api.51app.cn/loanpage/v1.0.0/images/91ry.jpg','实时跟踪')
+			
+		</script>
+	</body>
+
+</html>

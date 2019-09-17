@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta content="telephone=no,email=no" name="format-detection">
+	<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+	<title>信用借款</title>
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/creditLoan.css" />
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+</head>
+<body class="creditLoan body-loading">
+	<div class="body-main">
+		<div class="creditLoan-form">
+			<div class="cf-area">
+				<span>省份</span>
+				<i class="select-arrow"></i>
+				<select class="cf-select" id="provs" name="provs">
+					<option value ="0">请选择您所在的省份</option>
+				</select>
+			</div>
+			<div class="cf-area">
+				<span>城市</span>
+				<i class="select-arrow"></i>
+				<div class="citys-mask" id="citysMask"></div>
+				<select class="cf-select" id="citys" name="citys">
+				  <option value ="0">请选择您所在的城市</option>
+				</select>
+			</div>
+			<div class="cf-area cf-input">
+				<input type="number" maxlength="11" pattern="[0-9]*" name="mobile" placeholder="请输入您的手机号码">
+			</div>
+			<div class="cf-area" style="border: 0;margin-top: .52rem;">
+				<input class="cf-input-code" pattern="[0-9]*" name="code" type="number" placeholder="请输入验证码">
+				<span id="getCode" class="code-btn">
+					获取验证码
+				</span>
+			</div>
+			<div class="apply-btn" id="toApply">
+				立即申请
+			</div>
+			<input type="hidden" name="realCode" id="realCode" value="" />
+		</div>
+		<!--<a href="" class="goReturn">我要还款</a>-->
+		
+	</div>
+
+
+	<script src="js/commonPlugin.min.js"></script>
+	<script src="js/hd-common.js"></script>
+	<script src="js/mui.min.js"></script>
+	<script src="js/provsCitysData.min.js"></script>
+	<script>
+		//loading层
+		$('body').removeClass('body-loading');
+		mui.init();
+		var screenHeight = $(window).height();
+		$('.creditLoan').eq(0).css({"height": screenHeight});
+		
+		/**
+		 * 处理二级联动
+		 */
+		//初始化数据
+		var provs = [];
+		var pStr = '';
+		var citysData = citys_data;
+		provs_data.map(function(item,index){
+			pStr = "<option value ="+item.value+">"+item.text+"</option>";
+			provs.push(pStr);
+		})
+		$('#provs').append(provs.join(","));
+		//下拉菜单变化
+		$('#provs').change(function(){
+			$(this).addClass('select-active');
+			$('#citys').addClass('select-active');
+			var pId = 0
+			if($(this).val() != 0){
+				pId = $(this).val()
+			}
+			var citys = [];
+			var cStr = '<option value ="0">请选择您所在的城市</option>';
+			$.each(citysData, function(index,item){
+				if(index == pId) {
+					$.each(item, function(idx,val){
+						cStr = "<option value ="+val.value+">"+val.text+"</option>";
+						citys.push(cStr)
+					})
+				}
+			})
+			$('#citys').empty();
+			$('#citys').append(citys.join(","));
+			$('#citysMask').hide();
+			if($(this).val() == '0'){
+				$('#citysMask').show();
+			}
+		})
+		
+		//提示不能单选城市
+		$('#citysMask').click(function(){
+			if($('#citys').val() == '0'||$('#citys').val() == ''){
+				 mui.alert('请先选择所在省份',function(){
+				 	 $('#provs').focus();
+				 });
+			}
+		})
+		
+		//发送验证码
+		var flag = true
+		$('#getCode').click(function(){
+			if(!flag){
+				return false
+			}
+			var myMobile = $('input[name=mobile]').val()
+			var that = this
+			if(myMobile == ''){
+				mui.toast('手机号码不能为空')
+				return false
+			}
+			if(!(/^1\d{10}$/.test(myMobile))){	
+				mui.toast('请输入正确的手机号码')
+				return false
+			}
+			//发送验证码接口
+			loadData(
+				'https://api.51app.cn/loanapi/user/code/send?mobile='+myMobile,
+				'async',
+				function(res){
+					flag = false
+					var sec = 60
+					$(that).text(60+'s');
+					var timer = setInterval(function(){
+						sec--
+						if(sec == 0){
+							$('#getCode').text('获取验证码')
+							flag = true
+							clearInterval(timer)
+						}else{
+							$(that).text(sec+'s')
+						}
+					},1000)
+					mui.toast('验证码已发送');
+				}
+			)
+				
+		})
+		//立即申请
+		$('#toApply').click(function(){
+			var myProvId = $('select[name=provs]').val();
+			var myCityId = $('select[name=citys]').val();
+			var myMobile = $('input[name=mobile]').val();
+			var myCode = $('input[name=code]').val();
+			//获取地址url参数，来验证身份
+			var channel = GetQueryString('channel');
+			if(myProvId == '0'){
+				mui.toast('所在省份不能为空')
+				return false
+			}
+			if(myMobile == ''){
+				mui.toast('手机号码不能为空')
+				return false
+			}
+			if(!(/^1\d{10}$/.test(myMobile))){	
+				mui.toast('请输入正确的手机号码')
+				return false
+			}
+			if(myCode == ''){
+				mui.toast('验证码不能为空')
+				return false
+			}
+			var myProv = '';
+			var myCity = '';
+			provs_data.map(function(item,index){
+				if(item.value == myProvId){
+					myProv = item.text
+				}
+			})
+			$.each(citysData, function(index,item){
+				if(index == myProvId) {
+					$.each(item, function(idx,val){
+						if(val.value == myCityId){
+							myCity = val.text
+						}
+					})
+				}
+			})
+			var pack = {
+				prov: myProv,
+				city: myCity,
+				mobile: myMobile,
+				code: myCode,
+				channel: channel
+			}
+			console.log(pack)
+			//校验数据接口
+			loadData(
+				'https://api.51app.cn/loanapi/user/code/check?mobile='+myMobile+'&code='+myCode,
+				'async',
+				function(res){
+					if(res.code == 200){
+						setCookie('loanInfo',JSON.stringify(pack))
+						window.location.href = 'creditLoanDetail.html'
+					}else{
+						mui.toast(res.data)
+					}
+				}
+			)
+			
+		})
+		
+	</script>
+</body>
+</html>

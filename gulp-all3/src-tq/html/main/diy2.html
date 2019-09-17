@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<meta http-equiv="Cache-Control" content="no-cache private max-age=0">
+		<title>腾趣</title>
+		<link rel="shortcut icon" href="../../img/favicon.ico">
+		<!-- stopbuild:css ../../css/hd/all/hd-all-diy2.css -->
+		<link type="text/css" rel="stylesheet" href="../../css/lib/swiper-3.4.1.min.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/lib/layer.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/lib/animate.min.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/comment.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/hd/hd-diy2.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/hd/hd-chooseAttribute2.css" />
+		<!-- endbuild -->
+
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f0e635459915122317d9199dc2470247";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<style type="text/css">
+			.vc-switch {
+				top: 0!important;
+				bottom: auto!important;
+			}
+		</style>
+
+	</head>
+
+	<body>
+
+		<div class="dom-noLoad"></div>
+		<div class="previewPage">
+			<div class="close"><img src="../../img/diy-closePreview.png"></div>
+			<div class="buy">保存/购买</div>
+			<div class="swiper-container swiper-preview">
+				<div class="swiper-wrapper">
+
+				</div>
+				<!-- 如果需要分页器 -->
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+		<div class="containerBox">
+
+			<div class="main dom-hasLoad">
+				<div class="cover"></div>
+
+				<div class="popupBox">
+					<div class="popup"><img src="../../img/loading.gif">正在上传图片</div>
+				</div>
+
+				<header class="attribute">
+					<div class="back"><img src="../../img/diy-back.png" alt="返回" /></div>
+					<span class="attrName"><b>材质选择</b> <i></i></span>
+					<div class="shopCar"><img src="../../img/diy-shopCar.png" alt="购物车" />
+						<div class="num"></div>
+					</div>
+				</header>
+
+				<div style="font-family: '方正正纤体';overflow: hidden;width: 0;height: 0;">让方正字体先下载</div>
+
+				<!-- 商品展示操作区域开始 -->
+				<div class="goodsShow">
+					<div class="tips animated"></div>
+					<div class="templateImgBox" id="templateImgBox">
+						<img class="templateImg bgImg" src="">
+						<img class="frontImg " src="">
+						<div class="activeArea" id="activeArea">
+							<!--<div class="addImgBtn">
+								<div class="fileInputBox"><input type="file" class="file-input" /></div>
+
+								<img src="img/diy-addImg.png" />
+							</div>-->
+							<div class="additiveBox" id='additiveBox'></div>
+							<div class="additiveBox2"></div>
+						</div>
+					</div>
+					<div class="sideBtn">
+						<div class="delete">删除</div>
+						<div class="preview">预览</div>
+						<div class="reform">重做</div>
+						<div class="zoom"><img src="../../img/diy-zoomIn.png"></div>
+					</div>
+					<div class="handleBtn previewBtn">预览</div>
+					<div class="handleBtn compileBtn">编辑</div>
+				</div>
+				<!-- 商品展示操作区域结束 -->
+
+			</div>
+
+		</div>
+		<div class="moduleBox">
+			<!-- 添加图片模块开始 -->
+			<div class="imgModule module">
+
+				<div class="down"><img src="../../img/diy-down.png" /></div>
+				<div class="moduleTab">
+					<div class="tabBox">
+						<div class="tabItem act">精选</div>
+						<div class="tabItem">贴纸</div>
+					</div>
+				</div>
+				<div class="moduleMain">
+					<div class="mainItem picture act">
+						<div class="imgBox">
+							<div class="moduleOption">
+								<div>
+									<div class="fileInputBox"><input type="file" class="file-input" /></div>
+									<img src="../../img/diy-album.png">
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="mainItem paster">
+						<div class="imgBox">
+							<div class="moduleOption">
+								<img src="../../img/diy-album.png">
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- 添加图片模块结束 -->
+			<!-- 添加文字模块开始 -->
+			<div class="textModule module">
+				<div class="down"><img src="../../img/diy-down.png" /></div>
+				<div class="textInputBox">
+					<div class="inputTips">最多可输入10个字</div>
+					<input id="textInput" class="textInput" type="text" placeholder="最多可输入10个字" maxlength="10" />
+					<div class="emptyInput"><img src="../../img/diy-empty.png" alt="清空" /></div>
+					<div class="changeText"><img src="../../img/diy-changeText.png" alt="修改" /></div>
+					<div class="addTextBtn"><img src="../../img/diy-addText.png" alt="添加" /></div>
+
+					<!--<input type="text" style="display: none;" />-->
+
+				</div>
+
+				<div class="fontColorBox">
+					<div class="fontColor">
+						<div class="item act" data-fontColor="#000"></div>
+						<div class="item" data-fontColor="#fff"></div>
+						<div class="item" data-fontColor="#fffd2d"></div>
+						<div class="item" data-fontColor="#2e50ff"></div>
+						<div class="item" data-fontColor="#6dff33"></div>
+						<div class="item" data-fontColor="#c657ff"></div>
+						<div class="item" data-fontColor="#3dfffd"></div>
+						<div class="item" data-fontColor="#fda22d" id="entry"></div>
+						<div class="item" data-fontColor="#ff2b2b"></div>
+					</div>
+				</div>
+
+				<div class="fontFamilyBox">
+					<div class="fontFamily">
+						<!--style="font-family:方正正纤体"-->
+						<div class="item act" data-fontFamily="a"></div>
+						<!--style="font-family:全新硬笔隶书体" -->
+						<div class="item" data-fontFamily="e"></div>
+						<!--style="font-family:书体坊硬笔行书"-->
+						<div class="item" data-fontFamily="d"></div>
+						<!--style="font-family:汉仪黑荔枝体"-->
+						<div class="item" data-fontFamily="c"></div>
+						<!--style="font-family:新青年"-->
+						<div class="item" data-fontFamily="b"></div>
+
+					</div>
+				</div>
+
+			</div>
+			<!-- 添加文字模块结束 -->
+
+		</div>
+
+		<footer class="bottomBtn">
+			<div class="imgBtn addBtn">网络素材</div>
+			<div class="uploadingImg addBtn">上传图片
+				<div class="fileInputBox"><input type="file" class="file-input" /></div>
+			</div>
+			<div class="textBtn addBtn">添加文字</div>
+			<div class="buyBtn">下一步</div>
+			<!--<div class="carBtn">加入购物车</div>-->
+		</footer>
+
+		<script src="../../js/lib/alloy-lever.js"></script>
+
+		<!-- stopbuild:js ../../js/hd/all/hd-all-diy2.js -->
+		<script src="../../js/lib/jq-3.1.1.min.js"></script>
+		<script src="../../js/lib/diy-thirdParty.js"></script>
+		<script src="../../js/common.js"></script>
+		<script src="../../js/xl/xl-login.js"></script>
+		<script src="../../js/hd/diy2/hd-diy.js?3"></script>
+		<script src="../../js/hd/diy2/hd-chooseAttribute.js?4"></script>
+		
+		<!-- endbuild -->
+
+	</body>
+
+</html>

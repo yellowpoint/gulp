@@ -1,0 +1,764 @@
+.certify {
+	position: relative;
+	width: 7.5rem;
+	margin: 0 auto;
+	background-color: #fff;
+	padding-top: 0.3rem;
+}
+
+.certify .swiper-container {
+	background-color: #fff;
+	padding-bottom: 0.4rem;
+}
+
+.certify .swiper-slide {
+	width: 6.7rem;
+	height: 3.3rem;
+	background: #fff;
+}
+
+.certify .swiper-slide div {
+	width: 6.7rem;
+	height: 3.3rem;
+	margin-left: 0.35rem;
+}
+
+.certify .swiper-slide img {
+	display: block;
+	width: 6.7rem;
+	height: 3.3rem;
+	border-radius: 8px;
+	box-shadow: 0 8px 30px #ddd;
+	margin: 0 auto;
+}
+
+.certify .swiper-pagination {
+	bottom: 25px;
+}
+
+.certify .swiper-pagination .swiper-pagination-bullet {
+	width: 16px;
+	height: 4px;
+	border-radius: 2px;
+}
+
+
+/*公共部分开始*/
+
+.plateBox {
+	background-color: #fff;
+	margin-bottom: 0.2rem;
+}
+
+.imgMask img {
+	width: 100%;
+	height: 100%;
+}
+
+
+/*小标题开始*/
+
+.plateTitle {
+	padding: 0.2rem;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	line-height: 0.32rem;
+}
+
+.plateTitle .title {
+	color: #333;
+	font-weight: bold;
+	height: 0.62rem;
+	line-height: 0.62rem;
+	display: flex;
+	align-items: center;
+}
+
+.plateTitle .title i {
+	display: inline-block;
+	width: 0.12rem;
+	height: 0.42rem;
+	border-radius: 0.06rem;
+	background-color: #236de6;
+	margin-right: 0.2rem;
+}
+
+.plateTitle .title-right {
+	color: #999;
+}
+
+.Vice-plateTitle {
+	color: #999;
+	width: 7.1rem;
+	margin: 0 auto;
+	margin-top: -0.2rem;
+}
+
+
+/*小标题结束*/
+
+
+/*公共 部分结束*/
+
+
+/*创意定制手机壳  版块1 开始*/
+
+.plate1 .plateCon {
+	width: 7.1rem;
+	margin: 0 auto;
+}
+
+.plate1 .imgOrvideo {
+	width: 100%;
+	height: 3.6rem;
+	border-radius: 8px;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 0.2rem;
+}
+
+.plate1 .imgOrvideo .imgOrvideoCon {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 3.6rem;
+}
+
+.plate1 .imgOrvideo .imgOrvideoCon img,
+.plate1 .imgOrvideo .imgOrvideoCon video {
+	width: 100%;
+	height: 3.6rem;
+}
+
+.plate1 .imgOrvideo .imgMask {
+	display: block;
+	width: 7.1rem;
+	height: 3.6rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: linear-gradient(bottom, rgba(8, 8, 8, 0.9) 5%, rgba(255, 255, 255, 0) 50%);
+	background-image: -o-linear-gradient(bottom, rgba(8, 8, 8, 0.9) 5%, rgba(255, 255, 255, 0) 50%);
+	background-image: -moz-linear-gradient(bottom, rgba(8, 8, 8, 0.9) 5%, rgba(255, 255, 255, 0) 50%);
+	background-image: -webkit-linear-gradient(bottom, rgba(8, 8, 8, 0.9) 5%, rgba(255, 255, 255, 0) 50%);
+	background-image: -ms-linear-gradient(bottom, rgba(8, 8, 8, 0.9) 5%, rgba(255, 255, 255, 0) 50%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#000000, endColorstr=#ffffff, grandientType=1);
+}
+
+.plate1 .imgOrvideo .textMask {
+	position: absolute;
+	bottom: 0.2rem;
+	left: 0.2rem;
+}
+
+.plate1 .imgOrvideo .textMask p {
+	width: 6rem;
+	color: #fff;
+}
+
+.plate1 .imgOrvideo .textMask p:first-child {
+	font-weight: 600;
+	margin-bottom: 0.1rem;
+}
+
+.plateGoodsList1 .downList li {
+	display: flex;
+	padding: 0.2rem 0;
+	border-bottom: 1px solid #f5f5f5;
+}
+
+.plateGoodsList1 .downList li>img {
+	width: 1.6rem;
+	height: 1.6rem;
+	border-radius: 8px;
+	margin-right: 0.4rem;
+}
+
+.plateGoodsList1 .downList li .item h1 {
+	color: #333;
+	word-break: break-all;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	/** 对象作为伸缩盒子模型显示 **/
+	-webkit-box-orient: vertical;
+	/** 设置或检索伸缩盒对象的子元素的排列方式 **/
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	/** 隐藏超出的内容 **/
+	height: 0.8rem;
+	margin-top: 0.05rem;
+}
+
+.plateGoodsList1 .downList li .item .itemCon {
+	width: 5.08rem;
+	margin-top: 0.3rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+.plateGoodsList1 .downList li .item .itemCon span:first-child {
+	color: #ff3434;
+}
+
+.diyTypeIcon {
+	width: .58rem;
+	height: .26rem;
+	line-height: .26rem;
+	margin-left: .2rem;
+	border-radius: .05rem;
+	font-size: .2rem;
+	color: #fff;
+	background: #ff3535;
+	text-align: center;
+}
+
+
+/*创意定制手机壳  版块1 结束*/
+
+
+/*甄选商品 版块2 开始*/
+
+.plate2 .plateCon {
+	width: 7.1rem;
+	height: 4.4rem;
+	margin: 0 auto;
+	display: flex;
+}
+
+.plate2 .plateCon .itemLeft .leftBox {
+	width: 2.8rem;
+	height: 4rem;
+	margin-right: 0.2rem;
+	background: url(../../img/spreadIndex/itemLeft.png) left top no-repeat;
+	background-size: cover;
+	border-radius: 8px;
+}
+
+.plate2 .plateCon .itemLeft .leftBox img {
+	display: block;
+	width: 2.1rem;
+	height: 2.1rem;
+	margin: 0 auto;
+	padding-top: 0.3rem;
+}
+
+.plate2 .plateCon .itemLeft .leftBox h2,
+.plate2 .plateCon .itemLeft .leftBox p {
+	text-align: center;
+	color: #fff;
+}
+
+.plate2 .plateCon .itemLeft .leftBox h2 {
+	font-weight: 600;
+	margin: 0.48rem 0 0.12rem;
+}
+
+.plate2 .plateCon .itemRight .rightTopBox {
+	width: 4.1rem;
+	height: 1.9rem;
+	border-radius: 8px;
+	background: url(../../img/spreadIndex/itemRight.png) left top no-repeat;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	margin-bottom: 0.2rem;
+	color: #fff;
+}
+
+.plate2 .plateCon .itemRight .rightTopBox img {
+	width: 1.5rem;
+	height: 1.5rem;
+	margin: 0 0.2rem;
+}
+
+.plate2 .plateCon .itemRight .rightTopBox .item {
+	width: 2.2rem;
+	padding-right: 0.14rem;
+	box-sizing: border-box;
+}
+
+.plate2 .plateCon .itemRight .rightTopBox .item h1 {
+	font-weight: 600;
+	margin-bottom: 0.1rem;
+}
+
+.plate2 .plateCon .itemRight .rightButtom {
+	width: 4.1rem;
+	height: 1.9rem;
+	display: flex;
+	justify-content: space-between;
+}
+
+.plate2 .plateCon .itemRight .rightButtom .buttom1Box,
+.plate2 .plateCon .itemRight .rightButtom .buttom2Box {
+	width: 1.95rem;
+	height: 1.9rem;
+	position: relative;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.plate2 .plateCon .itemRight .rightButtom .buttom1Box img,
+.plate2 .plateCon .itemRight .rightButtom .buttom2Box img {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.plate2 .plateCon .itemRight .rightButtom .buttom1Box p,
+.plate2 .plateCon .itemRight .rightButtom .buttom2Box p {
+	text-align: center;
+	width: 100%;
+	height: 0.48rem;
+	line-height: 0.48rem;
+	padding: 0 0.1rem;
+	box-sizing: border-box;
+	background-color: rgba(96, 96, 255, 0.8);
+	color: #fff;
+	position: absolute;
+	left: 0;
+	bottom: 0.2rem;
+}
+
+
+/*甄选商品 版块2 开始*/
+
+
+/*特色商品  版块3 结束*/
+
+.plate3 .plateCon {
+	width: 7.3rem;
+	height: 3.2rem;
+	margin-left: 0.2rem;
+	padding-bottom: 0.4rem;
+	overflow-y: hidden;
+	overflow-x: auto;
+}
+
+.plate3 .plateCon .scrollBox {
+	/*width: 25.2rem;*/
+	overflow: hidden;
+}
+
+.plate3 .plateCon .scrollBox .item {
+	float: left;
+	width: 5rem;
+	height: 2.8rem;
+	border-radius: 8px;
+	position: relative;
+	margin-right: 0.2rem;
+	overflow: hidden;
+}
+
+.plate3 .plateCon .scrollBox .item img {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.plate3 .plateCon .scrollBox .item .imgMask {
+	width: 5rem;
+	height: 2.8rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: linear-gradient(bottom, rgba(8, 8, 8, 0.9) 5%, rgba(255, 255, 255, 0) 50%);
+	background-image: -o-linear-gradient(bottom, rgba(8, 8, 8, 0.9) 5%, rgba(255, 255, 255, 0) 50%);
+	background-image: -moz-linear-gradient(bottom, rgba(8, 8, 8, 0.9) 5%, rgba(255, 255, 255, 0) 50%);
+	background-image: -webkit-linear-gradient(bottom, rgba(8, 8, 8, 0.9) 5%, rgba(255, 255, 255, 0) 50%);
+	background-image: -ms-linear-gradient(bottom, rgba(8, 8, 8, 0.9) 5%, rgba(255, 255, 255, 0) 50%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#000000, endColorstr=#ffffff, grandientType=1);
+}
+
+.plate3 .plateCon .scrollBox .item .imgMask img {
+	width: 100%;
+	height: 100%;
+}
+
+
+/*特色商品  版块3 结束*/
+
+
+/*带有 查看更多 的特色商品  版块4 开始*/
+
+.plate4 .plateCon {
+	width: 7.1rem;
+	margin: 0 auto;
+}
+
+.plate4 .plateCon .imgOrvideo {
+	width: 7.1rem;
+	height: 2.8rem;
+	border-radius: 8px;
+	overflow: hidden;
+	position: relative;
+}
+
+.plate4 .plateCon .imgOrvideo img,
+.plate4 .plateCon .imgOrvideo video {
+	width: 7.1rem;
+	height: 2.8rem;
+}
+
+.plate4 .plateCon .imgOrvideo .imgMask {
+	width: 7.1rem;
+	height: 2.8rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.plateGoodsList2 {
+	width: 7.1rem;
+}
+
+.plateGoodsList2 .downList {
+	overflow: hidden;
+	display: flex;
+	margin-top: 0.2rem;
+}
+
+.plateGoodsList2 .downList li {
+	flex: 1;
+	width: 2.24rem;
+	margin-right: 0.19rem;
+	padding-bottom: 0.4rem;
+}
+
+.plateGoodsList2 .downList li>img {
+	width: 2.24rem;
+	height: 2.24rem;
+	border-radius: 8px;
+	margin: 0 auto;
+}
+
+.plateGoodsList2 .downList li .item h1 {
+	width: 2.24rem;
+	height: 0.62rem;
+	margin: 0.22rem 0 0.1rem;
+	word-break: break-all;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	/** 对象作为伸缩盒子模型显示 **/
+	-webkit-box-orient: vertical;
+	/** 设置或检索伸缩盒对象的子元素的排列方式 **/
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	/** 隐藏超出的内容 **/
+}
+
+.plateGoodsList2 .downList li .item p {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.plateGoodsList2 .downList li .item p span {
+	color: #999;
+}
+
+.plateGoodsList2 .downList li .item p i {
+	display: inline-block;
+	width: 0.5rem;
+	height: 0.26rem;
+	line-height: 0.24rem;
+	text-align: center;
+	background-color: #ff3434;
+	color: #fff;
+}
+
+
+/*带有 查看更多 的特色商品  版块4 结束*/
+
+
+/*无查看更多 的 版块5 开始*/
+
+.plate5 .plateCon {
+	width: 7.1rem;
+	height: 5.35rem;
+	margin: 0 auto;
+	position: relative;
+}
+
+.plate5 .plateCon .imgBg {
+	width: 7.1rem;
+	height: 2.8rem;
+	position: relative;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.plate5 .plateCon .imgBg img {
+	width: 100%;
+	height: 100%;
+}
+
+.plate5 .plateCon .imgBg .imgMask {
+	width: 7.1rem;
+	position: absolute;
+	top: 0.32rem;
+	left: 0;
+}
+
+.plate5 .plateCon .imgBg .imgMask p {
+	text-align: center;
+	color: #fff;
+}
+
+.plate5 .plateCon .imgBg .imgMask p:first-child {
+	margin: 0 0 0.16rem;
+	font-weight: 600;
+}
+
+.plateGoodsList3 {
+	width: 7.1rem;
+	position: absolute;
+	top: 1.45rem;
+}
+
+.plateGoodsList3 .downList {
+	overflow: hidden;
+	display: flex;
+}
+
+.plateGoodsList3 .downList li {
+	flex: 1;
+	width: 2.1rem;
+	/*margin-right: 0.19rem;*/
+	padding-bottom: 0.4rem;
+}
+
+.plateGoodsList3 .downList li>img {
+	width: 2.24rem;
+	height: 2.24rem;
+	border-radius: 8px;
+	margin: 0 auto;
+}
+
+.plateGoodsList3 .downList li .item h1 {
+	width: 2.24rem;
+	height: 0.62rem;
+	margin: 0.22rem 0 0.1rem;
+	word-break: break-all;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	/** 对象作为伸缩盒子模型显示 **/
+	-webkit-box-orient: vertical;
+	/** 设置或检索伸缩盒对象的子元素的排列方式 **/
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	/** 隐藏超出的内容 **/
+}
+
+.plateGoodsList3 .downList li .item p span {
+	color: #999;
+}
+
+
+/*无查看更多 的版块5 结束*/
+
+
+/*苹果推出iphone8红色特别版  版块6 开始*/
+
+.plate6 .plateCon {
+	width: 7.3rem;
+	margin: 0.28rem 0 0 0.2rem;
+	overflow-x: auto;
+	overflow-y: hidden;
+}
+
+.plate6 .plateCon ul {
+	/*width: 30rem;*/
+	height: 3.8rem;
+	overflow: hidden;
+}
+
+.plate6 .plateCon ul li {
+	float: left;
+	width: 6.2rem;
+	height: 3.4rem;
+	margin-right: 0.2rem;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+
+/*苹果推出iphone8红色特别版  版块6 结束*/
+
+
+/*iphone特制手机壳  版块7 开始*/
+
+.plate7 .plateCon {
+	width: 7.1rem;
+	margin: 0 auto;
+}
+
+.plate7 .plateCon ul li {
+	width: 7.1rem;
+	height: 2.8rem;
+	margin: 0 auto;
+	border-radius: 8px;
+	margin-bottom: 0.2rem;
+	overflow: hidden;
+}
+
+.plate7 .plateCon ul li img {
+	width: 100%;
+	height: 100%;
+}
+/*iphone特制手机壳  版块7 结束*/
+
+
+/*菜单按钮开始*/
+.menuBox {
+	position: fixed;
+	bottom: .46rem;
+	right: .46rem;
+	width: 2.39rem;
+	height: 2.36rem;
+	z-index: 999;
+}
+
+.menuBox .control {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 1rem;
+	height: 1rem;
+	background: url(../../img/control.png) no-repeat;
+	background-size: 100%;
+	transform:scale(1) rotate(45deg);
+}
+.menuBox .controlTrans1{
+	transform:scale(1) rotate(270deg);
+	transition: transform 0.5s;
+}
+.menuBox .controlTrans2{
+	transform:scale(1) rotate(45deg);
+	transition: transform 0.5s;
+}
+.menuBox .menuIcon {
+	width: .76rem;
+	height: .76rem;
+	transition: all 0.5s;
+	background: red;
+}
+.menuBox .toservice {
+	position: absolute;
+	bottom: 1.6rem;
+	right: 0;
+	background: url(../../img/toservice.png) no-repeat;
+	background-size: 100%;
+}
+
+.menuBox .tomyshopcar {
+	position: absolute;
+	bottom: 1.24rem;
+	right: 1.2rem;
+	background: url(../../img/tomyshopcar.png) no-repeat;
+	background-size: 100%;
+}
+.menuBox .tomyshopcar i{
+	display: inline-block;
+	width: 0.1rem;
+	height: 0.1rem;
+	border-radius: 50%;
+	background-color: red;
+	position: absolute;
+	top: 0.05rem;
+	right: 0.05rem;
+	display: none;
+}
+.menuBox .tomyorder {
+	position: absolute;
+	bottom: 0;
+	right: 1.62rem;
+	background: url(../../img/tomyorder.png) no-repeat;
+	background-size: 100%;
+}
+.menuBox .showIt {
+	animation:fadeIn 0.5s 1;
+	-webkit-animation:fadeIn 0.5s 1;
+	animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadeIn {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
+.menuBox .hideIt {
+	animation:fadeO 0.5s;
+	-webkit-animation:fadeO 0.5s; 
+	animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes fadeO {
+	from {opacity: 1;}
+	to {opacity: 0;}
+}
+/*菜单按钮结束*/
+
+
+/*子页面*/
+
+.spreadGoodsList .main {
+	margin-top: 55px;
+}
+
+
+/*头部图标开始*/
+
+.headImg {
+	width: 100%;
+	height: 44px;
+	line-height: 44px;
+	display: flex;
+	align-items: center;
+	border-bottom: 1px solid #cfcfcf;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	z-index: 11;
+}
+
+.headImg>img {
+	display: block;
+	width: 1.8rem;
+	height: 0.6rem;
+	margin: 0 auto;
+}
+
+.headImg .back {
+	color: #333;
+	margin-left: 0.2rem;
+	z-index: 10;
+}
+
+.headImg .back i {
+	display: inline-block;
+	border-left: 2px solid;
+	border-bottom: 2px solid;
+	width: 10px;
+	height: 10px;
+	transform: rotate(45deg);
+}
+
+.headImg p {
+	width: 7.5rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+	text-align: center;
+	font-weight: 600;
+}
+
+
+/*头部图标结束*/

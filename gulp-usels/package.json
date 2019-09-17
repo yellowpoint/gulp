@@ -1,0 +1,16 @@
+{
+  "name": "usels",
+  "version": "1.0.0",
+  "description": "构建块合并js、css",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-usels": "^1.0.5"
+  }
+}

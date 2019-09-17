@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>查询办卡进度</title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/common.css" />
+
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<style type="text/css">
+			.cm-item {
+				position: relative;
+				display: block;
+				float: left;
+				width: 33.3333%;
+				text-align: center;
+				padding-top: .3rem;
+			}
+			
+			.cm-item img {
+				width: .72rem;
+				height: .72rem;
+				margin: 0 auto;
+			}
+			
+			.cm-item span {
+				display: block;
+				width: 100%;
+				color: #2e2e2e;
+				font-size: .28rem;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			
+			.cm-item p {
+				width: 100%;
+				color: #c5c5c5;
+				font-size: .24rem;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body class="checkProgress body-loading">
+
+		<div class="body-main">
+			<!--回到顶部-->
+			<div id="goTop"></div>
+			<div class="checkProgress-main"></div>
+		</div>
+
+
+		<script src="js/commonPlugin.min.js"></script>
+		<script src="js/hd-common.js"></script>
+		<script type="text/javascript">
+			var url = apiDomain + '/creditcard/center/bank/list';
+			var successFunc = function(data) {
+				if(data.code != 200) {
+					return false
+				}
+				var dataBox = '';
+				var bankList = data.data.bankList;
+				$.each(bankList, function(i, v) {
+					if(!v.processUrl){return}
+					dataBox += '<a class="cm-item" href="' + v.processUrl + '"><img src="' + v.logoImageUrl + '" alt="办信用卡" /><span>' + v.name + '</span><p>' + v.slogan + '</p></a>';
+				})
+				$('.checkProgress-main').append(dataBox)
+				//数据加载完成后显示界面
+				$('body').removeClass('body-loading')
+			}
+			loadData(url, true, successFunc)
+
+
+		</script>
+
+	</body>
+
+</html>

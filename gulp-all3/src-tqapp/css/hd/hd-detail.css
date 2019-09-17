@@ -1,0 +1,237 @@
+html,body{
+	background:#fff;
+	height: auto;
+	/*overflow: hidden;*/
+	overflow: auto;
+}
+html.act,body.act{
+	height: 100%;
+	overflow: hidden;
+}
+.main{
+	background:#fff;
+	padding-bottom: .98rem;
+}
+.slider{
+	height: 7.5rem;
+	position: relative
+}
+
+.slider .goToDiy{
+	width: .98rem;
+	height: .98rem;
+	position: absolute;
+	bottom: .1rem;
+	right: .1rem;
+	z-index: 555;
+}
+.slider .slider_list{
+	
+}
+.slider .slider_list .slider_item{
+	
+}
+.effectImg{
+	position: relative;
+	height: 7.5rem;
+	overflow: hidden;
+}
+.effectImg .frontImg{
+	position: absolute;
+	z-index: 88;
+}
+.effectImg .middleImg{
+	position: absolute;
+	z-index: 77;
+	overflow: hidden;
+	display: none;
+}
+.effectImg .middleImg img{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+}
+
+.effectImg .bgImg{
+	position: absolute;
+	z-index: 66;
+}
+
+.goodsInfo{
+	background: #fff;;
+	height: 1.4rem;
+	border-bottom: .1rem solid #ebebeb; 
+	position: relative;
+	padding: 0 .2rem;
+	overflow: hidden;
+}
+.goodsInfo .name{
+	font-size: .3rem;
+	color: #333;
+	margin-top: .2rem;
+	width: 70%;
+}
+.goodsInfo .price{
+	font-size: .45rem;
+	color:#ff4949 ;
+	margin-top: .1rem;
+}
+.goodsInfo .price i{
+	font-size: .38rem;
+}
+.goodsInfo .sell{
+	position: absolute;
+	top: .3rem;
+	right: .2rem;
+	font-size: .22rem;
+	color: #a6a6a6;
+}
+
+.choose{
+	height: .72rem;
+	line-height: .72rem;
+	color: #333;
+	font-size: .26rem;
+	background: #fff;
+	margin: 0 .2rem;
+  padding-right: .4rem;
+	border-bottom: 1px solid #ebebeb;
+	position: relative;
+}
+.choose:after{
+	content: '';
+	width: .2rem;
+	height: .2rem;
+	border:  solid #ebebeb;
+	border-width: 0 0 .04rem .04rem;
+	position: absolute;
+	top: .2rem;
+	right: .2rem;
+	-webkit-transform: rotate(225deg);
+	transform: rotate(225deg);
+	
+}
+.choose span{
+	margin: 0 5px;
+}
+.promotion{
+	height: .72rem;
+	line-height: .72rem;
+	color: #ff4949;
+	font-size: .26rem;
+	background: #fff;
+	padding: 0 .2rem;
+	overflow: hidden;
+	border-bottom: .1rem solid #ebebeb; 
+}
+.promotion i{
+	/*display: inline-block;*/
+	float: left;
+	width: .6rem;
+	height: .26rem;
+	line-height: .26rem;
+	text-align: center;
+	color: #fff;
+	font-size: .2rem;
+	background: #ff4949;
+	margin: .24rem .2rem 0 0;
+	border-radius: .06rem;
+}
+.title{
+	color: #666;
+	font-size: .28rem;
+	text-align: center;
+	padding: .3rem 0 .4rem 0;
+}
+.title span{
+	position: relative;
+}
+.title span:after{
+	content: '';
+	position: absolute;
+	top: .18rem;
+	right: -.6rem;
+	width: .48rem;
+	height: .03rem;
+	background: #999;
+}
+.title span:before{
+	content: '';
+	position: absolute;
+	top: .18rem;
+	left: -.6rem;
+	width: .48rem;
+	height: .03rem;
+	background: #999;
+}
+.bottomBtn{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+  right: 0;
+	z-index: 999;
+	height: .98rem;
+	line-height: .98rem;
+	text-align: center;
+
+	
+}
+.bottomBtn .buyBtn{
+	width: 100%;
+	height: 100%;
+	background:#ff4949 ;
+	color: #fff;
+	font-size: .32rem;
+}
+
+/*选择属性*/
+.attributePopupBox{
+	background:transparent;
+	/*transform: translateY(100%);*/
+	transition:all .26s;
+}
+.attributePopupBox.act{
+  background: rgba(0, 0, 0, .5);
+	/*transform: translateY(0);*/
+	
+}
+.attributePopup{
+	width: 100%;
+	left: 0;
+	top: auto;
+	bottom: .7rem;
+	border-radius:0;
+  position: fixed;
+  /*display: none;*/
+  transform: translateY(120%);
+  transition:all .26s;
+  
+}
+.attributePopup.act{
+	transform: translateY(0);
+}
+
+
+.attributePopup .ap-arrows{
+	display: none;
+}
+.attributePopup .ap-confirm{
+	width: 100%;
+	left:0;
+	border-radius:0;
+	height: .98rem;
+	line-height: .98rem;
+  bottom: -.7rem;
+	
+}
+.ap-close{
+	width: .4rem;
+	position: absolute;
+	top: .2rem;
+	right: .2rem;
+	pointer-events:
+}
+.attributePopup .ap-main{
+	max-height: 6rem;
+	overflow: auto;
+}

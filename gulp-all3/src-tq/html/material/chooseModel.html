@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1.0">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>腾趣</title>
+		<!-- Path to Framework7 Library CSS-->
+		<link rel="stylesheet" href="../../css/lib/framework7.ios.min.css">
+		<!-- Path to your custom app styles-->
+		<!--<link rel="stylesheet" href="css/my-app.css">-->
+		<link rel="stylesheet" type="text/css" href="../../css/comment.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/xl/xl-main.css" />
+		<link rel="stylesheet" href="../../css/xl/xl-commen.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/xl/xl-login.css" />
+		<!--<link rel="stylesheet" type="text/css" href="css/hd-chooseAttribute.css"/>-->
+		<link rel="stylesheet" type="text/css" href="../../css/xl/xl-chooseAttribute.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/xl/xl-hot.css?1" />
+		<!--<link rel="stylesheet" type="text/css" href="../../css/xl/xl-filter.css"/>-->
+		<link rel="shortcut icon" href="../../img/favicon.ico">
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f0e635459915122317d9199dc2470247";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+
+	<body>
+		<!-- Status bar overlay for fullscreen mode-->
+		<div class="statusbar-overlay"></div>
+		<!-- Panels overlay-->
+		<div class="panel-overlay"></div>
+
+		<div class="hd-noLoad">
+			<img class="hd-loading" src="//api.51app.cn/loanpage/v1.0.0/images/loading.gif" alt="loading" />
+		</div>
+		<!-- Views-->
+		<div class="views" id='hotIndex' style="overflow: hidden;">
+			<!-- Your main view, should have "view-main" class-->
+			<div class="view view-main">
+				<!-- Bottom Tabbar-->
+				<!--<div class="toolbar tabbar tabbar-labels tabbar-labels-fixed">
+					<div class="toolbar-inner">
+						<a href="../main/index.html" class="tab-link tab-link1 external"><i class="icon tabbar-icon-1"></i><span class="tabbar-label">首页</span></a>
+						<a href="#" class="tab-link tab-link2 active"><i class="icon tabbar-icon-2 themeColor"></i><span class="tabbar-label themeColor-text">定制</span></a>
+						<a href="../main/shopCar.html" class="tab-link tab-link3 external"><i class="icon tabbar-icon-3"></i><span class="tabbar-label">购物车</span></a>
+						<a href="../main/my.html" class="tab-link tab-link4 external"><i class="icon tabbar-icon-4"></i><span class="tabbar-label">我的</span></a>
+					</div>
+				</div>-->
+				<div class="menuBox">
+					<div class="control"></div>
+					<div class="toservice menuIcon showIt"></div>
+					<div class="tomyshopcar menuIcon showIt"><i></i></div>
+					<div class="tomyorder menuIcon showIt"></div>
+				</div>	
+				<div class="pages">
+					<div data-page="hotIndex" class="page" id="hotIndex">
+						<div class="shareMaskBox">
+							<!--<div class="shareMask">
+								<img src="img/shareMask.jpg"/>
+							</div>-->
+						</div>
+
+						<div class="hotIndexFixed">
+							<ul class="hotName">
+								<li class="hot-ios active">苹果</li>
+								<li class="hot-android">安卓<i></i></li>
+							</ul>
+							<ul class="hotItem">
+								<!--<li>三星</li>-->
+							</ul>
+						</div>
+						<div class="page-content">
+							<div class="i4Banner" style="width: 7.5rem;height: 2rem;">
+								<div class="swiper-container index-swiper" data-space-between="0" style="width: 7.5rem;height: 2rem;">
+									<div class="swiper-wrapper">
+										<div class="swiper-slide" data-url="https://api.51app.cn/webPage/tq/web/html/main/goodsDetail.html?goodsId=238">
+											<div class="slideBox" style="width: 7.5rem;height: 2rem;">
+												<img style="width: 100%;height: 100%;display: block;" src="../../img/material/chooseBanner10.jpg">
+											</div>
+										</div>
+										<div class="swiper-slide" data-url="https://api.51app.cn/webPage/tq/web/html/main/subjectRecommend.html?topicId=11">
+											<div class="slideBox" style="width: 7.5rem;height: 2rem;">
+												<img style="width: 100%;height: 100%;display: block;" src="../../img/material/i4_chooseBanner6.png">
+											</div>
+										</div>
+									</div>
+									<div class="swiper-pagination" style="bottom: 2px;"></div>
+								</div>
+							</div>
+							<div class="hotItemBox">
+								<ul>
+									<!--<li>
+										<img src="img/002.jpg" alt=""/>
+										<div></div>
+										<p>三星S8</p>
+									</li>-->
+								</ul>
+							</div>
+							<div class="pageContent-mask"></div>
+						</div>
+						<div class="gotoTop" style="bottom: 1.2rem;"><img src="../../img/gotoTop.png" alt="TOP" /></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Path to Framework7 Library JS-->
+		<script src="https://jic.talkingdata.com/app/h5/v1?appid=49940E22D9EA401BB53559FB28CBF68F&vn=tq&vc=1.0.1"></script>
+		<script type="text/javascript" src="../../js/lib/ckplayer.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../../js/lib/framework7.min.js"></script>
+		<script type="text/javascript" src="../../js/lib/layer.min.js"></script>
+		<!-- Path to your app js-->
+		<script type="text/javascript" src="../../js/xl/my-app1.js"></script>
+		<script type="text/javascript" src="../../js/lib/fastclick.min.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../../js/xl/xl-commen.js"></script>
+		<!--<script type="text/javascript" src="js/xl-chooseAttribute.js?1"></script>-->
+		<!--<script type="text/javascript" src="js/xl-login.js"></script>-->
+		<script src="../../js/lib/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/xl/xl-hot.js?2" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/alloy-lever.js" type="text/javascript" charset="utf-8"></script>
+
+		<script type="text/javascript">
+			window.onload = function() {
+				var mySwiper = new Swiper('.index-swiper', {
+						pagination: '.swiper-pagination',
+						loop: true,
+						paginationHide: false,
+						paginationClickable: true,
+						autoplay: 5000,
+						autoplayDisableOnInteraction: false,
+						observer: true, //修改swiper自己或子元素时，自动初始化swiper
+						observeParents: true //修改swiper的父元素时，自动初始化swiper
+					});
+				if(localStorage.getItem('share')) {
+					localStorage.removeItem('share')
+					var dataBox = '<div class="shareMask"><img src="../../img/material/shareMask.jpg"/></div>'
+					$('#hotIndex .shareMaskBox').empty().append(dataBox);
+				}
+				hotIndex();
+			}
+
+			//			AlloyLever.config({
+			//			    entry:"#materials"          //请点击这个DOM元素6次召唤vConsole。//你可以通过AlloyLever.entry('#entry2')设置多个机关入口召唤神龙
+			//			})
+			
+			//爱思bannner点击
+			$('#hotIndex .index-swiper').on('click','.swiper-slide',function(){
+				window.location.href = $(this).attr('data-url')+'&from=' + GetQueryString('channel')
+			})
+			
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>信用卡中心</title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/mui.min.css" />
+		<link rel="stylesheet" href="css/swiper-3.4.1.min.css" />
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/hd-creditCardCenter.css" />
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+
+	<body class="creditCardCenter body-loading">
+
+		<div class="body-main">
+			<!--回到顶部-->
+			<div id="goTop"></div>
+
+			<!--顶部导航按钮 开始-->
+			<div class="creditCardCenter-nav">
+				<a class="cn-item" href="newPerson.html">
+					<img src="images/creditCardCenter/nav-1.png" alt="新人办卡" />
+					<span>新人办卡</span>
+				</a>
+				<a class="cn-item" href="addGzh.html">
+					<img src="images/creditCardCenter/nav-2.png" alt="查询办卡进度" />
+					<span>查询办卡进度</span>
+				</a>
+
+				<a class="cn-item" href="news.html">
+					<img src="images/creditCardCenter/nav-3.png" alt="信用卡代还" />
+					<span>用卡攻略</span>
+				</a>
+
+				<a class="cn-item redPoint" data-name="lottery-aykk" href="lottery-aykk.html?from=creditCardCenter">
+					<img src="images/lottery/icon.png" alt="幸运抽奖" />
+					<span>幸运抽奖</span>
+				</a>
+				<!--<a class="cn-item" href="https://api.51app.cn/loanapi/url/jibirmdc">
+					<img src="images/creditCardCenter/nav-4.png" alt="信用卡代还" />
+					<span>快速办卡</span>
+				</a>-->
+			</div>
+			<!--顶部导航按钮 结束-->
+
+			<!--按银行选卡 开始-->
+			<div class="creditCardCenter-bank">
+				<div class="cb-title">
+					<span>按银行选卡</span>
+					<a href="choiceCity.html"><i class="cb-city">深圳</i><span class="mui-icon mui-icon-arrowdown"></span></a>
+					<div class="cb-cityTips"></div>
+					<!--<img class="cb-cityTips" src="images/creditCardCenter/cityTips.png" alt="请选择您的城市" />-->
+				</div>
+				<div class="cb-main">
+
+					<div class="swiper-container swiper-bankSlider">
+
+						<div class="swiper-wrapper"></div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination"></div>
+					</div>
+
+				</div>
+			</div>
+			<!--按银行选卡 结束-->
+
+			<!--信用卡分类 开始-->
+			<div class="creditCardCenter-label"></div>
+			<!--信用卡分类 结束-->
+
+			<!--产品列表 开始-->
+			<div class="creditCardCenter-title">
+				<span>热卡精选</span>
+				<a href="creditCardList.html?from=all">全部<span class="mui-icon mui-icon-arrowright"></span></a>
+			</div>
+			<div class="commonProductList"></div>
+			<!--产品列表 结束-->
+
+		</div>
+		<!--交行弹窗开始-->
+		<div class="popup-bankcomm">
+
+			<div class="pb-main">
+				<a href="bankcomm.html"></a>
+				<div class="pb-close"></div>
+			</div>
+		</div>
+		<!--交行弹窗结束-->
+		<!--抽奖弹窗开始-->
+		<div class="popup-lottery">
+
+			<div class="pl-main">
+				<a href="lottery-aykk.html?from=creditCardCenter"></a>
+				<div class="pl-close"></div>
+			</div>
+		</div>
+		<!--抽奖弹窗结束-->
+
+		<!--<div class="popup-180705_2">
+			<div class="p180705_2-main">
+				<a href="https://api.51app.cn/loanapi/url/jj9eb169"></a>
+				<div class="p180705_2-close"></div>
+			</div>
+		</div>-->
+
+		<div class="popup-180705">
+			<div class="p180705-main">
+				<a href="https://api.51app.cn/loanapi/url/jj9e9n15"></a>
+				<div class="p180705-close"></div>
+			</div>
+		</div>
+
+		<div class="popup-template p180815">
+			<div class="pTemplate-main">
+				<img src="images/popup/180817.png" />
+				<a href="https://api.51app.cn/loanapi/url/jilrytz4"></a>
+				<div class="pTemplate-close"></div>
+			</div>
+		</div>
+
+		<script src="js/commonPlugin.min.js"></script>
+		<script src="js/mui.min.js"></script>
+		<script src="js/swiper-3.4.1.min.js"></script>
+		<script src="js/hd-common.js"></script>
+		<script src="js/hd-creditCardCenter.js"></script>
+
+	</body>
+
+</html>

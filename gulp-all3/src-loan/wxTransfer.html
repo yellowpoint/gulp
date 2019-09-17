@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title></title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/common.css" />
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+
+	<body class="wxTransfer body-loading">
+
+		<div class="body-main">
+
+		</div>
+
+		<script src="js/commonPlugin.min.js"></script>
+		<script src="js/hd-common.js"></script>
+		<script type="text/javascript">
+
+			//这里需要区分91融易和爱用卡卡两个公众号的token
+			var token = ''
+			var platform = GetQueryString('platform') || 'aykk'
+			var businessLink = '';
+			switch(platform) {
+				case '91ry':
+				
+					businessLink = 'checkProgress/list.html'
+					token = GetQueryString('token') || getCookie('token_91ry')
+					
+					
+					if(token) {
+						setCookie('token_91ry', token, 1)
+						location.href = businessLink + '?token=' + token
+					} else {
+						location.href = 'https://api.51app.cn/loanapi/wechat/token?platform=' + platform
+						//这里最好是这样加个页面吧，就不要我直接跳转微信的页面了，方便以后统一调用和修改
+					}
+
+					break;
+				case 'aykk':
+				default:
+
+					businessLink = 'bankcomm-verify.html'
+					token = GetQueryString('token') || getCookie('token')
+				
+					if(token) {
+						setCookie('token', token, 1)
+						location.href = businessLink + '?token=' + token
+					} else {
+						
+						location.href = 'https://api.51app.cn/loanapi/wechat/token?platform=' + platform
+						//这里最好是这样加个页面吧，就不要我直接跳转微信的页面了，方便以后统一调用和修改
+					}
+					
+					break;
+			}
+		</script>
+
+	</body>
+
+</html>

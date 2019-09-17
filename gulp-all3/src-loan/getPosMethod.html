@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta content="telephone=no,email=no" name="format-detection">
+	<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+	<title>免费领取POS机</title>
+	<link rel="shortcut icon" href="images/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+	<link rel="stylesheet" href="css/common.css" />
+	<link rel="stylesheet" href="css/creditLoan.css" />
+	<link rel="stylesheet" href="css/getPos.css" />
+	
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	<style>
+	body{
+		background-color: rgb(254,213,47) !important;
+	}
+	.btn-submit{
+		width: 5.32rem;
+		height: 1.2rem;
+		margin: 0 auto;
+		margin-top: .66rem;
+		background: url(./images/pos/getPos/btn-order.png) no-repeat;
+		background-size: 100%;
+	}
+	.date_grid,.tooth{
+		font-weight: normal;
+	}
+	</style>
+</head>
+<body class="getPosMethod body-loading">
+	<div class="body-main">
+		<div class="selectMethod">
+			<div class="title">
+				<p class="notice">提交成功</p>
+				<p>预收59元，激活使用即可返还99元</p>
+			</div>
+			<div class="addInfo">
+				<p class="t1">添加微信</p>
+				<div class="number" id="number">18126464535</div>
+				<button class="copy-btn">
+					点击复制
+				</button>
+				<div class="slogan">
+					<p>打开微信<span>添加好友</span></p>
+					<p>即可领取<span>POS机</span></p>
+				</div>
+				<div class="contact">
+					联系电话: <a id="mobile" href="tel:18126465435">18126465435</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="closeAdd" id="goConfirm"></div>
+	<!--<script src="js/jquery-3.3.1.min.js"></script>-->
+	<script src="js/commonPlugin.min.js"></script>
+	<script src="js/hd-common.js"></script>
+	<script src="js/mui.min.js"></script>
+	<script src="js/clipboard.min.js"></script>
+	<script>
+		//loading层
+		$('body').removeClass('body-loading');
+		mui.init();
+		var screenHeight = $(window).height();
+		$('.getPosMethod').eq(0).css({"height": screenHeight});
+		
+		var wxPhone = ['18126465435', '18126465429', '18126465431']
+
+		//刷卡机填写资料后，出现的微信号码，随机出现wxPhone这些号码中的一个
+		var wxPhoneIndex = Math.floor(Math.random() * (wxPhone.length - 1 - 0 + 1) + 0)
+		$('#mobile').text(wxPhone[wxPhoneIndex])
+		$('#number').text(wxPhone[wxPhoneIndex])
+		$('#mobile').attr('href','tel:'+wxPhone[wxPhoneIndex])
+		
+	
+		//复制号码
+        var clipboard = new Clipboard('.copy-btn', {
+	        text: function() {
+	            return $('#number').text();
+	        }
+	    });
+	
+	    clipboard.on('success', function(e) {
+	    	mui.toast('复制成功')
+	        console.log(e);
+	    });
+			
+		$('#goConfirm').click(function() {
+			window.location.href = 'index.html'
+			$('.mask').hide()
+			$('.submitSuccess').hide()
+		})
+		
+		
+		
+	</script>
+</body>
+</html>

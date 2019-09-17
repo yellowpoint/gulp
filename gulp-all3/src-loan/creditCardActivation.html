@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>信用卡激活</title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/common.css" />
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<style type="text/css">
+			li {
+				width: 100%;
+				padding: 0 .4rem;
+			}
+			
+			img {
+				float: left;
+				width: 1.2rem;
+				height: 1.2rem;
+			}
+			
+			span {
+				float: left;
+				width: 5rem;
+				height: 1.2rem;
+				line-height: 1.2rem;
+				padding-left: .3rem;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				font-size: .32rem;
+			}
+			
+			i {
+				position: relative;
+				float: left;
+				width: .5rem;
+				height: .5rem;
+				margin-top: .4rem;
+			}
+			
+			i:after,
+			i:before {
+				content: " ";
+				position: absolute;
+				width: 0;
+				height: 0;
+				border: 10px solid transparent;
+				border-left-color: #000;
+			}
+			
+			i:before {
+				top: 0;
+				left: -3px;
+				z-index: 22;
+				border-left-color: #fff;
+			}
+			
+			a {
+				position: relative;
+				display: block;
+				padding: .4rem 0;
+				border-bottom: 1px solid #ededed;
+				color: #000;
+				overflow: hidden;
+			}
+			
+			a:active:before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				z-index: 999;
+				background: rgba(72, 72, 72, .1);
+			}
+		</style>
+	</head>
+
+	<body class="creditCardActivation body-loading">
+		<!--回到顶部-->
+		<div id="goTop"></div>
+		<div class="body-main">
+			<ul>
+				<li>
+					<a href="">
+						<img src="../v2/images/logo.png" />
+						<span>平安银行卡激活</span>
+						<i> </i>
+					</a>
+
+				</li>
+			</ul>
+
+		</div>
+
+		<script src="js/commonPlugin.min.js"></script>
+		<script src="js/hd-common.js"></script>
+		<script type="text/javascript">
+			loadData(apiDomain + '/creditcard/cardActivation/list', true, function(data) {
+				if(data.code != 200) {
+					return false
+				}
+				var dataBox = '';
+				var cardActivation = data.data.cardActivation;
+				$.each(cardActivation, function(i, v) {
+
+					dataBox += '<li><a href="' + v.url + '"><img src="' + v.imageUrl + '" alt="logo" /><span>' + v.name + '</span><i> </i></a></li>';
+				})
+				$('ul').empty().append(dataBox)
+				//数据加载完成后显示界面
+				$('body').removeClass('body-loading')
+			})
+			goTop()
+		</script>
+
+	</body>
+
+</html>

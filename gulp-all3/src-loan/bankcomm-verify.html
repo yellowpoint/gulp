@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>交通银行信用卡</title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/layer.css" />
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<style>
+			html {
+				height: 100%;
+			}
+			
+			body {
+				height: 100%;
+				padding: 0;
+				background: linear-gradient(135deg, #ffebad, #fe460f);
+			}
+			
+			.bv-phone {
+				width: 100%;
+				height: 13.34rem;
+				padding-top: 6.8rem;
+				background: url(images/bankcomm/verify_bg1.jpg) no-repeat;
+				background-size: 100%;
+				display: none;
+			}
+			
+			.bv-result {
+				width: 100%;
+				height: 12.06rem;
+				background: url(images/bankcomm/verify_bg2.jpg) no-repeat;
+				background-size: 100%;
+				display: none;
+			}
+			
+			.bv-result .bvr-main {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: center;
+				width: 5rem;
+				height: 6.16rem;
+				line-height: .5rem;
+				padding-top: 2.8rem;
+				margin: 0 auto;
+				color: #682e00;
+				text-align: center;
+				font-size: .3rem;
+			}
+			
+			.bv-result .bvr-main a {
+				color: #ff321f;
+				margin-top: -.6rem;
+			}
+			
+			b {
+				font-weight: 600;
+			}
+			
+			.bv-result .bvr-main .qr-kefu {
+				width: 1.4rem;
+				height: 1.4rem;
+				margin: -.2rem auto 0;
+				pointer-events: all;
+			}
+			
+			.commonPhoneNumberLogin {
+				font-size: .3rem;
+			}
+			
+			.commonPhoneNumberLogin input::-webkit-input-placeholder {
+				color: #bbb;
+				font-size: .26rem;
+			}
+			
+			.commonPhoneNumberLogin .cpnl-phone {
+				width: 5.9rem;
+				height: .8rem;
+				line-height: .8rem;
+				padding: 0 .2rem;
+				margin-left: .8rem;
+				font-size: .3rem;
+			}
+			
+			.commonPhoneNumberLogin .cpnl-code {
+				width: 3.8rem;
+				height: .8rem;
+				line-height: .8rem;
+				padding: 0 .2rem;
+				margin: .4rem 0 0 .8rem;
+				font-size: .3rem;
+			}
+			
+			.commonPhoneNumberLogin .cpnl-getCode {
+				display: inline-block;
+				width: 1.8rem;
+				height: .8rem;
+				line-height: .8rem;
+				margin: .4rem 0 0 .3rem;
+				text-align: center;
+			}
+			
+			.commonPhoneNumberLogin .cpnl-getCode .cpnl-getCode-able {
+				height: 100%;
+				background: #ff2121;
+				color: #fff;
+			}
+			
+			.commonPhoneNumberLogin .cpnl-getCode .cpnl-getCode-disable {
+				height: 100%;
+				background: #eee;
+				color: #999;
+				display: none;
+			}
+			
+			.commonPhoneNumberLogin .cpnl-getCode.disable .cpnl-getCode-able {
+				display: none;
+			}
+			
+			.commonPhoneNumberLogin .cpnl-getCode.disable .cpnl-getCode-disable {
+				display: block;
+			}
+			
+			.commonPhoneNumberLogin .cpnl-login {
+				display: block;
+				width: 5.9rem;
+				height: .8rem;
+				line-height: .8rem;
+				margin: .4rem 0 0 .8rem;
+				text-align: center;
+				background: url(images/bankcomm/verify_btn.png) no-repeat;
+				background-size: 100%;
+				border-radius: .4rem;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+
+	<body class="bankcomm-verify body-loading">
+
+		<div class="body-main">
+			<div class="bv-phone">
+
+				<div class="commonPhoneNumberLogin">
+
+					<input class="cpnl-phone" type="number" oninput="if(value.length>11)value=value.slice(0,11)" pattern="[0-9]*" placeholder="请输入您申请信用卡时的手机号码" />
+					<input class="cpnl-code" type="number" oninput="if(value.length>6)value=value.slice(0,6)" pattern="[0-9]*" placeholder="请输入验证码" />
+					<div class="cpnl-getCode">
+						<div class="cpnl-getCode-able">获取验证码</div>
+						<div class="cpnl-getCode-disable"><i>60</i>s后重发</div>
+					</div>
+					<a class="cpnl-login"></a>
+				</div>
+
+			</div>
+			<div class="bv-result">
+				<div class="bvr-main"></div>
+
+			</div>
+
+		</div>
+		
+		<!--<script src="js/jquery-3.3.1.min.js"></script>-->
+		<script src="js/commonPlugin.min.js"></script>
+		<script src="js/hd-common.js"></script>
+		<script type="text/javascript">
+			//0 审核中  ；我们需要对您的信息进行核对，将会在2-3个工作日内通知您办卡结果及下发红包，请持续关注“爱用卡卡”哦。
+			//1 未申请  加个按钮跳转申请页面   ；核对信息后，发现您还未办理交行信用卡。点击办理，赶紧去申请交行信用卡吧，40元现金红包无限领哦！
+			//2 非新用户  ；核对信息后，发现您不是交行信用卡的新用户，不满足参与活动的条件。请您继续关注“爱用卡卡”，活动多多，奖品丰厚！
+			//3 申请失败  ；很遗憾，您申请交行信用卡失败，与红包失之交臂。请您继续关注“爱用卡卡”，活动多多，奖品丰厚！
+			//4 申请成功  ；恭喜您成功申请交行信用卡！请添加“爱用卡卡”客服微信号18126465436，领取红包吧~
+
+			
+
+			var $phone = $('.commonPhoneNumberLogin .cpnl-phone')
+			var $code = $('.commonPhoneNumberLogin .cpnl-code')
+			var $getCode = $('.commonPhoneNumberLogin .cpnl-getCode')
+			var $time = $('.commonPhoneNumberLogin .cpnl-getCode .cpnl-getCode-disable i')
+
+			//一进来调用load判断data里是否有mobile字段，没有出现phone，有则是result
+			var token = GetQueryString('token') || getCookie('token')
+			if(!token){
+				location.href = 'https://api.51app.cn/loanapi/wechat/token'
+			}
+			setCookie('token',token,30)
+			verifyResult()
+			//验证结果
+			function verifyResult() {
+				loadData(
+					apiDomain + '/user/jiaotongcredit/userinfo/load?token=' + token,
+					true,
+					function(data) {
+						if(data.code != 200) {
+							//token 有问题则清除后进，有无限循环的可能
+							deleteCookie('token')
+							location.href = 'https://api.51app.cn/loanapi/wechat/token'
+							return;
+						}
+						$('body').removeClass('body-loading')
+						if(!data.data.mobile) {
+							$('.bv-phone').fadeIn()
+							$('.bv-result').fadeOut()
+							return false
+						}
+						$('.bv-phone').fadeOut()
+						$('.bv-result').fadeIn()
+						var notice = ''
+						switch(data.data.status) {
+							default:
+							case 0:
+								notice = '我们需要对您的信息进行核对，<br>将会在2-3个工作日内<br>通知您办卡结果及下发红包，<br>请持续关注“爱用卡卡”哦。'
+							break;
+							case 1:
+									notice = '核对信息后，<br>发现您还未办理交行信用卡。<a href="bankcomm.html"><b>点击办理</b>，赶紧去申请交行信用卡吧，40元现金红包无限领哦！</a>'
+								break;
+							case 2:
+									notice = '核对信息后，<br>发现您不是交行信用卡的新用户，<br>不满足参与活动的条件。<br>请您继续关注“爱用卡卡”，<br>活动多多，奖品丰厚！'
+								break;
+							case 3:
+									notice = '很遗憾，您申请交行信用卡失败，<br>与红包失之交臂。<br>请您继续关注“爱用卡卡”，<br>活动多多，奖品丰厚！'
+								break;
+							case 4:
+									notice = '恭喜您成功申请交行信用卡！<br>请长按识别二维码添加客服微信号，<br>领取红包吧~<img class="qr-kefu" src="images/bankcomm/qr-kefu.jpg" />'
+								break;
+
+						}
+
+						$('.bvr-main').empty().append(notice)
+					}
+				)
+			}
+
+			//点击获取验证码
+			$('body').on('click', '.commonPhoneNumberLogin .cpnl-getCode .cpnl-getCode-able', function() {
+
+				if($phone.val() == '' || !isPhoneAvailable($phone.val())) {
+					layerHint('请输入正确的手机号码')
+					$phone.focus()
+					return false;
+				}
+				var data = {
+					"mobile": $phone.val()
+				}
+				var url = 'https://api.51app.cn/loanapi/user/code/send';
+				var successFunc = function(data) {
+
+					if(data.code == 200) {
+						layerHint('发送成功')
+						$getCode.addClass('disable')
+						var timer = null;
+						var time = 60;
+						timer = setInterval(function() {
+							time--;
+							if(time > 0) {
+								$time.text(time)
+							} else {
+								$getCode.removeClass('disable')
+								clearInterval(timer)
+								$time.text(60)
+							}
+						}, 1000)
+//						$code.focus()
+					} else {
+						layerHint(data.data)
+					}
+
+				}
+				var errorFunc = function() {
+					layerHint('发送失败，请再次发送')
+				}
+				ajaxPost(url, data, successFunc, errorFunc)
+			})
+			//点击提交
+			$('body').on('click', '.commonPhoneNumberLogin .cpnl-login', function() {
+				if($phone.val() == '' || !isPhoneAvailable($phone.val())) {
+					layerHint('请输入正确的手机号码')
+					$phone.focus()
+					return false;
+				}
+				if($code.val().length != 6) {
+					layerHint('请输入正确的验证码')
+					$code.focus()
+					return false;
+				}
+				var data = {
+					"mobile": $phone.val(),
+					"code": $code.val()
+				}
+				var url = 'https://api.51app.cn/loanapi/user/code/check';
+				var successFunc = function(data) {
+
+					if(data.code == 200) {
+						layerHint('验证成功')
+						verifySuccess()
+
+					} else {
+						layerHint(data.data)
+					}
+
+				}
+				var errorFunc = function() {
+					layerHint('验证失败，请确认验证码输入正确或再次发送验证码')
+				}
+				ajaxPost(url, data, successFunc, errorFunc)
+			})
+
+			//短信验证成功
+			function verifySuccess() {
+				loadData(
+					apiDomain + '/user/jiaotongcredit/userinfo?token=' + token + '&mobile=' + $phone.val(),
+					true,
+					function(data) {
+						if(data.code == 200) {
+							verifyResult()
+						}
+					})
+			}
+			//设置微信分享的样式
+			wxShare('办交行信用卡，领240元红包！', 'https://api.51app.cn/loanpage/v1.0.0/bankcomm.html', 'https://api.51app.cn/loanpage/v1.0.0/images/bankcomm/wxShare.jpg','易下卡，下卡就领40元，首刷再领200元！')
+
+
+			//这个页面不是登录，应该是验证手机号，接口最后也没有返回token
+		</script>
+
+	</body>
+
+</html>

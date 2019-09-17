@@ -1,0 +1,14 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "黄典的gulp之旅",
+  "author": {
+    "name": "黄典",
+    "email": "www.yellowpoint.cn"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-spritesmith": "0.0.2",
+    "gulp.spritesmith": "^6.5.1"
+  }
+}

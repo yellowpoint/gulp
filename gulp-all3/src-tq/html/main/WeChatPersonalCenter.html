@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1.0">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>个人信息</title>
+		<link rel="stylesheet" href="../../css/lib/framework7.ios.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/lib/layer.css"/>
+		<link rel="stylesheet" href="../../css/comment.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/xl/xl-login.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/xl/xl-main.css" />
+		<link rel="shortcut icon" href="../../img/favicon.ico">
+		<style type="text/css">
+			/*微信个人信息页面开始*/
+			#personalCenter .weChatIndex{
+				width: 7.5rem;
+				overflow: hidden;
+			}
+			#personalCenter .weChatIndex .personInfo{
+				width: 100%;
+				margin: 0 auto;
+				padding-top: 0.36rem;
+				box-sizing: border-box;
+				background-color: #FF3D58;
+			}
+			#personalCenter .weChatIndex .personInfo .info{
+				display: flex;
+			    padding: 0 0.4rem;
+			}
+			#personalCenter .weChatIndex .personInfo .info .head{
+				margin-right: 0.16rem;
+				width: 0.96rem;
+				height: 0.96rem;
+				border-radius: 50%;
+				overflow: hidden;
+			}
+			#personalCenter .weChatIndex .personInfo .info .head img{
+				display: block;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				overflow: hidden;
+			}
+			#personalCenter .weChatIndex .personInfo .info .headRight{
+				color: #fff;
+				line-height: 0.48rem;
+			}
+			#personalCenter .weChatIndex .personInfo .info .headRight p:nth-child(1){
+				font-size: 0.24rem;
+			}
+			#personalCenter .weChatIndex .personInfo .info .headRight p:nth-child(2){
+				font-size: 0.36rem;
+			}
+			#personalCenter .weChatIndex .personInfo .channelLink{
+				width: 6.8rem;
+				height: 0.38rem;
+				line-height: 0.38rem;
+				margin: 0 auto;
+				padding: 0 0.15rem;
+				box-sizing: border-box;
+				border-radius: 0.19rem;
+				overflow: hidden;
+				white-space: nowrap;
+			    text-overflow: ellipsis;
+				background-color: #d63140;
+				margin-top: 0.36rem;
+				color: #fff;
+				font-size: 0.2rem;
+				-webkit-user-select: all;
+				-moz-user-select: all;
+				-ms-user-select: auto;
+			}
+			#personalCenter .weChatIndex .personInfo .changeNum{
+				width: 1.74rem;
+				height: 0.96rem;
+				background: url(../../img/changeNum.png) center no-repeat;
+				background-size: 1.74rem 0.62rem;
+			    position: absolute;
+			    right: 0;
+			}
+			#personalCenter .weChatIndex .personInfo .joinAgency {
+				width: 100%;
+				height: 1.14rem;
+				margin-top: 0.36rem;
+			}
+			#personalCenter .weChatIndex .personInfo .joinAgency img{
+				display: block;
+				width: 100%;
+				height: 1.14rem;
+			}
+			#personalCenter .weChatIndex .personInfo .text{
+				margin-top: 0.16rem;
+				font-size: 0.2rem;
+				color: #fff;
+				padding: 0 0.45rem 0.4rem;
+			}
+			#personalCenter .weChatIndex .middle{
+				width: 7.1rem;
+				height: 1.92rem;
+				margin: 0.2rem auto;
+				display: flex;
+				background-color: #fff;
+			}
+			#personalCenter .weChatIndex .middle .linkBox{
+				width: 3.54rem;
+			}
+			#personalCenter .weChatIndex .middle .linkBox .linkBoxCon{
+				display: flex;
+				align-items:center;
+				height: 1.04rem;
+				margin-top: 0.44rem;
+				justify-content: center
+			}
+			#personalCenter .weChatIndex .middle .order .linkBoxCon{
+				border-right: 2px solid #ededed;
+			}
+			#personalCenter .weChatIndex .middle .linkBox .linkBoxCon img{
+				display: block;
+				width: 0.58rem;
+				height: 0.6rem;
+				margin-right: 0.42rem;
+			}
+			#personalCenter .weChatIndex .middle .linkBox .linkBoxCon div p:nth-child(1){
+				font-size: 0.28rem;
+				color: #373737;
+				font-weight: 500;
+			}
+			#personalCenter .weChatIndex .middle .linkBox .linkBoxCon div p:nth-child(2){
+				font-size: 0.22rem;
+				color: #969696;
+				
+			}
+			#personalCenter .bottom{
+				width: 100%;
+				background-color: #fff;
+			}
+			#personalCenter .bottom ul li{
+				height: 1.0rem;
+				line-height: 1.0rem;
+				width: 100%;
+				margin-left: 0.4rem;
+				padding-right: 0.4rem;
+				box-sizing: border-box;
+			}
+			#personalCenter .bottom ul .takeCashType{
+				border-bottom: 1px solid #ededed;
+			}
+			#personalCenter .bottom ul li .left{
+				font-size: 0.28rem;
+				color: #707070;
+			}
+			#personalCenter .bottom ul li .right1{
+				float: right;
+				margin-right: 0.4rem;
+				font-size: 0.28rem;
+				color: #4a4a4a;
+				display:flex;
+				align-items:center
+			}
+			#personalCenter .bottom ul li .right .wechatZFB,#personalCenter .bottom ul li .right .wechatWX{
+				display: inline-block;
+				width: 0.46rem;
+				height: 0.46rem;
+				margin-left: 0.18rem;
+			}
+			#personalCenter .bottom ul li .right .wechatZFB{
+				background: url(../../img/wechatZFB.png) center no-repeat;
+				background-size: cover;
+			}
+			#personalCenter .bottom ul li .right .wechatWX{
+				background: url(../../img/wechatWX.png) center no-repeat;
+				background-size: cover;
+			}
+			/*微信个人信息页面结束*/
+
+		</style>
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f0e635459915122317d9199dc2470247";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+
+	<body>
+		<div class="statusbar-overlay"></div>
+		<div class="panel-overlay"></div>
+
+		<div class="dom-noLoad"></div>
+		<!-- Views-->
+		<div class="views" id='' style="overflow: hidden;">
+			<div class="view view-main">
+				<div class="navbar navbar-hidden bindNav">
+					<div class="navbar-inner cached _fm-block _fm-txtcenter _fm-link-1" data-page="binding">
+						<span class="center">个人信息</span>
+						<a href="#" class="left back left-txt _fm-abs _fm-tz _fm-lz _fm-f-14"><i class="_fm-back-left">&nbsp;</i>返回</a>
+					</div>
+				</div>
+				<!--<span class="left left-txt _js-historyback haveDone" style="width: 0.7rem;height: 0.7rem;"><i class="_fm-back-left">&nbsp;</i></span>-->
+				<div class="pages navbar-through toolbar-through">
+					<div data-page="weChatIndex" class="page no-navbar" id="personalCenter" style="background: #efeff4;">
+						<div class="page-content">
+							<div class="weChatIndex">
+								<div class="personInfo">
+									<div class="info">
+										<div class="head"></div>
+										<div class="headRight">
+											<p></p>
+											<p></p>
+										</div>
+										<div class="changeNum"></div>
+									</div>
+									<!--<div class="joinAgency"><img src="img/cashierBottom.png"/></div>-->
+									<!--<p class="channelLink"><span></span></p>
+									<p class="text">长按复制渠道编码</p>-->
+								</div>
+								<div class="middle">
+									<div class="linkBox order" data-type='1'>
+										<div class="linkBoxCon">
+											<img src="../../img/wechatORDER.png"/>
+											<div>
+												<p>查看订单</p>
+												<p>订单详情</p>
+											</div>
+										</div>
+									</div>
+									<div class="linkBox cash">
+										<div class="linkBoxCon">
+											<img src="../../img/wechatCASH.png"/>
+											<div>
+												<p>查看收益</p>
+												<p>我的收益</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="bottom">
+									<ul>
+										<li class="takeCashType"><span class="right1"></i></span><span class="left">提现方式</span></li>
+										<li><a href="tel:0755-86536781" class="right1">0755-86536781</a><span class="left">联系客服</span></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!--<div class="gotoTop" style="bottom: 1.2rem;"><img src="img/gotoTop.png" alt="TOP" /></div>-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/lib/framework7.min.js"></script>
+		<script src="../../js/lib/fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../../js/lib/layer.min.js"></script>
+		<script type="text/javascript" src="../../js/xl/my-app1.js"></script>
+		<script type="text/javascript" src="../../js/common.js"></script>
+		<script src="../../js/xl/xl-public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/xl/xl-main.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../../js/xl/xl-login.js"></script>
+		<script src="../../js/lib/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/xl/xl-f7.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+				var token = getCookie('token');
+				if (token) {
+					personalCenter();
+					//传给后端，判断是否是代理
+				} else {
+					smallLoginLayer('body')
+				}
+			}
+			
+			//查看收益
+			$('body').on('click','.cash',function(){
+				mainView.router.loadPage('../subject/agentAccount.html');
+			})
+			//代理商  “提现”
+			$('body').on('click','.Withdrawals',function(){
+				mainView.router.loadPage('../subject/withdrawals.html');
+			})
+			
+			//代理商 “代理收益”
+			$('body').on('click','.agentMoney',function(){
+				mainView.router.loadPage('../subject/withdrawals.html');
+			})
+			
+			
+			//查看订单
+			$('body').on('click','.order',function(){
+				var type = $(this).attr('data-type');
+				window.location.href = 'myOrder.html?channel=etime&status='+type;
+				if(type==0){
+					var data = {'status':'',
+								'token':token
+								};
+					loadMyOrder(data);                           //加载全部订单
+				}else if(type==1){
+					var data = {'status':0,
+								'token':token
+								};       //加载待付款订单
+					loadMyOrder(data); 
+				}else if(type==2){
+					var data = {'status':1,
+								'token':token
+								};
+					loadMyOrder(data);                        //加载待发货订单
+				}else if(type==3){
+					var data = {'status':2,
+								'token':token
+								};
+					loadMyOrder(data);                        //加载待收货订单
+				}
+			})
+			
+			//进入商城
+			$('body').on('click','.mall',function(){
+				window.location.href = 'https://api.51app.cn/webPage/tq/web/html/main/index.html?channel=etime';
+			})
+			
+			
+			//切换账号
+			$('body').on('click','.changeNum',function(){
+				smallLoginLayer('body')
+			})
+			
+			//普通用户加入代理
+			$('body').on('click','.joinAgency',function(){
+				window.location.href = 'https://api.51app.cn/webPage/agencyRegister/agencyFee.html'
+			})
+		</script>
+	</body>
+
+</html>

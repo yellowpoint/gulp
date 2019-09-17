@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>优惠券商品列表</title>
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f0e635459915122317d9199dc2470247";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<link rel="shortcut icon" href="../../img/favicon.ico">
+		<link type="text/css" rel="stylesheet" href="../../css/comment.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/lib/layer.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/lib/swiper-3.4.1.min.css" />
+		<style type="text/css">
+			.containerBox {
+				overflow: hidden;
+				position: relative;
+			}
+			.headerBg{
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 0;
+				width: 100%;
+				height:3rem ;
+			}
+			.headline {
+				font-size: .4rem;
+				color: #fff;
+				padding-left: .2rem;
+				margin-top: .35rem;
+				font-weight: 800;
+				position: relative;
+				z-index: 2;
+			}
+			
+			.banner {
+				margin-top: .3rem;
+			}
+			
+			.imgBox {
+				width: 7.1rem;
+				height: 2.4rem;
+				border-radius: .2rem;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			
+			.title {
+				height: 1.45rem;
+				line-height: 1.45rem;
+				text-align: center;
+				color: #333;
+			}
+			
+			.title span {
+				margin: 0 .2rem;
+			}
+			
+			.title i {
+				display: inline-block;
+				width: .6rem;
+				height: 1px;
+				background: #333;
+				vertical-align: .08rem;
+			}
+			
+			.saleGoods {
+				margin-top: .2rem;
+			}
+			
+			.countdown {
+				position: absolute;
+				top: .5rem;
+				right: .2rem;
+				color: #fff;
+				font-size: .23rem;
+			}
+			
+			.countdown span {
+				margin: 0 .1rem;
+			}
+			
+			.countdown span i {
+				background: #333;
+				padding: .06rem .08rem;
+				border-radius: .1rem;
+				margin: 0 1px;
+			}
+			
+			.swiper-container-horizontal>.swiper-pagination-bullets {
+				bottom: 3px;
+			}
+			
+			.swiper-pagination-bullet {
+				width: 6px;
+				height: 6px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="dom-noLoad"></div>
+		<!--<div class="navbar">
+			<span><</span><span>商品列表</span>
+		</div>-->
+		<div class="containerBox dom-hasLoad">
+			<div class="saleGoods"></div>
+		</div>
+		<div class="gotoTop"></div>
+		<!--<script src="../../js/lib/zepto.min.js"></script>-->
+		<script src="../../js/lib/jq-3.1.1.min.js"></script>
+		<script src="../../js/lib/fastclick.min.js"></script>
+		<script src="../../js/lib/swiper-3.4.1.min.js"></script>
+		<script src="../../js/lib/layer.min.js"></script>
+		<script src="../../js/common.js"></script>
+		<script type="text/javascript">
+			if(GetQueryString('merchantId') == 'isOverall'){
+//				var url = apiDomain + '/diyapi/goods/recommend?num=30';
+//				successFunc = function(data) {
+//					if(data.code == 200) {
+//						var goodsList = data.data;
+//						$('.saleGoods').append(loadGoods(goodsList, 1));
+//						$('.dom-noLoad').hide();
+//						$('.dom-hasLoad').show();
+//					}
+//				};
+//
+//				loadData(url, true, successFunc);
+				$.ajax({  
+			       url: apiDomain + '/diyapi/goods/recommend?num=30', 
+			       dataType: 'json',  
+			       type: 'GET',  
+			       beforeSend: function (xhr) {  
+			           xhr.setRequestHeader("platform", "allgoods");  
+			       },  
+			       async: false,  
+			       cache: false,  
+			       //contentType: 'application/x-www-form-urlencoded',  
+			       success: function (data) {  
+			       	if(data.code == 200) {
+						var goodsList = data.data;
+						$('.saleGoods').append(loadGoods(goodsList, 1));
+						$('.dom-noLoad').hide();
+						$('.dom-hasLoad').show();
+					}
+			       }  
+			   }); 
+			}else{
+				var url = apiDomain + '/diyapi/goods/list/bymerchant?merchantId='+GetQueryString('merchantId');
+				successFunc = function(data) {
+					if(data.code == 200) {
+						var goodsList = data.data.goodsList;
+						$('.saleGoods').append(loadGoods(goodsList, 1));
+						$('.dom-noLoad').hide();
+						$('.dom-hasLoad').show();
+					}
+				};
+
+				loadData(url, true, successFunc);
+			}
+			
+
+
+		</script>
+
+	</body>
+
+</html>

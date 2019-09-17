@@ -1,0 +1,56 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <a href="#" class="back left link left-txt _fm-abs _fm-tz _fm-lz _fm-f-14 editAddNav"> <i class="_fm-back-left">&nbsp;</i>返回</a>
+   	<span class="center sliding" style="position: relative;">新增收货地址</span>
+  </div>
+</div>
+
+
+<div class="pages">
+	<div class="page cached no-toolbar no-tabbar editAddress1" data-page="editAddress1" style="background-color: #ededed;">
+		<div class="page-content _js-limitdrag haveDone">
+			<!-- 页面主体 -->
+			<div class="cus-page">
+				<div class="cus-page-inner" style="padding: 0;background: #fff;">
+					<!-- 新增收货地址 -->
+					<form class="main-content edit-address">
+						<input class="_fm-f-14 name val" name="name" type="text" placeholder="收货人" required="required" maxlength="20">
+						<input class="_fm-f-14 mobile val" name="mobile" type="number" placeholder="手机号码" required="required" pattern="[0-9]*" maxlength="11">
+						<input class="_fm-f-13 _js-provincePicker haveDone val" id="demo1" name="province" type="text" placeholder="省、市、区(请点击选择)" readonly="">
+						<input id="value1" type="hidden" value="440000,440300,440305">
+						<textarea class="_fm-f-13 otherAddress val" name="area" placeholder="详细地址(无需再输入省、市、区)" maxlength="50"></textarea>
+						<div class="check-box _fm-overhide">
+							<p class="_fm-left _fm-f-13">
+								设为默认地址
+								<br>
+								<span class="gray _fm-f-12">注：每次下单时都会使用该地址</span>
+							</p>
+							<div class="_fm-right item-content isDefault">
+						        <!--<label class="label-switch">
+						              <input type="checkbox" class="checkBox">
+						              <div class="checkbox"></div>
+						        </label>-->
+						        <label class="xl-switch" onclick="switchClick()">
+                    		<input type="checkbox" />
+                    		<div class="xl-checkbox">
+	                    		<div class="xl-checkSlide"></div>
+	                    	</div>
+                    </label>
+						      </div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- 页面主体/END -->
+		</div>
+		<!--<div class="_fm-f-14 _fm-abs _fm-bz _fm-lz _fm-txtcenter f7Toolbar"><a class="save-use disabled">保存并使用</a></div>
+		<div class="_fm-f-14 _fm-abs _fm-bz _fm-lz _fm-txtcenter f7Toolbar" style="color: #fff;"><a class="save-useMask">保存并使用</a></div>-->
+		<!--<div class="_fm-f-14 _fm-abs _fm-bz _fm-lz _fm-txtcenter f7Toolbar" style="height: 74px;">
+		
+		</div>-->
+		<div class="_fm-f-14 _fm-abs _fm-bz _fm-lz _fm-txtcenter f7Toolbar" style="height: 74px;">
+			<a class="save-use disabled">保存并使用</a>
+			<a class="save-useMask">保存并使用</a>
+		</div>
+	</div>
+</div>

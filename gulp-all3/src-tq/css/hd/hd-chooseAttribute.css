@@ -1,0 +1,206 @@
+/*属性选择开始*/
+
+.attributePopupBox {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 9999;
+	background: rgba(0, 0, 0, .5);
+	display: none;
+	/*overflow-y: scroll;*/
+}
+
+.attributePopup {
+	width: 7.1rem;
+	min-height: 5rem;
+	border-radius: .1rem;
+	background: #fff;
+	position: absolute;
+	top: 1.5rem;
+	left: .2rem;
+	color: #333;
+	padding-bottom: .58rem;
+
+}
+
+.attributePopup .ap-arrows {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 0 5px 10px 5px;
+	border-color: transparent transparent #fff transparent;
+	position: absolute;
+	top: -9px;
+	left: 50%;
+	margin-left: -5px;
+}
+
+.attributePopup .ap-imgBox {
+	width: 1.9rem;
+	height: 1.9rem;
+	position: absolute;
+	top: -.62rem;
+	left: .2rem;
+	border-radius: .08rem;
+	overflow: hidden;
+	background: #fff;
+}
+
+.attributePopup .ap-imgBox .ap-frontImg {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 300;
+}
+
+.attributePopup .ap-imgBox .ap-userImg {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 200;
+}
+
+.attributePopup .ap-imgBox .ap-bgImg {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+
+.attributePopup .ap-price {
+	position: absolute;
+	top: .1rem;
+	left: 2.5rem;
+	color: #ff5252;
+	font-size: .35rem;
+	font-weight: 600;
+}
+
+.attributePopup .ap-price i {
+	font-size: .41rem;
+}
+
+.attributePopup .ap-selectedInfo {
+	color: #333;
+	position: absolute;
+	top: .8rem;
+	left: 2.5rem;
+	font-size: .22rem;
+	width: 3.7rem;
+}
+.attributePopup .ap-selectedInfo span{
+	margin: 0 .1rem;
+}
+.attributePopup .ap-main {
+	padding: 0 .24rem .1rem;
+	margin-top: 1.4rem;
+	height:4.5rem;
+	overflow: auto;
+	background:#f7f7f7 ;
+	
+}
+
+.attributePopup .ap-main .attrName {
+	font-size: .24rem;
+	margin-top: .3rem;
+}
+
+.attributePopup .ap-main .attrItemBox {
+	overflow: hidden;
+}
+
+.attributePopup .ap-main .attrItemBox .attrItem {
+	float: left;
+	display: inline-block;
+	padding: .12rem .1rem;
+	border-radius: .1rem;
+	margin: .2rem .2rem 0 0;
+	font-size: .22rem;
+	color: #333;
+	height: .52rem;
+	overflow: hidden;
+	background: #ededed;
+}
+
+.attributePopup .ap-main .attrItemBox .attrItem.disabled {
+	color: #bababa;
+	background: #f8f8f8;
+}
+
+.attributePopup .ap-main .attrItemBox .attrItem.act {
+	color: #fff;
+	background: #ff5252;
+}
+
+.attributePopup .ap-numBox {
+	height: .52rem;
+	line-height: .52rem;
+	margin-top: .5rem;
+	padding: 0 .24rem;
+	font-size: .24rem;
+	color: #333;
+	/*display: none;*/
+}
+
+.attributePopup .ap-numBox .count {
+	float: right;
+	font-size: .56rem;
+}
+.attributePopup .ap-numBox .count img{
+	width: 100%;
+}
+
+.attributePopup .ap-numBox .count .subtract,
+.attributePopup .ap-numBox .count .add {
+	float: left;
+	width: .45rem;
+	height: .45rem;
+	overflow: hidden;
+	margin-top: .03rem;
+}
+
+.attributePopup .ap-numBox .count input {
+	float: left;
+	width: 1.4rem;
+	height: .52rem;
+	line-height: .52rem;
+	text-align: center;
+	background: #ededed;
+	margin: 0 .1rem;
+	border-radius: .1rem;
+	color: #000;
+	opacity: 1;
+	font-family: Arial;
+	font-size: .3rem;
+}
+
+.attributePopup .ap-confirm {
+	width: 1.85rem;
+	height: .72rem;
+	line-height: .72rem;
+	text-align: center;
+	color: #f5f5f5;
+	background: #d0d0d0;
+	font-size: .32rem;
+	position: absolute;
+	bottom: -.44rem;
+	left: 2.62rem;
+	border-radius: .1rem;
+}
+
+.attributePopup .ap-confirm.act {
+	color: #fff;
+	background: #ff5252;
+	box-shadow: 0 0 9px 0 #f36969;
+}
+
+
+/*属性选择结束*/

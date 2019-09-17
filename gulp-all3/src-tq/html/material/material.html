@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1.0">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>腾趣</title>
+		<!-- Path to Framework7 Library CSS-->
+		<link rel="stylesheet" href="../../css/lib/framework7.ios.min.css">
+		<!-- Path to your custom app styles-->
+		<!--<link rel="stylesheet" href="css/my-app.css">-->
+		<link rel="stylesheet" href="../../css/xl/xl-commen.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/xl/xl-login.css" />
+		<!--<link rel="stylesheet" type="text/css" href="css/hd-chooseAttribute.css"/>-->
+		<link rel="stylesheet" type="text/css" href="../../css/xl/xl-chooseAttribute.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/xl/xl-hot.css" />
+		<link rel="shortcut icon" href="../../img/favicon.ico">
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f0e635459915122317d9199dc2470247";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+
+	<body class="materialBody">
+		<!-- Status bar overlay for fullscreen mode-->
+		<div class="statusbar-overlay"></div>
+		<!-- Panels overlay-->
+		<div class="panel-overlay"></div>
+
+		<div class="hd-noLoad">
+			<img class="hd-loading" src="//api.51app.cn/loanpage/v1.0.0/images/loading.gif" alt="loading" />
+		</div>
+		<!-- Views-->
+		<div class="views" style="overflow: hidden;">
+			<div class="view view-main" id="material">
+				<!--<div class="navbar navbar-hidden bindNav">
+					<div class="navbar-inner cached _fm-block _fm-txtcenter _fm-link-1" data-page="material-file">
+						<span class="center">素材库</span>
+						<a href="#" class="left back left-txt _fm-abs _fm-tz _fm-lz _fm-f-14"><i class="_fm-back-left">&nbsp;</i>返回</a>
+					</div>
+				</div>-->
+				<div class="pages">
+					<div data-page="material" class="page no-navbar" id='materials'>
+						<div class="materialFixed">
+							<ul class="materialType">
+								<!--<li class="active">热门</li>
+								<li>王者荣耀</li>
+								<li>猎场</li>
+								<li>正义联盟</li>
+								<li>明星偶像</li>
+								<li>热门</li>
+								<li>热门</li>
+								<li>热门</li>
+								<li>热门</li>
+								<li>热门</li>
+								<li>热门</li>-->
+							</ul>
+						</div>
+						<div class="page-content material-content infinite-scroll" data-ptr-distance="100">
+							<div class="meterialBox">
+								<ul>
+									<!--<li class="fileBox">
+										<img src="img/32.jpg" />
+										<div class="files">二次元</div>
+									</li>
+									<li>
+										<img class="lazy-loaded" src="img/53.jpg" />
+									</li>-->
+								</ul>
+							</div>
+							<!-- Preloader -->
+						  <div class="infinite-scroll-preloader">
+						    <div class="preloader"></div>
+						  </div>
+						</div>
+						<div class="gotoTop" style="bottom: 1.2rem;"></div>
+						<!--<div class="material-mask" style="display: block;"></div>
+						<div class="xl-material">
+							<div class="xl-materialTop">
+								<div class="materialName">iphone7 plus</div>
+								<div class="materialDetail"><span>￥9.9</span><i></i></div>
+								<i class="xl-materialClose"></i>
+							</div>
+							<div class="xl-materialMiddle">
+								<div class="swiperMask"><img src="img/material-slideMask.png"/></div>
+								<div class="swiper-container swiper-init swiper-container-horizontal" >
+									<div class="swiper-wrapper">
+										<div class="swiper-slide swiper-slide-active">
+											<a href="#" class=""><img src="img/53.jpg" alt="banner" class="layerImg" ></a>
+										</div>
+										<div class="swiper-slide swiper-slide-next">
+											<a href="#"><img src="img/45.jpg" alt="banner" class="layerImg"></a>
+										</div>
+										<div class="swiper-slide">
+											<a href="#"><img src="img/51.jpg" alt="banner" class="layerImg"></a>
+										</div>
+									</div>
+								</div>
+							    <div class="swiper-button-next"></div>
+							    <div class="swiper-button-prev"></div>
+							</div>
+							<div class="material-button"><span>查看详情</span></div>
+						</div>-->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Path to Framework7 Library JS-->
+		<script type="text/javascript" src="../../js/lib/ckplayer.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../../js/lib/framework7.min.js"></script>
+		<script type="text/javascript" src="../../js/lib/layer.min.js"></script>
+		<!-- Path to your app js-->
+		<script type="text/javascript" src="../../js/xl/my-app1.js"></script>
+		<script type="text/javascript" src="../../js/lib/fastclick.min.js"></script>
+		<script type="text/javascript" src="../../js/xl/xl-commen.js"></script>
+		<script type="text/javascript" src="../../js/xl/xl-chooseAttribute.js"></script>
+		<script type="text/javascript" src="../../js/xl/xl-login.js"></script>
+		<!--<script src="../../js/lib/zepto.min.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="../../js/lib/jq-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/xl/xl-hot.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/xl/xl-material.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="js/alloy-lever.js" type="text/javascript" charset="utf-8"></script>-->
+		<script type="text/javascript">
+			material();
+//			AlloyLever.config({
+//			    entry:"#materials"          //请点击这个DOM元素6次召唤vConsole。//你可以通过AlloyLever.entry('#entry2')设置多个机关入口召唤神龙
+//			})
+		</script>
+	</body>
+
+</html>

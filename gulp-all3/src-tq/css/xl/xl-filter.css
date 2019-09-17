@@ -1,0 +1,32 @@
+/*解决全局滚动与局部滚动的冲突开始*/
+.framework7-root, body,.view, .views,.pages,.page,.page-content{
+	height: auto;
+}
+body{
+	position: relative;
+}
+.view, .views,.pages,.page{
+	position: static;
+}
+.view,.views,.pages,.page,.page-content{
+	overflow: visible!important;
+}
+.page>.navbar, .page>.toolbar, .view>.navbar, .view>.toolbar, .views>.navbar, .views>.toolbar {
+    position: fixed;
+}
+.toolbar{
+	z-index: 5002!important;
+}
+/*解决全局滚动与局部滚动的冲突结束*/
+
+
+
+/*解决色泽不统一开始*/
+.page{
+	background : #f5f5f5!important
+}
+
+
+
+
+/*解决色泽不统一结束*/

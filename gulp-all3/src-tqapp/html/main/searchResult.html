@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>搜索结果</title>
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f0e635459915122317d9199dc2470247";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<link rel="shortcut icon" href="../../img/favicon.ico">
+		<link type="text/css" rel="stylesheet" href="../../css/comment.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/lib/layer.css" />
+		<style type="text/css">
+			.hd-oldPrice,
+			.hd-vieFor {
+				display: none;
+			}
+			.containerBox{
+				padding: .1rem 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="dom-noLoad"></div>
+		<div class="containerBox dom-hasLoad">
+			<!--<div class="hd-commonGoodsList2">-->
+
+			<!--<div class="hd-goodsBox">
+					<div class="hd-img"><img src="http://51app-image.oss-cn-hangzhou.aliyuncs.com/loan/loan/2017/8/18/15285134736007.png" /></div>
+					<div class="hd-name"><img class="hd-tips" src="" /><span>jgdklfjasdkljsakldjkfklsahjfklakh</span></div>
+					<div class="hd-info">
+						<img class="hd-type" src="" />
+						<div class="hd-activity">满200减100</div>
+						<div class="hd-vieFor">马上抢</div>
+					</div>
+					<div class="hd-price">￥<i>59.90</i></div>
+					<s class="hd-oldPrice">￥<i>99.90</i></s>
+					<div class="hd-sale">1260人购买</div>
+				</div>-->
+
+			<!--</div>-->
+		</div>
+		<div class="infinite-scroll-preloader"></div>
+		<div class="gotoTop"></div>
+		<!--<script src="../../js/lib/zepto.min.js"></script>-->
+		<script src="../../js/lib/jq-3.1.1.min.js"></script>
+		<script src="../../js/lib/fastclick.min.js"></script>
+		<script src="../../js/lib/layer.min.js"></script>
+		<script src="../../js/common.js"></script>
+		<script type="text/javascript">
+			var keyword = encodeUnicode(GetQueryString('key') || ''),
+				activityId = GetQueryString('activityId'),
+				infiniteLoading = false,
+				offScroll = false, //初始化是否显示到底了的提示
+				endStr = '<div class="lastTips"><i class="left-line"></i>到底啦<i class="right-line"></i></div>',
+				page = 2,
+				$loadArea = $('.containerBox'),
+				url = apiDomain + '/diyapi/search/goods',
+
+				successFunc = function(data) {
+					var goods = data.data;
+					if(data.code == 200) {
+						$loadArea.append(loadGoods(goods, 0, 1));
+						$('.dom-noLoad').hide();
+						$('.dom-hasLoad').show();
+						if(goods.length < 10) {
+							if(!offScroll) {
+								$loadArea.append(endStr);
+								$('.infinite-scroll-preloader').remove();
+								offScroll = true;
+							}
+							infiniteLoading = true;
+						}
+					}
+				};
+			if(location.search.indexOf('key') > -1) {
+				postData = {
+					'keyword': keyword,
+					'page': 1
+				}
+			} else {
+				postData = {
+					'activityId': activityId,
+					'page': 1
+				}
+			}
+			uploadData(url, true, postData, successFunc);
+			goTop()
+
+			function infinite(container, content, distance, loadMore) {
+				$(container).on('scroll', function() {
+
+					if(infiniteLoading) return;
+					var that = $(container),
+						pageHeight = $(content).height(),
+						containerHeight = $(container).height();
+					if(pageHeight - $(container).scrollTop() < containerHeight + distance) {
+						loadMore();
+					}
+				});
+			};
+			//无限滚动
+			function infiniteScroll() {
+				infinite(window, '.containerBox', 10, function() {
+					infiniteLoading = true;
+					url = apiDomain + '/diyapi/search/goods';
+
+					if(location.search.indexOf('key') > -1) {
+						postData = {
+							keyword: keyword,
+							page: page
+						}
+					} else {
+						postData = {
+							activityId: activityId,
+							page: page
+						}
+					}
+					successFunc = function(data) {
+						
+						if(data.code == 200) {
+
+							var goods = data.data;
+
+							$loadArea.append(loadGoods(goods, 0, 1));
+
+							page++;
+							infiniteLoading = false;
+
+							if(goods.length < 10) {
+								if(!offScroll) {
+									$loadArea.append(endStr);
+									$('.infinite-scroll-preloader').remove();
+									offScroll = true;
+								}
+								infiniteLoading = true;
+							}
+						} else {
+							console.log("不是200的我不要");
+							if(!offScroll) {
+								$loadArea.append(endStr);
+								$('.infinite-scroll-preloader').remove();
+								offScroll = true;
+							}
+						}
+					};
+					uploadData(url, true, postData, successFunc);
+				});
+			};
+			infiniteScroll();
+		</script>
+
+	</body>
+
+</html>

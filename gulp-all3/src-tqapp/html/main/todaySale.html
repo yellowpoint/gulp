@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>今日特惠</title>
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f0e635459915122317d9199dc2470247";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<link rel="shortcut icon" href="../../img/favicon.ico">
+		<link type="text/css" rel="stylesheet" href="../../css/comment.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/lib/layer.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/lib/swiper-3.4.1.min.css" />
+		<style type="text/css">
+			.containerBox {
+				background: url(../../img/other/todaysale-bg.png) no-repeat;
+				background-size: 100%;
+				/*background-attachment: fixed;*/
+				overflow: hidden;
+				position: relative;
+			}
+			
+			.headline {
+				font-size: .4rem;
+				color: #fff;
+				padding-left: .2rem;
+				margin-top: .35rem;
+				font-weight: 800;
+			}
+			
+			.banner {
+				margin-top: .3rem;
+			}
+			
+			.imgBox {
+				width: 7.1rem;
+				height: 2.4rem;
+				border-radius: .2rem;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			
+			.title {
+				height: 1.45rem;
+				line-height: 1.45rem;
+				text-align: center;
+				color: #333;
+			}
+			
+			.title span {
+				margin: 0 .2rem;
+			}
+			
+			.title i {
+				display: inline-block;
+				width: .6rem;
+				height: 1px;
+				background: #333;
+				vertical-align: .08rem;
+			}
+			
+			.saleGoods {
+				margin-top: .2rem;
+			}
+			
+			.countdown {
+				position: absolute;
+				top: .5rem;
+				right: .2rem;
+				color: #fff;
+				font-size: .23rem;
+			}
+			
+			.countdown span {
+				margin: 0 .1rem;
+			}
+			
+			.countdown span i {
+				background: #333;
+				padding: .12rem .08rem;
+				border-radius: .1rem;
+				margin: 0 1px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="dom-noLoad"></div>
+		<div class="containerBox dom-hasLoad">
+			<div class="containerBox dom-hasLoad">
+				<div class="headline">今日特惠</div>
+				<div class="countdown">
+					距离结束还剩<span id="hour"><i>0</i><i>0</i></span>时<span id="minute"><i>0</i><i>0</i></span>分<span id="second"><i>0</i><i>0</i></span>秒
+				</div>
+				<div class="banner">
+
+					<div class="swiper-container swiper-banner">
+						<div class="swiper-wrapper">
+
+						</div>
+						<!-- 如果需要分页器 -->
+						<div class="swiper-pagination"></div>
+					</div>
+
+				</div>
+				<div class="saleGoods"></div>
+				<div class="title"><i></i><span>为您推荐</span><i></i></div>
+				<div class="adGoods"></div>
+
+			</div>
+			<div class="gotoTop"></div>
+			<!--<script src="../../js/lib/zepto.min.js"></script>-->
+			<script src="../../js/lib/jq-3.1.1.min.js"></script>
+			<script src="../../js/lib/fastclick.min.js"></script>
+			<script src="../../js/lib/swiper-3.4.1.min.js"></script>
+			<script src="../../js/lib/layer.min.js"></script>
+			<script src="../../js/common.js"></script>
+			<script type="text/javascript">
+				var url = apiDomain+'/diyapi/today/list',
+//				var url = 'http://192.168.1.195:8080/diyapi/today/list',
+
+					successFunc = function(data) {
+						var bannerList = data.data.bannerList,
+							saleGoods = data.data.todayGoodsList,
+							adGoods = data.data.recomGoodsList;
+
+						if(data.code == 200) {
+							$('.swiper-banner .swiper-wrapper').append(loadBanner(bannerList));
+							$('.saleGoods').append(loadGoods(saleGoods, 0, 1));
+							$('.adGoods').append(loadGoods(adGoods));
+							$('.dom-noLoad').hide();
+							$('.dom-hasLoad').show();
+							topSwiper()
+						}
+					};
+
+				loadData(url, true, successFunc);
+
+				//顶部轮播初始化
+				var topSwiper = function() {
+					new Swiper('.swiper-banner', {
+						loop: true,
+						autoplay: 4000,
+						speed: 500,
+						autoplayDisableOnInteraction: false,
+						pagination: '.swiper-pagination',
+						spaceBetween: 20
+					});
+				};
+
+				//加载轮播，跳转商品和url两种
+				function loadBanner(data) {
+					var dataBox = '',
+						sendData;
+					$.each(data, function(i) {
+						if(data[i].isUrl) {
+							sendData = '\'' + data[i].urlOpenType + ',' + data[i].url + '\'';
+						} else {
+							sendData = '\'' + data[i].goods.diyType + ',' + data[i].goods.id + '\'';
+						}
+
+						dataBox += '<div class="swiper-slide"><div class="imgBox" onclick="sending(' + sendData + ')"><img src="' + data[i].imageUrl + '" /></div></div>'
+					});
+
+					return dataBox;
+				}
+
+				//获取服务器时间
+				function getSevertime() {
+					var xmlHttp = new XMLHttpRequest();
+					if(!xmlHttp) {
+						xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					xmlHttp.open("HEAD", location.href, false);
+					xmlHttp.send();
+					var severtime = new Date(xmlHttp.getResponseHeader("Date"));
+					return severtime;
+				}
+				var NowTime = getSevertime();
+				//第二天凌晨0点0分0秒
+				var EndTime = new Date(NowTime.getFullYear(), NowTime.getMonth(), NowTime.getDate() + 1, 0, 0, 0);
+//								var EndTime = new Date(NowTime.getFullYear(), NowTime.getMonth(), NowTime.getDate(), NowTime.getHours(), NowTime.getMinutes(), NowTime.getSeconds()+500);
+				var t = EndTime.getTime() - NowTime.getTime();
+				//设置倒计时时间
+				function countdown(t) {
+					var h = getDoubleDigit(Math.floor(t / 1000 / 60 / 60 % 24));
+					var m = getDoubleDigit(Math.floor(t / 1000 / 60 % 60));
+					var s = getDoubleDigit(Math.floor(t / 1000 % 60));
+
+					if(Number(t) <= 0) {
+						clearInterval(timer);
+						//时间到了就刷新页面，接口会更新数据
+						location.reload()
+					}
+					console.log(s)
+					$('#hour i').eq(0).text(h[0])
+					$('#hour i').eq(1).text(h[1])
+					$('#minute i').eq(0).text(m[0])
+					$('#minute i').eq(1).text(m[1])
+					$('#second i').eq(0).text(s[0])
+					$('#second i').eq(1).text(s[1])
+
+				}
+				countdown(t)
+				var timer = setInterval(function() {
+					t = t - 1000;
+					countdown(t)
+				}, 1000);
+
+				function getDoubleDigit(data) {
+					if(data < 10) {
+						data = '0' + data;
+					}
+					return String(data);
+				}
+			</script>
+
+	</body>
+
+</html>

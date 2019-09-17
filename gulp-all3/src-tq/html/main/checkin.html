@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>签到</title>
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f0e635459915122317d9199dc2470247";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<link rel="shortcut icon" href="../../img/favicon.ico">
+		<link type="text/css" rel="stylesheet" href="../../css/comment.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/xl/xl-login.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/lib/layer.css" />
+		<link type="text/css" rel="stylesheet" href="../../css/lib/swiper-3.4.1.min.css" />
+		<style type="text/css">
+			html,
+			body {
+				background: #fff;
+			}
+			/*禁止关闭登录页面*/
+			
+			.xl-close {
+				/*display: none !important;*/
+			}
+			
+			body.act {
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.title {
+				height: 1.45rem;
+				line-height: 1.45rem;
+				text-align: center;
+				color: #333;
+				background: #f5f5f5;
+				margin-top: .8rem;
+			}
+			
+			.adGoods {
+				background: #f5f5f5;
+			}
+			
+			.title span {
+				margin: 0 .2rem;
+			}
+			
+			.title i {
+				display: inline-block;
+				width: .6rem;
+				height: 1px;
+				background: #333;
+				vertical-align: .08rem;
+			}
+			
+			.saleGoods {
+				margin-top: .2rem;
+			}
+			
+			.user {
+				height: 2.6rem;
+				background-image: url(../../img/checkin/header.png);
+				background-size: 100%;
+				background-repeat: no-repeat;
+				color: #fff;
+				position: relative;
+			}
+			
+			.user .img {
+				float: left;
+				width: 1.45rem;
+				height: 1.45rem;
+				border: .1rem solid rgba(256, 256, 256, .3);
+				border-radius: 100%;
+				margin: .54rem 0 0 .4rem;
+				overflow: hidden;
+			}
+			
+			.user .name {
+				float: left;
+				width: 3rem;
+				height: .4rem;
+				line-height: .4rem;
+				margin: .8rem 0 0 .2rem;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				font-size: .32rem;
+			}
+			
+			.user .gold {
+				float: left;
+				width: 3rem;
+				height: .4rem;
+				line-height: .4rem;
+				margin: .2rem 0 0 .2rem;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				font-size: .24rem;
+			}
+			
+			.user .gold i {
+				font-size: .36rem;
+				margin-right: .1rem;
+			}
+			
+			.user .signInBtn {
+				position: absolute;
+				top: .82rem;
+				right: .3rem;
+				width: 1.75rem;
+				height: .86rem;
+				line-height: .86rem;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				font-size: .28rem;
+				color: #fe166a;
+				background: url(../../img/checkin/btn.png) no-repeat;
+				background-size: 100%;
+				text-align: center;
+				border-radius: .43rem;
+			}
+			
+			.user:after {
+				content: '';
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 0 .14rem .14rem .14rem;
+				border-color: transparent transparent #fff transparent;
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				margin-left: -.14rem;
+			}
+			
+			.timeline {
+				height: .5rem;
+				background: url(../../img/checkin/notGet.png) no-repeat;
+				background-size: 100%;
+				margin-top: .54rem;
+				position: relative;
+			}
+			
+			.timeline .hasGet {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 0;
+				height: .5rem;
+				overflow: hidden;
+				transition: width .5s;
+				-webkit-transition: width .5s;
+			}
+			
+			.timeline .hasGet img {
+				width: 7.5rem;
+			}
+			
+			.timeline .get {
+				position: absolute;
+				top: 0;
+				left: -1rem;
+				width: .6rem;
+				height: .6rem;
+				transition: left .4s;
+				-webkit-transition: left .4s;
+			}
+			
+			.timeline .gift {
+				position: absolute;
+				top: .52rem;
+				right: .5rem;
+				width: .6rem;
+				height: .6rem;
+				pointer-events: all;
+			}
+			
+			h2 {
+				font-size: .28rem;
+				color: #333;
+				padding-left: .2rem;
+				margin-top: .6rem;
+			}
+			
+			.lottery {
+				display: block;
+				width: 7.1rem;
+				margin: .24rem auto;
+			}
+			
+			.popup-gift {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: rgba(0, 0, 0, .7);
+				z-index: 999;
+				display: none;
+			}
+			
+			.popup-gift .pg-text {
+				width: 5.2rem;
+				background: #fff;
+				color: #333;
+				margin: 40% auto 0;
+				padding: .4rem;
+				border-radius: .2rem .2rem 0 0;
+			}
+			
+			.popup-gift .pg-text h3 {
+				text-align: center;
+				font-size: .3rem;
+				font-weight: 600;
+				margin-bottom: .3rem;
+			}
+			
+			.popup-gift .pg-text p {
+				line-height: 1.6;
+				margin: .1rem 0;
+			}
+			
+			.popup-gift .pg-btn {
+				width: 5.2rem;
+				height: 1rem;
+				line-height: 1rem;
+				margin: 0 auto;
+				text-align: center;
+				background: #ff5252;
+				color: #fff;
+				font-size: .36rem;
+				border-radius: 0 0 .2rem .2rem;
+			}
+			
+			.popup-succeed {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: rgba(0, 0, 0, .7);
+				z-index: 999;
+				display: none;
+			}
+			
+			.popup-succeed .ps-main {
+				width: 3.9rem;
+				height: 6rem;
+				margin: 40% auto 0;
+				background: url(../../img/checkin/popup-succeed.png) no-repeat;
+				background-size: 100%;
+			}
+			
+			.popup-succeed .ps-main .ps-text {
+				height: .96rem;
+				line-height: .96rem;
+				color: #fff;
+				font-size: .3rem;
+				text-align: center;
+			}
+			
+			.popup-succeed .ps-main .ps-text i {
+				color: #ffe221;
+				font-size: .35rem;
+				margin: 0 .1rem;
+			}
+			
+			.popup-succeed .ps-main .ps-tips {
+				color: #666;
+				text-align: center;
+				margin-top: 2.68rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="dom-noLoad"></div>
+		<main class="containerBox dom-hasLoad">
+
+			<div class="popup-gift">
+				<div class="pg-text">
+					<h3>连续7天签到的奖励</h3>
+					<p>1、连续签到时间越长，获得的金豆越多</p>
+					<p>2、连续签到记录在第8天开始时将清零重新计算</p>
+					<p>3、如果中断签到，连续签到记录也将清零</p>
+					<p>4、本活动最终解释权归腾趣所有</p>
+				</div>
+				<div class="pg-btn">我知道了</div>
+			</div>
+
+			<div class="popup-succeed">
+				<div class="ps-main">
+					<div class="ps-text">签到成功，已领<i>1</i>金豆</div>
+					<div class="ps-tips">连续签到7天有额外金豆哦！</div>
+				</div>
+			</div>
+
+			<div class="user themeColor">
+				<div class="img"><img src="http://51app-image.oss-cn-hangzhou.aliyuncs.com/diy/other/default_user_head.png" alt="头像" /></div>
+				<div class="name"></div>
+				<div class="gold"><i>0</i>金豆</div>
+				<div class="signInBtn">立即签到</div>
+			</div>
+			<div class="timeline">
+				<div class="hasGet"><img src="../../img/checkin/hasGet.png" /></div>
+				<img class="get" src="../../img/checkin/get.png" />
+				<img class="gift" src="../../img/checkin/gift.png" alt="礼物" />
+			</div>
+			<!--<h2>幸运九宫格</h2>-->
+			<!--<a class="lottery" href="../subject/lottery.html"><img src="../../img/checkin/header.png" /></a>-->
+			<div class="title"><i></i><span>为您推荐</span><i></i></div>
+			<div class="adGoods"></div>
+
+		</main>
+
+		<!--<script src="../../js/lib/zepto.min.js"></script>-->
+		<script src="../../js/lib/jq-3.1.1.min.js"></script>
+		<script src="../../js/lib/fastclick.min.js"></script>
+		<script src="../../js/lib/swiper-3.4.1.min.js"></script>
+		<script src="../../js/lib/layer.min.js"></script>
+		<script src="../../js/common.js"></script>
+		<script src="../../js/xl/xl-login.js"></script>
+		<script type="text/javascript">
+			//爱思渠道时将背景遮罩图片改变
+			if(getCookie('channel') == 'i4'){
+				$('.user').css({'background-image':'url(../../img/header-i4.png)','background-size':'100%'});
+			}
+			
+//			web进去是用自己的登录
+			var token = getCookie('token');
+			//未登录先去登录才抽奖
+			if(!token) {
+				layerHint('登录后即可签到领取金豆')
+				$('body').addClass('act')
+				loginLayer('body', function() {
+					$('body').removeClass('act')
+					token = getCookie('token');
+					history.go(0)
+				})
+				//				return;
+			} else {
+				getUserInfo()
+			}
+			
+			//改变签到次数
+			function changeTime(time) {
+				if(time > 7 || time < 1) {
+					return;
+				}
+				$('.timeline .hasGet').css('width', (time * .98 + .06) + 'rem')
+				$('.timeline .get').css('left', (time * .98 - .46) + 'rem')
+			}
+
+			//点击小礼物显示说明弹窗
+			$('body').on('click', '.timeline .gift', function() {
+				$('.popup-gift').fadeIn()
+			})
+			$('body').on('click', '.popup-gift,.popup-gift .pg-btn', function(e) {
+				var e = e || event;
+				if(e.target == e.currentTarget) {
+					$('.popup-gift').fadeOut()
+				}
+
+			})
+
+			//点击签到
+			$('body').on('click', '.user .signInBtn', function() {
+				if($(this).text() == '立即签到') {
+					var url = apiDomain + '/diyapi/user/signin?token=' + token,
+						successFunc = function(data) {
+							if(data.code == 200) {
+								$('.popup-succeed .ps-main .ps-text i').text(data.data)
+								$('.popup-succeed').fadeIn()
+							}
+							getUserInfo()
+						};
+
+					loadData(url, true, successFunc);
+				} else {
+					layerHint('今天已签到，请明天再来吧~')
+				}
+
+			})
+			$('body').on('click', '.popup-succeed,.popup-succeed .ps-main', function(e) {
+				var e = e || event;
+				if(e.target == e.currentTarget) {
+					$('.popup-succeed').fadeOut()
+				}
+
+			})
+			//获取用户信息
+			function getUserInfo() {
+				var url = apiDomain+'/diyapi/user/signin/info?token=' + token,
+					successFunc = function(data) {
+						if(data.code == 200) {
+							var goodsList = data.data.goodsList;
+							$('.user .img img').attr('src', data.data.head)
+							$('.user .name').text(data.data.alias)
+							$('.user .gold i').text(data.data.coin)
+							changeTime(data.data.serialSignInNum)
+							if(data.data.isSignin) {
+								$('.user .signInBtn').text('已签到' + data.data.signinNum + '天')
+							} else {
+								$('.user .signInBtn').text('立即签到')
+							}
+
+							$('.adGoods').empty().append(loadGoods(goodsList))
+							$('.dom-noLoad').hide();
+							$('.dom-hasLoad').show();
+						}
+					};
+
+				loadData(url, true, successFunc);
+			}
+			//登录框的叉直接返回首页
+			$('body').on('click','.xl-close',function(){
+				history.go(-1)
+			})
+		</script>
+
+	</body>
+
+</html>

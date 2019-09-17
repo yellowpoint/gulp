@@ -1,0 +1,760 @@
+@charset "UTF-8";
+html,
+body,
+div,
+header,
+main,
+article,
+footer,
+section,
+aside,
+nav,
+hgroup,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+dl,
+dt,
+dd,
+p,
+a,
+span,
+i,
+em,
+img,
+input,
+textarea {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+header,
+main,
+article,
+footer,
+section,
+aside,
+nav {
+	display: block
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+b {
+	font-weight: normal
+}
+
+a,
+img,
+input,
+a:hover,
+a:focus,
+input:focus {
+	border: none 0;
+	text-decoration: none;
+	outline: none
+}
+
+li {
+	list-style: none
+}
+
+i,
+em,
+cite {
+	font-style: normal
+}
+
+a,
+input,
+textarea,
+li,
+span {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+}
+
+textarea {
+	resize: none;
+	font-size: 12px;
+	outline: none 0;
+	border: none 0
+}
+
+textarea,
+input,
+button {
+	-webkit-appearance: none;
+	outline: none 0;
+	border: none 0;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+	color: #ddd;
+	font-size: 12px
+}
+
+img {
+	display: block;
+	width: 100%;
+	pointer-events: none;
+	/*禁止图片长按选中*/
+}
+
+.clearfix:after {
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden
+}
+
+.clearfix {
+	*+height: 1%;
+}
+/*取消滚动条*/
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+html {
+	font-size: 50px;
+	height: 100%;
+}
+
+html,
+body {
+	min-height: 100%;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	/*禁止文字选中*/
+	-webkit-overflow-scrolling: touch;
+	/*滚动顺滑*/
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	/*取消ios上链接长按出现的半透明黑色遮罩*/
+	font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Hiragino Sans GB", "Heiti SC", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+	font-size: .26rem;
+	background: #f5f5f5;
+	color: #333;
+}
+
+
+/*超出文字显示省略号*/
+
+.overflowEllipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+
+/*强制断句*/
+
+.wordBreakAll {
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+
+/*加载提示符*/
+
+.infinite-scroll-preloader {
+	width: 18px;
+	height: 48px;
+	overflow: hidden;
+	margin: 10px auto 0;
+	background: url("http://file.diy.51app.cn/wp/icoImg/loading.gif") no-repeat;
+	background-size: 100%;
+}
+
+
+/*到底了提示开始*/
+
+.lastTips {
+	width: 100%;
+	text-align: center;
+	margin: 10px 0 0;
+	padding-bottom: 35px;
+	color: #a7a5a5;
+	font-size: .28rem;
+}
+
+.lastTips i {
+	display: inline-block;
+	margin: 0 5px 5px;
+	width: 2rem;
+	height: 1px;
+}
+
+.lastTips .left-line {
+	background: linear-gradient(to right, #d9d9d9, #f0f0f0);
+	background: -webkit-linear-gradient(right, #d9d9d9, #f0f0f0);
+}
+
+.lastTips .right-line {
+	background: linear-gradient(to left, #d9d9d9, #f0f0f0);
+	background: -webkit-linear-gradient(left, #d9d9d9, #f0f0f0);
+}
+
+
+/*到底了提示结束*/
+
+
+/*回到顶部开始*/
+
+.gotoTop {
+	position: fixed;
+	bottom: .2rem;
+	right: .28rem;
+	width: .64rem;
+	height: .64rem;
+	z-index: 999;
+	background: url(../img/gotoTop.png) no-repeat;
+	background-size: 100%;
+	display: none
+}
+
+
+/*回到顶部结束*/
+
+
+/*loading页面开始*/
+
+.dom-noLoad {
+	background: #fff;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 99999;
+}
+
+.dom-noLoad:after {
+	content: '';
+	background: url(http://file.diy.51app.cn/wp/icoImg/loading.gif) no-repeat;
+	background-size: 100%;
+	width: .4rem;
+	height: .4rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -.2rem;
+	margin-top: -.2rem;
+	z-index: 888;
+}
+
+.dom-hasLoad {
+	display: none;
+}
+
+
+/*loading页面结束*/
+
+
+/*弹层样式开始*/
+
+body .layui-m-layer .layui-m-layer-msg {
+	bottom: 0!important;
+}
+
+.layui-m-layershade {
+	background-color: rgba(0, 0, 0, .4)!important;
+}
+
+.layui-m-layerbtn {
+	height: 40px!important;
+	line-height: 40px!important;
+}
+
+
+/*弹层样式结束*/
+
+
+/*公共商品列表一排两个样式开始*/
+
+.hd-commonGoodsList {
+	padding: 0 .2rem;
+}
+
+.hd-commonGoodsList .hd-goodsBox {
+	float: left;
+	width: 50%;
+	margin-bottom: .2rem;
+	height: 5.2rem;
+	overflow: hidden;
+	/*防止无限加载的时候由于没有高度而导致触发多次加载*/
+}
+
+.hd-commonGoodsList .hd-goodsBox:nth-child(odd) .hd-goods {
+	margin-right: .1rem;
+}
+
+.hd-commonGoodsList .hd-goodsBox:nth-child(even) .hd-goods {
+	margin-left: .1rem;
+}
+
+.hd-commonGoodsList .hd-goodsBox .hd-goods {
+	background: #fff;
+	padding-bottom: .16rem;
+	position: relative;
+	overflow: hidden;
+	box-shadow: 0 1px 3px 0px #dcdcdc;
+}
+
+.hd-commonGoodsList .hd-goodsBox .hd-imgBox {
+	width: 100%;
+	height: 0;
+	padding-bottom: 100%;
+	overflow: hidden;
+}
+
+.hd-commonGoodsList .hd-goodsBox .hd-name {
+	font-size: .24rem;
+	color: #333333;
+	width: 100%;
+	height: .56rem;
+	line-height: .29rem;
+	padding: 0 .2rem;
+	margin: .1rem auto .2rem;
+	overflow: hidden;
+}
+
+.hd-commonGoodsList .hd-goodsBox .hd-name .hd-tips {
+	display: inline-block;
+	width: .5rem;
+	height: .26rem;
+	margin-right: .1rem;
+	vertical-align: middle;
+}
+
+.hd-commonGoodsList .hd-goodsBox .hd-info {
+	height: .3rem;
+	overflow: hidden;
+}
+
+.hd-commonGoodsList .hd-goodsBox .hd-type {
+	float: left;
+	width: .58rem;
+	height: .26rem;
+	line-height: .26rem;
+	margin-left: .2rem;
+	border-radius: .05rem;
+	font-size: .2rem;
+	color: #fff;
+	background: #ff3535;
+	text-align: center;
+}
+
+.hd-commonGoodsList .hd-goodsBox .hd-activity {
+	float: left;
+	height: .24rem;
+	line-height: .24rem;
+	padding: 0 .1rem;
+	margin-left: .2rem;
+	border-radius: .05rem;
+	border: 1px solid #ff7e00;
+	font-size: .2rem;
+	color: #ff7e00;
+	max-width: 2rem;
+	overflow: hidden;
+	box-sizing: content-box;
+}
+
+
+/*解决在android上不居中的问题*/
+
+.hd-commonGoodsList .hd-goodsBox .hd-activity::before {
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	width: 0;
+	height: 100%;
+	margin-top: 1px;
+}
+
+.hd-commonGoodsList .hd-goodsBox .hd-price {
+	float: left;
+	width: 50%;
+	padding-left: .2rem;
+	margin-top: .2rem;
+	font-size: .24rem;
+	color: #ff3535;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.hd-commonGoodsList .hd-goodsBox .hd-price i {
+	font-size: .28rem;
+}
+
+.hd-commonGoodsList .hd-goodsBox .hd-sale {
+	position: absolute;
+	bottom: .18rem;
+	right: .2rem;
+	width: 50%;
+	color: #969696;
+	font-size: .18rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: right;
+}
+
+
+/*添加图片渐入效果*/
+
+.hd-commonGoodsList .hd-goodsBox .hd-imgBox img {
+	opacity: 0;
+	-webkit-transition: opacity .3s ease-in;
+	transition: opacity .3s ease-in;
+}
+
+
+/*公共商品列表一排两个样式结束*/
+
+
+/*公共商品列表一排一个样式开始*/
+
+.hd-commonGoodsList2 {
+	padding: 0 .2rem;
+	background: #f5f5f5;
+}
+
+.hd-commonGoodsList2 .hd-goodsBox {
+	background: #fff;
+	padding: .1rem .2rem .1rem .1rem;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: .2rem;
+}
+
+.hd-commonGoodsList2 .hd-goodsBox .hd-img {
+	float: left;
+	width: 2.2rem;
+	height: 2.2rem;
+	margin-right: .2rem;
+}
+
+.hd-commonGoodsList2 .hd-goodsBox .hd-name {
+	float: left;
+	font-size: .28rem;
+	color: #333333;
+	width: 4.4rem;
+	height: .8rem;
+	line-height: .4rem;
+	overflow: hidden;
+	word-wrap: break-word;
+	word-break: break-all;
+}
+
+.hd-commonGoodsList2 .hd-goodsBox .hd-name .hd-tips {
+	display: inline-block;
+	width: .5rem;
+	height: .26rem;
+	margin-right: .1rem;
+	vertical-align: middle;
+}
+
+.hd-commonGoodsList2 .hd-goodsBox .hd-info {
+	float: left;
+	width: 4.4rem;
+	height: .46rem;
+	margin-top: .3rem;
+	overflow: hidden;
+}
+
+.hd-commonGoodsList2 .hd-goodsBox .hd-type {
+	float: left;
+	width: .58rem;
+	height: .26rem;
+	line-height: .26rem;
+	margin-top: .1rem;
+	border-radius: .05rem;
+	font-size: .2rem;
+	color: #fff;
+	background: #ff3535;
+	text-align: center;
+}
+
+.hd-commonGoodsList2 .hd-goodsBox .hd-activity {
+	float: left;
+	height: .24rem;
+	line-height: .24rem;
+	padding: 0 .1rem;
+	margin-left: .2rem;
+	margin-top: .1rem;
+	border-radius: .05rem;
+	border: 1px solid #ff7e00;
+	font-size: .2rem;
+	color: #ff7e00;
+	max-width: 2rem;
+	overflow: hidden;
+	box-sizing: content-box;
+}
+
+
+/*解决在android上不居中的问题*/
+
+.hd-commonGoodsList2 .hd-goodsBox .hd-activity::before {
+	content: '';
+	display: inline-block;
+	vertical-align: middle;
+	width: 0;
+	height: 100%;
+	margin-top: 1px;
+}
+
+.hd-commonGoodsList2 .hd-goodsBox .hd-vieFor {
+	float: right;
+	width: 1.3rem;
+	height: .46rem;
+	line-height: .46rem;
+	color: #fff;
+	font-size: .24rem;
+	background: #ff3535;
+	border-radius: .08rem;
+	text-align: center;
+}
+
+.hd-commonGoodsList2 .hd-goodsBox .hd-price {
+	float: left;
+	max-width: 1.7rem;
+	margin-top: .2rem;
+	font-size: .28rem;
+	color: #ff3535;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.hd-commonGoodsList2 .hd-goodsBox .hd-price i {
+	font-size: .32rem;
+}
+
+.hd-commonGoodsList2 .hd-goodsBox .hd-oldPrice {
+	float: left;
+	max-width: 1.4rem;
+	margin-top: .23rem;
+	margin-left: .1rem;
+	font-size: .2rem;
+	color: #999;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.hd-commonGoodsList2 .hd-goodsBox .hd-oldPrice i {
+	font-size: .22rem;
+}
+
+.hd-commonGoodsList2 .hd-goodsBox .hd-sale {
+	position: absolute;
+	bottom: .18rem;
+	right: .2rem;
+	width: 2rem;
+	color: #666;
+	font-size: .22rem;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: right;
+}
+
+
+/*添加图片渐入效果*/
+
+.hd-commonGoodsList2 .hd-goodsBox .hd-imgBox img {
+	opacity: 0;
+	-webkit-transition: opacity .3s ease-in;
+	transition: opacity .3s ease-in;
+}
+
+
+/*公共商品列表样式一排一个结束*/
+
+
+/*Shirley加的 开始*/
+
+
+/* 字号 */
+
+._fm-f-12 {
+	font-size: 0.24rem;
+}
+
+._fm-f-13 {
+	font-size: 0.26rem;
+}
+
+._fm-f-14 {
+	font-size: 0.28rem;
+}
+
+._fm-f-15 {
+	font-size: 0.3rem;
+}
+
+._fm-f-16 {
+	font-size: 0.32rem;
+}
+
+._fm-f-17 {
+	font-size: 0.34rem;
+}
+
+._fm-f-18 {
+	font-size: 0.36rem;
+}
+
+._fm-f-19 {
+	font-size: 0.38rem;
+}
+
+._fm-f-20 {
+	font-size: 0.40rem;
+}
+
+
+/* 溢出显示省略号 */
+
+._fm-ellipsis {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.page {
+	background-color: #fff;
+}
+
+._fm-back-left {
+	display: inline-block;
+	line-height: 8px;
+	width: 8px;
+	border: 2px solid #626262;
+	border-top: 0;
+	border-right: 0;
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+	position: relative;
+	top: -1px;
+}
+
+.toolbar {
+	background-color: #fff;
+}
+
+.tabbar-icon-1 {
+	width: 0.62rem;
+	height: 0.5rem;
+	background: url(../img/home-icon.png) center no-repeat;
+	background-size: cover
+}
+
+.tab-link1.active .tabbar-icon-1 {
+	background: url(../img/home-icon-active.png) center no-repeat;
+	background-size: cover
+}
+
+.tabbar-icon-2 {
+	width: 0.62rem;
+	height: 0.5rem;
+	background: url(../img/cus-icon.png) center no-repeat;
+	background-size: cover
+}
+
+.tab-link2.active .tabbar-icon-2 {
+	background: url(../img/cus-icon-active.png) center no-repeat;
+	background-size: cover
+}
+
+.tabbar-icon-3 {
+	width: 0.62rem;
+	height: 0.5rem;
+	background: url(../img/shopCar-icon.png) center no-repeat;
+	background-size: cover
+}
+
+.tab-link3.active .tabbar-icon-3 {
+	background: url(../img/shopCar-icon-active.png) center no-repeat;
+	background-size: cover
+}
+
+.tabbar-icon-4 {
+	width: 0.62rem;
+	height: 0.5rem;
+	background: url(../img/my-icon.png) center no-repeat;
+	background-size: cover
+}
+
+.tab-link4.active .tabbar-icon-4 {
+	background: url(../img/my-icon-active.png) center no-repeat;
+	background-size: cover
+}
+
+.tabbar-labels a.link,
+.tabbar-labels a.tab-link {
+	padding-top: 0!important;
+}
+
+.tab-link.active span {
+	color: #ff4949;
+}
+
+
+/*箭头*/
+
+.arrow-box {
+	width: 0.32rem;
+	height: 0.4rem;
+	position: relative;
+}
+
+
+/*右箭头*/
+
+.right {
+	width: 0.2rem;
+	height: 0.2rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.right-arrow1,
+.right-arrow2 {
+	width: 0;
+	height: 0;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-top: 10px transparent dashed;
+	border-right: 10px transparent dashed;
+	border-bottom: 10px transparent dashed;
+	border-left: 10px white solid;
+	overflow: hidden;
+}
+
+.right-arrow1 {
+	left: 1px;
+	/*重要*/
+	border-left: 10px #666 solid;
+}
+
+.right-arrow2 {
+	border-left: 10px white solid;
+}
+
+
+/*Shirley加的 结束*/

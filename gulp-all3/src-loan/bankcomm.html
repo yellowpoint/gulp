@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>交通银行信用卡</title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="css/common.css" />
+		<link rel="stylesheet" href="css/hd-creditCardCenter.css" />
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+		<style>
+			body {
+				padding: 0;
+			}
+			
+			.commonProductList .cpl-item .cpl-item-name img,
+			.commonProductList .cpl-item .cpl-item-tips,
+			.commonProductList .cpl-item .cpl-item-slogan {
+				display: none;
+			}
+			
+			.bankcomm-product {
+				background: #ff8920;
+				overflow: hidden;
+			}
+			
+			.commonProductList .cpl-item {
+				width: 6.9rem;
+				padding: .18rem .2rem .2rem;
+				margin: 0 auto .3rem;
+				border-radius: .1rem;
+				background: #fff;
+			}
+			
+			.commonProductList .cpl-item .cpl-item-img {
+				width: 2.72rem;
+				height: 1.7rem;
+				margin-right: .65rem;
+				margin-top: .1rem;
+			}
+			
+			.commonProductList .cpl-item .cpl-item-intro {
+				width: 3.1rem;
+				padding-left: .3rem;
+				margin-top: -.4rem;
+				color: #693100;
+				font-size: .24rem;
+			}
+			
+			.commonProductList .cpl-item .cpl-item-intro>div {
+				position: relative;
+			}
+			
+			.commonProductList .cpl-item .cpl-item-intro>div::after {
+				content: '';
+				position: absolute;
+				top: .1rem;
+				left: -.3rem;
+				width: .1rem;
+				height: .1rem;
+				border-radius: 100%;
+				background: #693100;
+			}
+			
+			.commonProductList .cpl-item .cpl-item-name {
+				width: auto;
+				height: .42rem;
+				line-height: .42rem;
+				padding: 0 .2rem;
+				margin: 0 3rem 0 -.2rem;
+				border-radius: 0 .21rem .21rem 0;
+				background: #ff4141;
+				color: #fff;
+				font-weight: 600;
+			}
+			
+			.commonProductList .cpl-item .cpl-item-label {
+				width: 2.04rem;
+				height: .48rem;
+				background: url(images/bankcomm/start_btn.png) no-repeat;
+				background-size: 100%;
+				margin: .2rem 0 0 .3rem;
+			}
+			
+			.commonProductList .cpl-item .cpl-item-label span {
+				display: none;
+			}
+			
+			.bankcomm-text {
+				position: absolute;
+				top: 7.57rem;
+				left: 0;
+				padding-left: 1.12rem;
+				color: #693100;
+				font-size: .26rem;
+			}
+			
+			b {
+				font-weight: 600;
+			}
+			
+			p {
+				margin-top: .1rem;
+			}
+			
+			.bt-1 {
+				height: 3rem;
+			}
+			
+			.bankcomm-qrcode {
+				width: 100%;
+				height: 6.2rem;
+				background: url(images/bankcomm/start_bg3.jpg) no-repeat;
+				background-size: 100%;
+				text-align: center;
+				overflow: hidden;
+			}
+			.bankcomm-qrcode img{
+				width: 2.8rem;
+				height: 2.8rem;
+				margin: 1.4rem auto 0;
+				pointer-events: all;
+			}
+	
+		</style>
+	</head>
+
+	<body class="bankcomm body-loading">
+
+		<div class="body-main">
+			<img src="images/bankcomm/start_bg1.jpg" />
+			<img src="images/bankcomm/start_bg2.jpg" />
+			<div class="bankcomm-text">
+				<div class="bt-1">
+					<p><b>活动时间：</b>2018-5-18 至 2018-6-15</p>
+					<p><b>活动对象：</b>未办理过交通银行信用卡的新用户</p>
+				</div>
+
+			</div>
+			<div class="bankcomm-product commonProductList">
+
+			</div>
+			<div class="bankcomm-qrcode">
+				<img src="images/bankcomm/qr-aykk.png" />
+				<p>微信搜索“<b>爱用卡卡</b>”领红包</p>
+			</div>
+		</div>
+
+		<script src="js/commonPlugin.min.js"></script>
+		<script src="js/hd-common.js"></script>
+		<script type="text/javascript">
+			var url = apiDomain + '/creditcard/center/list?bankId=1'
+			var successFunc = function(data) {
+				if(data.code != 200) {
+					return false
+				}
+				var recomCreditCardList = data.data.creditCardList;
+				var dataBox = '';
+
+				$('.bankcomm-product').empty().append(commonProductListFuc(recomCreditCardList, 1))
+				$('body').removeClass('body-loading')
+			}
+			loadData(url, true, successFunc)
+			//设置微信分享的样式
+			wxShare('办交行信用卡，领240元红包！', 'https://api.51app.cn/loanpage/v1.0.0/bankcomm.html', 'https://api.51app.cn/loanpage/v1.0.0/images/bankcomm/wxShare.jpg', '易下卡，下卡就领40元，首刷再领200元！')
+		</script>
+
+	</body>
+
+</html>

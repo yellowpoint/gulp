@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1.0">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>腾趣</title>
+		<!-- Path to Framework7 Library CSS-->
+		<link rel="stylesheet" href="../../css/lib/framework7.ios.min.css">
+		<!-- Path to your custom app styles-->
+		<!--<link rel="stylesheet" href="css/my-app.css">-->
+		<link rel="stylesheet" type="text/css" href="../../css/lib/swiper-3.4.1.min.css"/>
+		<link rel="stylesheet" href="../../css/xl/xl-commen.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/xl/xl-login.css" />
+		<!--<link rel="stylesheet" type="text/css" href="css/hd-chooseAttribute.css"/>-->
+		<link rel="stylesheet" type="text/css" href="../../css/xl/xl-chooseAttribute.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/xl/xl-hot.css"/>
+		<link rel="shortcut icon" href="../../img/favicon.ico">
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f0e635459915122317d9199dc2470247";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+
+	<body>
+		<!-- Status bar overlay for fullscreen mode-->
+		<div class="statusbar-overlay"></div>
+		<!-- Panels overlay-->
+		<div class="panel-overlay"></div>
+
+		<div class="hd-noLoad">
+			<img class="hd-loading" src="//api.51app.cn/loanpage/v1.0.0/images/loading.gif" alt="loading" />
+		</div>
+		<!-- Views-->
+		<div class="views" id='material' style="overflow: hidden;">
+			<!-- Your main view, should have "view-main" class-->
+			<div class="view view-main">
+				<!--<span class="left left-txt _js-historyback haveDone" style="width: 0.7rem;height: 0.7rem;"><i class="_fm-back-left">&nbsp;</i></span>-->
+				<div class="pages">
+					<div class="shareMaskBox">
+						<!--<div class="shareMask">
+							<img src="img/shareMask.jpg"/>
+						</div>-->
+					</div>
+					<div data-page="materialIndex" class="page" id="materialIndex">
+						<div class="page-content">
+							<div class="materialSwiper">
+								<div class="swiper-container">
+								    <div class="swiper-wrapper">
+								        <!--<div class="swiper-slide"><img src="img/111.jpg"/></div>
+								        <div class="swiper-slide"><img src="img/222.jpg"/></div>
+								        <div class="swiper-slide"><img src="img/333.jpg"/></div>-->
+								    </div>
+								</div>
+							</div>
+						</div>
+						<div class="materialService">
+							<i class="goService"></i>
+						</div>
+						<div class="materialLink">
+							<span class="LinkRight"></span><span class="LinkLeft"></span>
+						</div>
+						<div class="gotoTop" style="bottom: 1.2rem;"><img src="../../img/gotoTop.png" alt="TOP" /></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Path to Framework7 Library JS-->
+		<script type="text/javascript" src="../../js/lib/ckplayer.js" charset="utf-8"></script>
+		<script type="text/javascript" src="../../js/lib/framework7.min.js"></script>
+		<script type="text/javascript" src="../../js/lib/layer.min.js"></script>
+		<script type="text/javascript" src="../../js/lib/swiper-3.4.1.min.js" charset="utf-8"></script>
+		<!-- Path to your app js-->
+		<script type="text/javascript" src="../../js/xl/my-app1.js"></script>
+		<script type="text/javascript" src="../../js/lib/fastclick.min.js"></script>
+		<script type="text/javascript" src="../../js/xl/xl-commen.js"></script>
+		<!--<script type="text/javascript" src="js/xl-chooseAttribute.js?1"></script>-->
+		<!--<script type="text/javascript" src="js/xl-login.js"></script>-->
+		<script src="../../js/lib/zepto.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/xl/xl-hot.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/lib/alloy-lever.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			window.onload=function(){
+				var channel = GetQueryString('channel');
+				setCookie('channel',channel)
+				if(localStorage.getItem('share')){
+					localStorage.removeItem('share')
+					var dataBox = '<div class="shareMask"><img src="../../img/material/shareMask.jpg"/></div>'
+					$('.shareMaskBox').empty().append(dataBox);
+				}
+				matirialIndex();
+				$('#materialIndex .materialLink').on('click','.LinkLeft',function(){
+					window.location.href = 'chooseModel.html?button=uploadImg&channel='+channel;
+				})
+				$('#materialIndex .materialLink').on('click','.LinkRight',function(){
+					window.location.href = 'chooseModel.html?button=marterial&channel='+channel;
+				})
+			}
+			
+			//联系客服
+			$('.materialService').on('click','.goService',function(){
+				contactLayer('body')
+			})
+			
+			AlloyLever.config({
+			    entry:".hd-noLoad"          //请点击这个DOM元素6次召唤vConsole。//你可以通过AlloyLever.entry('#entry2')设置多个机关入口召唤神龙
+			})
+		</script>
+	</body>
+</html>

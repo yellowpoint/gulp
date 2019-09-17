@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta content="telephone=no,email=no" name="format-detection">
+		<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+		<title>贷款超市</title>
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link href="css/swiper-3.4.1.min.css" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="css/hd-index.css" />
+		<style type="text/css">
+			/*弹层样式开始*/
+			
+			body .layui-m-layer .layui-m-layer-msg {
+				bottom: 0!important;
+			}
+			
+			.layui-m-layershade {
+				background-color: rgba(0, 0, 0, .4)!important;
+			}
+			
+			.layui-m-layerbtn {
+				height: 40px!important;
+				line-height: 40px!important;
+			}
+			
+			.layui-m-layercont {
+				/*padding: 30px!important;*/
+			}
+			/*弹层样式结束*/
+			
+			.containerBox {
+				padding: 0;
+				position: relative;
+			}
+			
+			.main {
+				width: 6.3rem;
+				height: 5.98rem;
+				background: #fff;
+				position: absolute;
+				top: 4.83rem;
+				left: .61rem;
+				border-radius: 0 0 .2rem .2rem;
+				box-shadow: 0 .08rem 0 0 #bbcfe9;
+			}
+			
+			.close {
+				position: absolute;
+				top: 0;
+				right: 0;
+				z-index: 999;
+				width: 2.8rem;
+				height: .7rem;
+			}
+			
+			.main .list1 {
+				width: 100%;
+				padding-top: .8rem;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 33;
+			}
+			
+			.main .list1 .item {
+				width: 5rem;
+				height: .64rem;
+				border-radius: .32rem;
+				background: #efefef;
+				margin: .4rem auto;
+				position: relative;
+				padding-left: 1rem;
+				box-sizing: border-box;
+				border: 1px solid transparent;
+			}
+			
+			.main .list1 .item .icon {
+				width: .36rem;
+				height: .36rem;
+				position: absolute;
+				top: .12rem;
+				left: .34rem;
+				background-size: 1.52rem auto;
+			}
+			
+			.list1 input,
+			.list1 select {
+				outline: 0;
+				border: 0;
+				-webkit-appearance: none;
+				-moz-appearance: none;
+				appearance: none;
+				background: transparent;
+				font-size: .28rem;
+				color: #3f3f3f;
+				height: 100%;
+				padding-right: .2rem;
+				box-sizing: border-box;
+				overflow: hidden;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+			
+			.main .list1 .item input,
+			.main .list1 .item select,
+			.main .list1 .item .limit {
+				width: 4rem;
+			}
+			
+			.arrow {
+				width: .2rem;
+				height: .2rem;
+				border: solid #bcbcbc;
+				border-width: 0 0 .04rem .04rem;
+				-webkit-transform: rotate(-45deg);
+				transform: rotate(-45deg);
+				position: absolute;
+				top: .14rem;
+				right: .3rem;
+				pointer-events: none;
+			}
+			
+			.arrow.a1 {
+				right: 2.3rem;
+			}
+			
+			#distpicker {
+				height: 100%;
+			}
+			
+			#distpicker select {
+				width: 1.9rem;
+				padding-right: .5rem;
+				position: relative;
+			}
+			
+			.main .item.act {
+				border: 1px solid #007AFF;
+			}
+			
+			input::-webkit-input-placeholder {
+				color: #bdbdbd;
+				opacity: 1;
+			}
+			
+			.btn {
+				width: 4.36rem;
+				height: .92rem;
+				line-height: .92rem;
+				text-align: center;
+				color: #fff;
+				font-size: .4rem;
+				position: absolute;
+				bottom: .86rem;
+				left: 1.64rem;
+				background: -webkit-linear-gradient(#51f9ff, #18e2ab);
+				background: linear-gradient(#51f9ff, #18e2ab);
+				border-radius: .46rem;
+				box-shadow: 0 .08rem 0 0 #134dc0;
+			}
+			
+			.btn:active::before {
+				content: '';
+				position: absolute;
+				left: 0;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				z-index: 999;
+				border-radius: .46rem;
+				box-shadow: inset 0 0 1000px rgba(72, 72, 72, .3);
+			}
+			
+			.list2,
+			.btn2 {
+				display: none;
+			}
+			
+			.list2 {
+				width: 100%;
+				box-sizing: border-box;
+				padding: .32rem .45rem;
+				font-size: .24rem;
+				color: #bdbdbd;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 22;
+			}
+			
+			.list2 .item {
+				position: relative;
+				margin-top: .43rem;
+			}
+			
+			.list2 .icon {
+				width: .36rem;
+				height: .36rem;
+				display: inline-block;
+				background-size: 1.52rem auto;
+			}
+			
+			.list2 .title {
+				width: 4.5rem;
+				font-size: .3rem;
+				vertical-align: 4px;
+				display: inline-block;
+			}
+			
+			.list2 .radioBox {
+				width: 1.3rem;
+				height: .3rem;
+				display: inline-block;
+				padding-left: .36rem;
+				margin-top: .05rem;
+			}
+			
+			input[type="radio"] {
+				display: none;
+			}
+			
+			input[type="radio"]+label {
+				position: relative;
+				padding: .1rem;
+			}
+			
+			input[type="radio"]+label:before {
+				content: "";
+				width: .18rem;
+				height: .18rem;
+				background: #e7e7e7;
+				position: absolute;
+				bottom: .16rem;
+				left: -.3rem;
+				border-radius: .05rem;
+			}
+			
+			input[type="radio"]:checked+label:before {
+				content: "";
+				width: .18rem;
+				height: .18rem;
+				background: url(images/questionnaire/checked.png);
+				background-size: 100% 100%;
+				position: absolute;
+				bottom: .16rem;
+				left: -.3rem;
+				border-radius: .05rem;
+			}
+			
+			.icon-car {
+				background-image: url('images/questionnaire/sprite.png');
+				background-position: 0rem -0.82rem;
+			}
+			
+			.icon-checked {
+				background-image: url('images/questionnaire/sprite.png');
+				background-position: -0.7799999999999999rem -0.82rem;
+			}
+			
+			.icon-creditCard {
+				background-image: url('images/questionnaire/sprite.png');
+				background-position: -0.3733333333333333rem -0.42666666666666664rem;
+			}
+			
+			.icon-gjj {
+				background-image: url('images/questionnaire/sprite.png');
+				background-position: -0.3933333333333333rem -0.82rem;
+			}
+			
+			.icon-house {
+				background-image: url('images/questionnaire/sprite.png');
+				background-position: -1.1533333333333333rem -0.3466666666666666rem;
+			}
+			
+			.icon-iphone {
+				background-image: url('images/questionnaire/sprite.png');
+				background-position: 0rem -1.1rem;
+			}
+			
+			.icon-location {
+				background-image: url('images/questionnaire/sprite.png');
+				background-position: 0rem 0rem;
+			}
+			
+			.icon-limit {
+				background-image: url('images/questionnaire/sprite.png');
+				background-position: -0.76rem 0rem;
+			}
+			
+			.icon-phone {
+				background-image: url('images/questionnaire/sprite.png');
+				background-position: 0rem -0.42666666666666664rem;
+			}
+			
+			.icon-user {
+				background-image: url('images/questionnaire/sprite.png');
+				background-position: -0.3666666666666667rem 0rem;
+			}
+			
+			.icon-work {
+				background-image: url('images/questionnaire/sprite.png');
+				background-position: -1.1533333333333333rem 0rem;
+			}
+			
+			.icon-zmf {
+				background-image: url('images/questionnaire/sprite.png');
+				background-position: -0.7799999999999999rem -0.42666666666666664rem;
+			}
+			
+			
+		</style>
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?c13725e39558df212ce2c1804e94f751";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</head>
+
+	<body>
+		<div class="hd-noLoad">
+			<img class="hd-loading" src="images/loading.gif" alt="loading" />
+		</div>
+		<div class="containerBox hd-hasLoad">
+			<a href="index.html" class="close"></a>
+			<img src="images/questionnaire/bg.png" alt="" />
+			<div class="main">
+
+				<div class="list1">
+					<div class="item user">
+						<div class="icon icon-user"></div>
+
+						<input type="text" onfocus="inputFocus(this)" onblur="inputBlur(this)" placeholder="请输入您的姓名" />
+					</div>
+					<div class="item phone">
+						<div class="icon icon-phone"></div>
+
+						<input type="number" onfocus="inputFocus(this)" onblur="inputBlur(this)" placeholder="请输入您的手机号" name="r-number" pattern="[0-9]*" maxlength="11">
+					</div>
+					<div class="item limit">
+						<div class="icon icon-limit"></div>
+
+						<select onfocus="inputFocus(this)" onblur="inputBlur(this)">
+							<option value="" disabled selected hidden>请选择额度</option>
+							<option value="1">100-2000</option>
+							<option value="2">2001-5000</option>
+							<option value="3">5001-10000</option>
+							<option value="4">10001以上</option>
+						</select>
+						<div class="arrow"></div>
+					</div>
+					<div class="item location">
+						<div class="icon icon-location"></div>
+
+						<div id="distpicker">
+							<select id="distpicker_province" onfocus="inputFocus(this)" onblur="inputBlur(this)"></select>
+							<div class="arrow a1"></div>
+							<select id="distpicker_city" onfocus="inputFocus(this)" onblur="inputBlur(this)"></select>
+							<div class="arrow"></div>
+						</div>
+					</div>
+				</div>
+
+				<div class="list2 list2_1">
+					<div class="item gjj">
+						<div class="icon icon-gjj"></div>
+						<span class="title">公积金</span>
+						<div class="radioBox"><input type="radio" name="gjj" id="gjj1" value="0" checked><label for="gjj1">无</label></div>
+						<div class="radioBox"><input type="radio" name="gjj" id="gjj2" value="1"><label for="gjj2">有</label></div>
+					</div>
+					<div class="item creditCard">
+						<div class="icon icon-creditCard"></div>
+						<span class="title">信用卡</span>
+						<div class="radioBox"><input type="radio" name="xyk" id="xyk1" value="0" checked><label for="xyk1">无</label></div>
+						<div class="radioBox"><input type="radio" name="xyk" id="xyk2" value="1"><label for="xyk2">有</label></div>
+					</div>
+					<div class="item car">
+						<div class="icon icon-car"></div>
+
+						<span class="title">车</span>
+						<div class="radioBox"><input type="radio" name="car" id="car1" value="0" checked><label for="car1">无</label></div>
+						<div class="radioBox"><input type="radio" name="car" id="car2" value="1"><label for="car2">有按揭车</label></div>
+						<div class="radioBox"><input type="radio" name="car" id="car3" value="2"><label for="car3">有全款车</label></div>
+					</div>
+					<div class="item house">
+						<div class="icon icon-house"></div>
+						<span class="title">房</span>
+						<div class="radioBox"><input type="radio" name="house" id="house1" value="0" checked><label for="house1">无</label></div>
+						<div class="radioBox"><input type="radio" name="house" id="house2" value="1"><label for="house2">有按揭房</label></div>
+						<div class="radioBox"><input type="radio" name="house" id="house3" value="2"><label for="house3">有全款房</label></div>
+					</div>
+				</div>
+
+				<div class="list2 list2_2">
+					<div class="item iphone">
+						<div class="icon icon-iphone"></div>
+						<span class="title">苹果手机</span>
+						<div class="radioBox"><input type="radio" name="iphone" id="iphone1" value="0" checked><label for="iphone1">无</label></div>
+						<div class="radioBox"><input type="radio" name="iphone" id="iphone2" value="1"><label for="iphone2">有</label></div>
+					</div>
+					<div class="item work">
+						<div class="icon icon-work"></div>
+						<span class="title">工作</span>
+						<div class="radioBox"><input type="radio" name="work" id="work1" value="0" checked><label for="work1">无</label></div>
+						<div class="radioBox"><input type="radio" name="work" id="work2" value="1"><label for="work2">有</label></div>
+					</div>
+					<div class="item zmf">
+						<div class="icon icon-zmf"></div>
+
+						<span class="title">芝麻分</span>
+						<div class="radioBox"><input type="radio" name="zmf" id="zmf1" value="0" checked><label for="zmf1">500以下</label></div>
+						<div class="radioBox"><input type="radio" name="zmf" id="zmf2" value="1"><label for="zmf2">501以上</label></div>
+
+					</div>
+					<div class="item creditCard">
+						<div class="icon icon-creditCard"></div>
+						<span class="title">信用卡</span>
+						<div class="radioBox"><input type="radio" name="xyk2" id="xyk21" value="0" checked><label for="xyk21">无</label></div>
+						<div class="radioBox"><input type="radio" name="xyk2" id="xyk22" value="1"><label for="xyk22">有</label></div>
+					</div>
+				</div>
+			</div>
+			<div class="btn btn1">下一步</div>
+			<div class="btn btn2">提 &nbsp;&nbsp;交</div>
+		</div>
+		<div class="result">
+			<div class="r-main">
+				<div class="r-text">恭喜您，您的额度为</div>
+				<div class="r-num">1000 - 2000</div>
+
+				<div class="r-pos">您已获得免费领取<i>银联认证POS机</i>资格</div>
+				<div class="r-ok">
+					<!--<div class="ro-1">知道了</div>-->
+					<div class="ro-2">
+						<div class="ro-2_1">知道了</div>
+						<div class="ro-2_2">立即领取</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<!--<script src="js/jquery-3.3.1.min.js"></script>-->
+		<script src="js/commonPlugin.min.js"></script>
+		<script src="js/swiper-3.4.1.min.js"></script>
+		<script src="js/hd-common.js?v2"></script>
+		<!--<script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>-->
+		<script src="js/distpicker-data.js"></script>
+		<script src="js/distpicker.js"></script>
+		<script type="text/javascript">
+			//没有token则设置token为0，如果之后提交了数据token才改变
+			if(!getCookie('token')) {
+				setCookie('token', '0')
+			}
+
+			//数据加载完成后显示界面
+			$('.hd-noLoad').hide();
+			$('.hd-hasLoad').show();
+
+			//			var city = remote_ip_info['city'];
+			//			var province = remote_ip_info['province'];
+			var userInfo = {};
+
+			var city = '深圳';
+			var province = '广东';
+			//			$("#distpicker").distpicker({
+			//				province: province + "",
+			//				city: city + "市",
+			//				placeholder: false
+			//			});
+
+			$("#distpicker").distpicker({
+				province: '请选择省',
+				city: '请选择市',
+				autoSelect: false,
+
+			});
+
+			function inputFocus(ee) {
+				$(ee).parents('.item').addClass('act')
+			}
+
+			function inputBlur(ee) {
+				$(ee).parents('.item').removeClass('act')
+			}
+
+			$('body').on('click', '.btn1', function() {
+
+				if($('.user input').val() != '') {
+					userInfo.name = $('.user input').val();
+
+					if(isPhoneAvailable($('.phone input').val())) {
+						userInfo.mobile = $('.phone input').val();
+						//cookie里面存下姓名和电话，方便获取pos页面使用
+						setCookie('name', userInfo.name, 10)
+						setCookie('mobile', userInfo.mobile, 10)
+
+						if($('.limit select option:selected').val() != '') {
+							userInfo.loanRange = $('.limit select option:selected').val();
+							userInfo.cityCode = $('#distpicker_city option:selected').attr('data-code');
+							$('.list1,.btn1').fadeOut();
+							setTimeout(function() {
+
+								if($('.limit select option:selected').val() > 3) {
+									$('.list2_1,.btn2').fadeIn();
+									$('.list2_2').remove()
+								} else {
+									$('.list2_2,.btn2').fadeIn();
+									$('.list2_1').remove()
+								}
+
+							}, 300)
+
+						} else {
+							layerHint('请选择贷款额度')
+							$('.limit select').focus()
+						}
+
+					} else {
+						layerHint('请输入正确的手机号')
+						$('.phone input').focus()
+					}
+
+				} else {
+					layerHint('请输入姓名')
+					$('.user input').focus()
+				}
+
+			})
+			$('body').on('click', '.btn2', function() {
+
+				if($('.list2 .gjj input:checked').val()) {
+					userInfo.providentFundStatus = $('.list2 .gjj input:checked').val()
+				}
+				if($('.list2 .creditCard input:checked').val()) {
+					userInfo.creditCardStatus = $('.list2 .creditCard input:checked').val()
+				}
+				if($('.list2 .car input:checked').val()) {
+					userInfo.carStatus = $('.list2 .car input:checked').val()
+				}
+				if($('.list2 .house input:checked').val()) {
+					userInfo.houseStatus = $('.list2 .house input:checked').val()
+				}
+				if($('.list2 .iphone input:checked').val()) {
+					userInfo.iphoneStatus = $('.list2 .iphone input:checked').val()
+				}
+				if($('.list2 .work input:checked').val()) {
+					userInfo.jobStatus = $('.list2 .work input:checked').val()
+				}
+				if($('.list2 .zmf input:checked').val()) {
+					userInfo.creditScoreRange = $('.list2 .zmf input:checked').val()
+				}
+
+				$.ajax({
+					url: apiDomain + '/user/profile',
+					type: 'POST',
+					timeout: 60000,
+					async: true,
+					dataType: 'json',
+					data: {
+						'data': JSON.stringify(userInfo)
+					},
+					success: function(data) {
+
+						setCookie('token', data.data, 60)
+
+					},
+					error: function(error) {
+						console.log('冒的数据 搞毛呀');
+						console.log(error);
+
+					}
+				});
+
+				//测试的结果，如果是小额list2_2 底价1000，任意通过一项则是5000；如果是大额list2_1，底价是1w，每通过一项加1w
+				var result;
+				if($('.list2_2').length) {
+					result = $('.list2 .radioBox input:checked[value!=0]').length == 0 ? '1000 - 2000' : '4000 - 5000';
+
+				} else {
+					result = ($('.list2 .radioBox input:checked[value!=0]').length + 1) * 10000;
+					result = result + ' - ' + (result + 5000)
+				}
+				//如果信用卡选了有，则提示去领取pos机页面,没有则提示去办信用卡页面
+				if($('.creditCard input:checked[value!=0]').length > 0) {
+
+					$('.result .r-pos').html('您已获得免费领取<i>银联认证POS机</i>资格')
+					$('.ro-2_2').text('立即领取')
+					$('body').off('click', '.ro-2_2', function() {}).on('click', '.ro-2_2', function() {
+						window.location.href = 'getPos.html'
+					})
+				} else {
+					$('.result .r-pos').html('您已获得民生信用卡（<i>10万额度</i>）办理资格')
+					$('.ro-2_2').text('马上去办')
+					$('body').off('click', '.ro-2_2', function() {}).on('click', '.ro-2_2', function() {
+						window.location.href = 'creditCard.html'
+					})
+				}
+				$('.result').fadeIn().find('.r-num').text(result)
+
+				$('body').on('click', '.ro-2_1', function() {
+					layerHint('正在为您生成首页', 5)
+					//不管请求成功失败，还是跳首页吧
+					setTimeout(function() {
+						window.location.href = 'index.html'
+					}, 2000)
+				})
+				
+
+			})
+		</script>
+
+	</body>
+
+</html>

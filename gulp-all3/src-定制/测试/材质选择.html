@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+    <title>材质选择</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link type="text/css" rel="stylesheet" href="css/swiper-3.4.1.min.css" />
+    <link type="text/css" rel="stylesheet" href="css/hd-comment.css" />
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="attributePopup">
+    </div>
+    <!-- <script type="text/javascript" src="js/zepto.min.js"></script> -->
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/fastclick.min.js"></script>
+    <script src="js/swiper-3.4.1.min.js"></script>
+    <script src="js/hd-common.js"></script>
+        <script >
+
+        /* 后端数据 */
+        var data = {
+            "10;20;30": {
+                price: 5,
+                count: 1
+            },
+            "10;20;31": {
+                price: 10,
+                count: 2
+            },
+            "11;20;30": {
+                price: 5,
+                count: 1
+            },
+            "10;21;31": {
+                price: 10,
+                count: 2
+            },
+            "10;21;32": {
+                price: 10,
+                count: 9
+            }
+        }
+
+        var myData = {},
+
+            //可选项key值
+            keys = [
+                [10, 11, 12],
+                [20, 21],
+                [30, 31, 32]
+                ];
+
+        //获取 key的库存量
+
+        function getNum(key) {
+            var result = 0,
+
+                i, j, m,
+
+                items, n = [];
+
+            //检查是否已计算过
+            if (typeof myData[key] != 'undefined') {
+                return myData[key];
+            }
+
+            items = key.split(";");
+
+            //已选择数据是最小路径，直接从已端数据获取
+            if (items.length === keys.length) {
+                return data[key] ? data[key].count : 0;
+            }
+
+            //拼接子串
+            for (i = 0; i < keys.length; i++) {
+                for (j = 0; j < keys[i].length && items.length > 0; j++) {
+                    if (keys[i][j] == items[0]) {
+                        break;
+                    }
+                }
+
+                if (j < keys[i].length && items.length > 0) {
+                    //找到该项，跳过
+                    n.push(items.shift());
+                } else {
+                    //分解求值
+                    for (m = 0; m < keys[i].length; m++) {
+                        result += getNum(n.concat(keys[i][m], items).join(";"));
+                    }
+                    break;
+                }
+            }
+
+            //缓存
+            myData[key] = result;
+            return result;
+        }
+
+        document.write(getNum("10") + ";"); //输出14
+        document.write(getNum("11") + ";"); //输出1
+        document.write(getNum("10;21") + ";"); //输出11
+        document.write(getNum("21;31") + ";"); //输出2​
+        document.write(getNum("10;31") + ";"); //输出4
+        document.write(getNum("10;20;30") + ";"); //输出1
+
+
+    </script>
+<!--     <script>
+/* 后端数据 */
+var data = {
+    "10;20;30": {
+        price: 5,
+        count: 1
+    },
+    "10;20;31": {
+        price: 10,
+        count: 2
+    },
+    "11;20;30": {
+        price: 5,
+        count: 1
+    },
+    "10;21;31": {
+        price: 10,
+        count: 2
+    },
+    "10;21;32": {
+        price: 10,
+        count: 9
+    }
+}
+
+var myData = {},
+
+    //可选项key值
+    keys = [
+        [10, 11, 12],
+        [20, 21],
+        [30, 31, 32]
+    ];
+
+
+var result = 0,
+
+    i, j, m,
+
+    items, n = [];
+
+
+// var a1 = 10;
+var paishu = 0;
+
+function getNum(key, ps) {
+
+    if (keys.length == 2) {
+
+        if (ps == 1) {
+
+            for (var i = 0; i < keys[1].length; i++) {
+
+                items = key + ';' + keys[1][i];
+                if (data[items] !== undefined) {
+                    console.log('第二排第' + i + '个可以显示');
+                    break;
+                }
+
+
+            }
+
+        } else if (ps == 2) {
+            for (var i = 0; i < keys[0].length; i++) {
+
+                items = keys[0][i] + ';' + key;
+                if (data[items] !== undefined) {
+                    console.log('第一排第' + i + '个可以显示');
+                    break;
+                }
+
+
+            }
+
+        }
+
+    } else if (keys.length == 3) {
+
+        if (ps == 1) {
+
+            for (var i = 0; i < keys[1].length; i++) {
+                for (var j = 0; j < keys[2].length; j++) {
+                    items = key + ';' + keys[1][i] + ';' + keys[2][j];
+                    if (data[items] !== undefined) {
+                        console.log('第二排第' + i + '个可以显示');
+                        break;
+                    }
+
+                }
+            }
+
+            for (var i = 0; i < keys[2].length; i++) {
+                for (var j = 0; j < keys[1].length; j++) {
+                    items = key + ';' + keys[1][j] + ';' + keys[2][i];
+                    if (data[items] !== undefined) {
+                        console.log('第三排第' + i + '个可以显示');
+                        break;
+                    }
+
+                }
+            }
+        } else if (ps == 2) {
+            for (var i = 0; i < keys[0].length; i++) {
+                for (var j = 0; j < keys[2].length; j++) {
+                    items = keys[0][i] + ';' + key + ';' + keys[2][j];
+                    if (data[items] !== undefined) {
+                        console.log('第一排第' + i + '个可以显示');
+                        break;
+                    }
+
+                }
+            }
+
+            for (var i = 0; i < keys[2].length; i++) {
+                for (var j = 0; j < keys[0].length; j++) {
+                    items = keys[0][j] + ';' + key + ';' + keys[2][i];
+                    if (data[items] !== undefined) {
+                        console.log('第三排第' + i + '个可以显示');
+                        break;
+                    }
+
+                }
+            }
+        } else if (ps == 3) {
+            for (var i = 0; i < keys[0].length; i++) {
+                for (var j = 0; j < keys[1].length; j++) {
+                    items = keys[0][i] + ';' + keys[1][j] + ';' + key;
+                    if (data[items] !== undefined) {
+                        console.log('第一排第' + i + '个可以显示');
+                        break;
+                    }
+
+                }
+            }
+
+            for (var i = 0; i < keys[1].length; i++) {
+                for (var j = 0; j < keys[0].length; j++) {
+                    items = keys[0][j] + ';' + keys[1][i] + ';' + key;
+                    if (data[items] !== undefined) {
+                        console.log('第二排第' + i + '个可以显示');
+                        break;
+                    }
+
+                }
+            }
+        }
+
+    }
+
+
+
+    // for(i = 0; i > 0; i++){
+
+    //  if(paishu == ps){
+    //      paishu++;
+    //  }else{
+    //      if(i < keys[paishu].length){
+    //          for(var j = 0; j < keys[2].length; j++){
+    //              items = key + ';' + keys[1][i] + ';' + keys[2][j];
+    //              if(data[items] !== undefined){
+    //                  console.log('第paishu排的第'+i+'个可以显示');
+    //                  break;
+    //              }
+    //          }
+    //      }else{
+
+    //      }
+    //  }
+
+    // }
+
+}
+getNum("30", 3)
+</script> -->
+</body>
+
+</html>

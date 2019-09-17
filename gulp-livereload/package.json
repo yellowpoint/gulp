@@ -1,0 +1,21 @@
+{
+  "name": "HDtest",
+  "version": "1.0.0",
+  "description": "This is for study gulp project !",
+  "homepage": "http://www.dtao.org",
+  "repository": {
+    "type": "git",
+    "url": "https://git.oschina.net/xxxx"
+  },
+  "author": {
+    "name": "surging",
+    "email": "surging2@qq.com"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.18.5",
+    "gulp": "^3.9.1",
+    "gulp-less": "^3.3.0",
+    "gulp-livereload": "^3.8.1"
+  }
+}
