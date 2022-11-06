@@ -12,7 +12,7 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "del": "^3.0.0",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-autoprefixer": "^4.0.0",
     "gulp-babel": "^7.0.0",
     "gulp-changed": "^3.1.0",
@@ -36,7 +36,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-babel-inline": "0.0.1-alpha"
   }
 }
